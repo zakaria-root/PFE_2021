@@ -15,7 +15,7 @@
                     @endif
 
                     {{ __('You are logged in!') }}
-                    
+                    @include('test.test')
                 </div>
             </div>
         </div>

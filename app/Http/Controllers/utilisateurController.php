@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\utRequest;
 use App\Models\Utilisateur;
+use Dotenv\Validator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class utilisateurController extends Controller
 {
@@ -35,9 +38,22 @@ class utilisateurController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+
+    
+    
+
+    public function store(utRequest $request)
     {
-        //
+        
+        
+         Utilisateur::create([
+            'login' => $request['nom'],
+            'email' => $request['email'],
+            'motDePass' => Hash::make($request['motDePass']),
+        ]);
+        session()->flash('ajouter',' l\'utilisateur a ete bien ajouter !!');
+        return back();
+
     }
 
     /**
@@ -69,9 +85,20 @@ class utilisateurController extends Controller
      * @param  \App\Models\Utilisateur  $utilisateur
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Utilisateur $utilisateur)
+    public function update(utRequest $request)
     {
-        //
+        $user = Utilisateur::findOrFail($request->value);
+        $user->login = $request->input('nom');
+        $user->email = $request->input('email');
+        $user->motDePass = $request->input('motDePass');
+        session()->flash('modifier',' l\'utilisateur a ete bien modifier !!');
+        $user->save();
+        return back();
+        // $user = Utilisateur::findOrFail($request->value);
+        // $user->update($request->all());
+        // return back();
+        
+        
     }
 
     /**
@@ -80,8 +107,11 @@ class utilisateurController extends Controller
      * @param  \App\Models\Utilisateur  $utilisateur
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Utilisateur $utilisateur)
+    public function destroy(Request $request)
     {
-        //
+        $user = Utilisateur::findOrFail($request->value);
+        session()->flash('supprimer',' l\'utilisateur a ete bien supprimer !!');
+        $user->delete();
+        return back();
     }
 }

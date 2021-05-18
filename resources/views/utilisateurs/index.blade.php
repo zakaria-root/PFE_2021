@@ -5,14 +5,13 @@
 <div class="container mt-5">
     <div class="col-12 col-4">
         <div class="col-4 offset-10 ">
-            <button type="button" class="btn btn-outline-success mb-3 py-2" data-bs-toggle="modal" data-bs-target="#add" >
+            <button type="button" class="btn btn-outline-success mb-3 py-2" data-toggle="modal" data-target="#ajouter" >
                 <i class="fas fa-user-plus"></i>
                 Ajouter nouveau
             </button>
                 
         </div>
     </div>
-    
     <table class="table table-striped ">
             <thead>
               <tr>
@@ -31,12 +30,23 @@
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->created_at }}</td>
                     <td>
-                        <a href="#">
+                        
+                            <a type="button"
+                            data-value_user="{{ $user->id }}" 
+                            data-value_nom="{{ $user->login }}" 
+                            data-value_email="{{ $user->email }}" 
+                            data-value_pass="{{ $user->motDePass }}" 
+                            data-toggle="modal" 
+                            data-target="#editutilisateur" >
                             <i class="fas fa-user-edit m-2"></i>
-                        </a>/
-                        <a href="#">
+                            </a>
+                            /
+                            <a type="button"
+                            data-value_user="{{ $user->id }}"  
+                            data-toggle="modal" 
+                            data-target="#deleteUtidiant" >
                             <i class="fas fa-user-times m-2"></i>
-                        </a>
+                            </a>
                         
                     </td>
                   </tr>
@@ -45,29 +55,4 @@
             </tbody>
           </table>
     
- 
-</div>
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Launch demo modal
-  </button>
-  
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          ...
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
 @endsection
