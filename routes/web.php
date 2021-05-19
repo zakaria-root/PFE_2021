@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\CafeRestaurantController;
 use App\Http\Controllers\employeeController;
+use App\Http\Controllers\MaterielController;
 use App\Http\Controllers\utilisateurController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -27,3 +29,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('/utilisateurs', utilisateurController::class);
 
 Route::resource('/employees', employeeController::class);
+
+Route::resource('/cafeRestaurants', CafeRestaurantController::class);
+
+
+Route::resource('/materiels', MaterielController::class);

@@ -101,7 +101,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </li>
          
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a  href="{{ url('/cafeRestaurants') }}"  class="nav-link">
               <i class="fas fa-laptop-house nav-icon"></i>
               <p>
                 cafes
@@ -120,7 +120,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link active">
+                <a href="{{ url('/materiels') }}" class="nav-link active">
                   <i class="fa fa-business-time nav-icon"></i>
                   <p>materiel</p>
                 </a>
@@ -134,14 +134,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </li>
             </ul>
           </li></li><li class="nav-item">
-            <a href="#" class="nav-link">
+              <a class="dropdown-item nav-link" 
+              data-toggle="modal" data-target="#modal-default">
               <i class="nav-icon fas fa-toggle-off"></i>
               <p>
-                logout
-                
+                  {{ __('Logout') }}
               </p>
-            </a>
+              </a>
+              
+              
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                  @csrf
+              </form>
           </li>
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -240,11 +246,247 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- ./wrapper -->
 <!-- REQUIRED SCRIPTS -->
 <!-- Button trigger modal -->
+{{-- logout modale --}}
+<div class="modal fade" id="modal-default" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content ">
+      <div class="modal-header bg-teal">
+        <h4 class="modal-title">quiter la session</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body text-center">
+        <p>vous êtes sûr de vouloir quitter la session administrateur…</p>
+      </div>
+      <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-secondary px-5" data-dismiss="modal">Non</button>
+        <a type="button"
+        href="{{ route('logout') }}"
+              onclick="event.preventDefault();
+              document.getElementById('logout-form').submit();"
+        class="btn btn-primary px-5 btn-success">Oui</a>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+
+<!-- Modal cafeRestaurant ajouter-->
+<div class="modal fade " id="ajouterCafe" tabindex="-1" role="dialog" aria-labelledby="ajouterLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-teal">
+        <h5 class="modal-title" id="ajouterLabel">ajouter cafe_restaurant</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="{{ route('cafeRestaurants.index') }}" method="post">
+        @csrf
+      <div class="modal-body">        
+        <div class="form-group ">
+          <label for="nom">nom du CafeRestaurant</label>
+          <input type="text" class="form-control" name="nomCafeRestaurant"  id="nom_cafe"  placeholder="entrer le nom du CafeRestaurant" value=""> 
+         
+        </div>
+          <div class="form-group ">
+            <label for="exampleInputEmail1">la ville</label>
+            <input type="text" class="form-control" name="ville" id="ville"  placeholder="entrer la ville" value=""> 
+          </div>
+      </div>
+      <div class="modal-footer  justify-content-between">
+        <button type="button" class="btn btn-secondary swalDefaultSuccess px-4" data-dismiss="modal">fermer</button>
+       
+        <button type="submit" class="btn btn-success px-5">cree</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal cafeRestaurant supprimer-->
+
+<div class="modal fade" id="deleteCafeRestaurant" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-danger">
+      <div class="modal-header">
+        <h4 class="modal-title text-center">supprimer cafe_restaurant</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <form action="{{ route('cafeRestaurants.destroy', 'test') }}" method="post">
+        @csrf
+        @method('delete')
+        
+        
+        <div class="modal-body text-center" >        
+        <input id="prodId" class="prodId" name="value" type="hidden" value="" />
+        
+          <p>! êtes-vous sûr  que vous voulez supprimer cet cafe_restaurant...?</p>
+      </div>
+      <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-outline-light px-4" data-dismiss="modal">fermer</button>
+        <button type="submit" class="btn btn-outline-light px-4">valide</button>
+      </div>
+    </form>
+      <!-- /.modal-content -->
+    </div>
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+
+<!-- Modal utilisateur ajouter-->
+<div class="modal fade " id="ajouterMateriel" tabindex="-1" role="dialog" aria-labelledby="ajouterLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-teal">
+        <h5 class="modal-title" id="ajouterLabel">ajouter materiel</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="{{ route('materiels.index') }}" method="post">
+        @csrf
+      <div class="modal-body">        
+        <div class="form-group ">
+          <label for="nom">Nom</label>
+          <input type="text" class="form-control"name="nomProduit"  id="nom" placeholder="entrer le nom" value="{{ old('nom') }}"> 
+         
+        </div>
+          <div class="form-group ">
+            <label for="exampleInputEmail1">Prix</label>
+            <input type="text" class="form-control" name="prixProduit" id="Prix" placeholder="entrer le Prix" value="{{ old('Prix') }}"> 
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Marque</label>
+            <input type="text" class="form-control" name="marque" id="Marque" placeholder="mot de Marque" value="{{ old('Marque') }}">
+          </div>
+      </div>
+      <div class="modal-footer  justify-content-between">
+        <button type="button" class="btn btn-secondary swalDefaultSuccess px-4" data-dismiss="modal">fermer</button>
+       
+        <button type="submit" class="btn btn-success px-5">cree</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+
+{{-- model materiel modifier --}}
+<div class="modal fade " id="editeMateriel" tabindex="-1" role="dialog" aria-labelledby="ajouterLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-blue1">
+        <h5 class="modal-title" id="ajouterLabel">modifier materiel</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="{{ route('materiels.update', 'test') }}" method="post">
+        @csrf
+        @method('patch')
+        <div class="modal-body" >        
+        <input id="prodId" class="prodId" name="value" type="hidden" value="" />
+
+        <div class="form-group ">
+          <label for="nom">Nom</label>
+          <input type="text" class="form-control"name="nomProduit"  id="nom_produit" placeholder="entrer le nom" value="{{ old('nomProduit') }}"> 
+         
+        </div>
+          <div class="form-group ">
+            <label for="exampleInputEmail1">Prix</label>
+            <input type="text" class="form-control" name="prixProduit" id="value_prix_produit" placeholder="entrer le Prix" value="{{ old('prixProduit') }}"> 
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Marque</label>
+            <input type="text" class="form-control" name="marque" id="value_marque" placeholder="mot de Marque" value="{{ old('Marque') }}">
+          </div>
+      </div>
+      <div class="modal-footer  justify-content-between">
+        <button type="button"  class="btn btn-secondary px-4" data-dismiss="modal">fermer</button>
+        <button type="submit" class="btn btn-info px-4">sauvgarder</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal materiel supprimer-->
+
+<div class="modal fade" id="deleteMateriel" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-danger">
+      <div class="modal-header">
+        <h4 class="modal-title text-center">supprimer materiel</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <form action="{{ route('materiels.destroy', 'test') }}" method="post">
+        @csrf
+        @method('delete')
+        
+        
+        <div class="modal-body text-center" >        
+        <input id="prodId" class="prodId" name="value" type="hidden" value="" />
+        
+          <p>! êtes-vous sûr  que vous voulez supprimer cet materiel...?</p>
+      </div>
+      <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-outline-light px-4" data-dismiss="modal">fermer</button>
+        <button type="submit" class="btn btn-outline-light px-4">valide</button>
+      </div>
+    </form>
+      <!-- /.modal-content -->
+    </div>
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+
+
+
+{{-- model cafeRestaurant odifier --}}
+<div class="modal fade " id="editCafeRestaut" tabindex="-1" role="dialog" aria-labelledby="ajouterLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-blue1">
+        <h5 class="modal-title" id="ajouterLabel">modifier cafe_restaurant</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="{{ route('cafeRestaurants.update', 'test') }}" method="post">
+        @csrf
+        @method('patch')
+        <div class="modal-body" >        
+        <input id="prodId" class="prodId" name="value" type="hidden" value="" />
+
+        <div class="form-group ">
+          <label for="nom">nom du CafeRestaurant</label>
+          <input type="text" class="form-control" name="nomCafeRestaurant"  id="CafeRestaurant"  placeholder="entrer le nom du CafeRestaurant" value=""> 
+        </div>
+          <div class="form-group ">
+            <label for="exampleInputEmail1">la ville</label>
+            <input type="text" class="form-control" name="ville" id="ville"  placeholder="entrer la ville" value=""> 
+          </div>
+      </div>
+      <div class="modal-footer  justify-content-between">
+        <button type="button"  class="btn btn-secondary px-4" data-dismiss="modal">fermer</button>
+        <button type="submit" class="btn btn-info px-4">sauvgarder</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+
 
 <!-- Modal supprimer employee-->
 
 <div class="modal fade" id="deleteEmployee" style="display: none;" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content bg-danger">
       <div class="modal-header">
         <h4 class="modal-title text-center">supprimer employe</h4>
@@ -278,7 +520,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 <!-- Modal utilisateur ajouter-->
 <div class="modal fade " id="ajouter" tabindex="-1" role="dialog" aria-labelledby="ajouterLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header bg-teal">
         <h5 class="modal-title" id="ajouterLabel">ajouter utilisateur</h5>
@@ -316,7 +558,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- Modal modifier-->
 
 <div class="modal fade " id="editutilisateur" tabindex="-1" role="dialog" aria-labelledby="ajouterLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header bg-blue1">
         <h5 class="modal-title" id="ajouterLabel">modifier utilisateur</h5>
@@ -357,7 +599,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- Modal supprimer-->
 
 <div class="modal fade" id="deleteUtidiant" style="display: none;" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content bg-danger">
       <div class="modal-header">
         <h4 class="modal-title text-center">supprimer utilisateur</h4>
@@ -388,7 +630,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 <!-- Modal employee ajouter-->
 <div class="modal fade " id="ajouterEmployee" tabindex="-1" role="dialog" aria-labelledby="ajouterLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header bg-teal">
         <h5 class="modal-title" id="ajouterLabel">Ajouter employee</h5>
@@ -438,7 +680,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 <!-- Modal modifier-->
 <div class="modal fade " id="editEmployee" tabindex="-1" role="dialog" aria-labelledby="ajouterLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header bg-blue1">
         <h5 class="modal-title" id="ajouterLabel">modifier employee</h5>
@@ -485,8 +727,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </div>
   </div>
 </div>
-
-
 
 
 
@@ -579,6 +819,80 @@ $('#deleteEmployee').on('show.bs.modal', function (event) {
   var modal = $(this)
   
   modal.find('.modal-body input#empId ').val(value);
+})
+
+// modale cafeRestaurant pour update
+$('#editCafeRestaut').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget)
+   // Button that triggered the modal
+  var value = button.data('value_cr') // Extract info from data-* attributes
+  var value_nom_cafe = button.data('value_nom_cafe') // Extract info from data-* attributes
+  var value_ville = button.data('value_ville') // Extract info from data-* attributes
+ // Extract info from data-* attributes
+  // Extract info from data-* attributes
+  // var value_pass = button.data('value_pass') // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+
+  console.log(value);
+  console.log(value_nom_cafe);
+  var modal = $(this)
+  
+  modal.find('.modal-body input#prodId ').val(value);
+  modal.find('.modal-body input#nom_cafe ').val(value_nom_cafe);
+  modal.find('.modal-body input#ville ').val(value_ville);
+
+})
+
+// modale employe pour delete
+$('#deleteCafeRestaurant').on('show.bs.modal', function (event) {
+    console.log('test valide');
+  var button = $(event.relatedTarget)
+   // Button that triggered the modal
+  var value = button.data('value_cr') // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  console.log(value);
+  var modal = $(this)
+  
+  modal.find('.modal-body input#prodId ').val(value);
+})
+// modale materiel pour update
+$('#editeMateriel').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget)
+   // Button that triggered the modal
+  var value = button.data('value_mt') // Extract info from data-* attributes
+  var value_nom_produit = button.data('value_nom_produit') // Extract info from data-* attributes
+  var value_prix_produit = button.data('value_prix_produit') // Extract info from data-* attributes
+  var value_marque = button.data('value_marque') // Extract info from data-* attributes
+ // Extract info from data-* attributes
+  // Extract info from data-* attributes
+  // var value_pass = button.data('value_pass') // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+
+  console.log(value);
+  console.log(value_nom_produit);
+  var modal = $(this)
+  
+  modal.find('.modal-body input#prodId ').val(value);
+  modal.find('.modal-body input#nom_produit ').val(value_nom_produit);
+  modal.find('.modal-body input#value_prix_produit ').val(value_prix_produit);
+  modal.find('.modal-body input#value_marque ').val(value_marque);
+
+})
+// modale employe pour delete
+$('#deleteMateriel').on('show.bs.modal', function (event) {
+    console.log('test valide');
+  var button = $(event.relatedTarget)
+   // Button that triggered the modal
+  var value = button.data('value_mt') // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  console.log(value);
+  var modal = $(this)
+  
+  modal.find('.modal-body input#prodId ').val(value);
 })
 
 });
