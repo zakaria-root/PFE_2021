@@ -151,12 +151,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-  
+   
     <div class="content">
       <div class="container-fluid">
         <div class="container">
-          <div class="row ">
-            <div class="col-8">
+
               <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
                 <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
                   <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
@@ -184,7 +183,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   @endforeach
                 </ul>
                 </div> 
-              
               @endif
               @if (session()->has('modifier'))
           <div class="alert alert-success d-flex align-items-center" role="alert">
@@ -240,12 +238,45 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 </div>
 <!-- ./wrapper -->
-
 <!-- REQUIRED SCRIPTS -->
 <!-- Button trigger modal -->
 
+<!-- Modal supprimer employee-->
 
-<!-- Modal utilisateur-->
+<div class="modal fade" id="deleteEmployee" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content bg-danger">
+      <div class="modal-header">
+        <h4 class="modal-title text-center">supprimer employe</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <form action="{{ route('employees.destroy', 'test') }}" method="post">
+        @csrf
+        @method('delete')
+        
+        
+        <div class="modal-body text-center" >        
+        <input id="empId" class="prodId" name="value" type="hidden" value="" />
+        
+          <p>! êtes-vous sûr  que vous voulez supprimer cet employe...?</p>
+      </div>
+      <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-outline-light px-4" data-dismiss="modal">fermer</button>
+        <button type="submit" class="btn btn-outline-light px-4">valide</button>
+      </div>
+    </form>
+      <!-- /.modal-content -->
+    </div>
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+
+
+
+
+<!-- Modal utilisateur ajouter-->
 <div class="modal fade " id="ajouter" tabindex="-1" role="dialog" aria-labelledby="ajouterLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -281,55 +312,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </div>
   </div>
 </div>
-<!-- Modal employee-->
-<div class="modal fade " id="ajouterEmployee" tabindex="-1" role="dialog" aria-labelledby="ajouterLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header bg-teal">
-        <h5 class="modal-title" id="ajouterLabel">Ajouter employee</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <form action="{{ route('employees.index') }}" method="post">
-        @csrf
-      <div class="modal-body">        
-        <div class="form-group ">
-          <label for="nom">Nom</label>
-          <input type="text" class="form-control" name="nomEmploye"    placeholder="entrer le nom" value="{{ old('nom') }}"> 
-         
-        </div>
-          <div class="form-group ">
-            <label for="exampleInputEmail1">Prenom</label>
-            <input type="text" class="form-control" name="prenomEmploye"  placeholder="entrer le prenom" value="{{ old('prenom') }}"> 
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">Adress</label>
-            <input type="text" class="form-control" name="adressEmploye"  placeholder="entrer l'adress" value="">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">Fonction</label>
-            <input type="text" class="form-control" name="fonction"  placeholder="entrer le fonctionnement" value="">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">salaire</label>
-            <input type="text" class="form-control" name="salaire" placeholder="entrer le salaire" value="">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">commission</label>
-            <input type="text" class="form-control" name="commission" placeholder="entrer la commission" value="">
-          </div>
-          
-      </div>
-      <div class="modal-footer  justify-content-between">
-        <button type="button" class="btn btn-secondary swalDefaultSuccess px-4" data-dismiss="modal">fermer</button>
-       
-        <button type="submit" class="btn btn-success px-5">cree</button>
-      </div>
-    </form>
-    </div>
-  </div>
-</div>
+
+<!-- Modal modifier-->
 
 <div class="modal fade " id="editutilisateur" tabindex="-1" role="dialog" aria-labelledby="ajouterLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -370,6 +354,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   </div>
 </div>
 
+<!-- Modal supprimer-->
+
 <div class="modal fade" id="deleteUtidiant" style="display: none;" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content bg-danger">
@@ -400,6 +386,108 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- /.modal-dialog -->
 </div>
 
+<!-- Modal employee ajouter-->
+<div class="modal fade " id="ajouterEmployee" tabindex="-1" role="dialog" aria-labelledby="ajouterLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-teal">
+        <h5 class="modal-title" id="ajouterLabel">Ajouter employee</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="{{ route('employees.index') }}" method="post">
+        @csrf
+      <div class="modal-body">        
+        <div class="form-group ">
+          <label for="nom">Nom</label>
+          <input type="text" class="form-control" name="nomEmploye"    placeholder="entrer le nom" value="{{ old('nomEmploye') }}"> 
+         
+        </div>
+          <div class="form-group ">
+            <label for="exampleInputEmail1">Prenom</label>
+            <input type="text" class="form-control" name="prenomEmploye"  placeholder="entrer le prenom" value="{{ old('prenomEmploye') }}"> 
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Adress</label>
+            <input type="text" class="form-control" name="adressEmploye"  placeholder="entrer l'adress" value="{{ old('adressEmploye') }}">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Fonction</label>
+            <input type="text" class="form-control" name="fonction"  placeholder="entrer le fonctionnement" value="{{ old('fonction') }}">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">salaire</label>
+            <input type="text" class="form-control" name="salaire" placeholder="entrer le salaire" value="{{ old('salaire') }}">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">commission</label>
+            <input type="text" class="form-control" name="commission" placeholder="entrer la commission" value="{{ old('commission') }}">
+          </div>
+          
+      </div>
+      <div class="modal-footer  justify-content-between">
+        <button type="button" class="btn btn-secondary swalDefaultSuccess px-4" data-dismiss="modal">fermer</button>
+       
+        <button type="submit" class="btn btn-success px-5">cree</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal modifier-->
+<div class="modal fade " id="editEmployee" tabindex="-1" role="dialog" aria-labelledby="ajouterLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-blue1">
+        <h5 class="modal-title" id="ajouterLabel">modifier employee</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="{{ route('employees.update', 'test') }}" method="post">
+        @csrf
+        @method('patch')
+        
+        
+        <div class="modal-body" >        
+        <input id="prodId" class="prodId" name="value" type="hidden" value="" />
+        <div class="form-group ">
+          <label for="nom">Nom</label>
+          <input type="text" class="form-control" name="nomEmploye"  id="nom_employe"   placeholder="entrer le nom" value=""> 
+        <div class="form-group ">
+          <label for="exampleInputEmail1">Prenom</label>
+          <input type="text" class="form-control" name="prenomEmploye" id="prenom_employe"  placeholder="entrer le prenom" value=""> 
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Adress</label>
+          <input type="text" class="form-control" name="adressEmploye" id="adress_employe"  placeholder="entrer l'adress" value="">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Fonction</label>
+          <input type="text" class="form-control" name="fonction" id="fonction"  placeholder="entrer le fonctionnement" value="">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">salaire</label>
+          <input type="text" class="form-control" name="salaire" id="salaire"  placeholder="entrer le salaire" value="">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">commission</label>
+          <input type="text" class="form-control" name="commission" id="commission" placeholder="entrer la commission" value="">
+        </div>
+      </div>
+      <div class="modal-footer  justify-content-between">
+        <button type="button"  class="btn btn-secondary px-4" data-dismiss="modal">fermer</button>
+        <button type="submit" class="btn btn-info px-4">sauvgarder</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+
+
+
 
 
 <script src="{{ asset('js/app.js') }}"></script>
@@ -415,7 +503,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             modal.find('.modal-body #prodId').val(ut_id);
             var value= ($(this).data('value'));
     });
-
+// modale utilisateur for update
   $('#editutilisateur').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget)
    // Button that triggered the modal
@@ -435,6 +523,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   
 
 })
+// modale utilisateur pour delete
 $('#deleteUtidiant').on('show.bs.modal', function (event) {
     console.log('test valide');
   var button = $(event.relatedTarget)
@@ -449,8 +538,52 @@ $('#deleteUtidiant').on('show.bs.modal', function (event) {
   modal.find('.modal-body input#prodId ').val(value);
 
 })
-    
+// modale employe pour update
+$('#editEmployee').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget)
+   // Button that triggered the modal
+  var value = button.data('value_emp') // Extract info from data-* attributes
+  var value_nom_employe = button.data('value_nom_employe') // Extract info from data-* attributes
+  var value_prenom_employe = button.data('value_prenom_employe') // Extract info from data-* attributes
+  var value_adress_employe = button.data('value_adress_employe') // Extract info from data-* attributes
+  var value_fonction = button.data('value_fonction') // Extract info from data-* attributes
+  var value_salaire = button.data('value_salaire') // Extract info from data-* attributes
+  var value_commission = button.data('value_commission') // Extract info from data-* attributes
+  // Extract info from data-* attributes
+  // var value_pass = button.data('value_pass') // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+
+  console.log(value);
+  var modal = $(this)
+  
+  modal.find('.modal-body input#prodId ').val(value);
+  modal.find('.modal-body input#nom_employe ').val(value_nom_employe);
+  modal.find('.modal-body input#prenom_employe ').val(value_prenom_employe);
+  modal.find('.modal-body input#adress_employe ').val(value_adress_employe);
+  modal.find('.modal-body input#fonction ').val(value_fonction);
+  modal.find('.modal-body input#salaire ').val(value_salaire);
+  modal.find('.modal-body input#commission ').val(value_commission);
+  
+
+})
+// modale employe pour delete
+$('#deleteEmployee').on('show.bs.modal', function (event) {
+    console.log('test valide');
+  var button = $(event.relatedTarget)
+   // Button that triggered the modal
+  var value = button.data('value_emp') // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  console.log(value);
+  var modal = $(this)
+  
+  modal.find('.modal-body input#empId ').val(value);
+})
+
 });
+
+
 </script>
 
 

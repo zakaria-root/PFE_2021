@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\emRequest;
+use App\Http\Requests\utRequest;
 use App\Models\Employee;
 use App\Models\Utilisateur;
 use Illuminate\Http\Request;
@@ -37,7 +39,7 @@ class employeeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(emRequest $request)
     {
         $emp = Employee::create([
             'nomEmploye' => $request['nomEmploye'],
@@ -48,6 +50,7 @@ class employeeController extends Controller
             'commission' => $request['commission'],
             
         ]);
+        session()->flash('ajouter',' l\'employe a ete bien ajouter !!');
             $emp->save();
             return back();
     }
@@ -81,9 +84,22 @@ class employeeController extends Controller
      * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Employee $employee)
+    public function update(emRequest $request)
     {
-        //
+
+        
+
+        $emp = Employee::findOrFail($request->value);
+        $emp->nomEmploye = $request->input('nomEmploye');
+        $emp->prenomEmploye = $request->input('prenomEmploye');
+        $emp->adressEmploye = $request->input('adressEmploye');
+        $emp->fonction = $request->input('fonction');
+        $emp->salaire = $request->input('salaire');
+        $emp->commission = $request->input('commission');
+        
+        session()->flash('modifier',' l\'employe a ete bien modifier !!');
+        $emp->save();
+        return back();
     }
 
     /**
@@ -92,8 +108,14 @@ class employeeController extends Controller
      * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Employee $employee)
+
+    public function destroy(emRequest $request)
     {
-        //
+
+        
+        $emp = Utilisateur::findOrFail($request->value);
+        session()->flash('supprimer',' l\'employe a ete bien supprimer !!');
+        $emp->delete();
+        return back();
     }
 }

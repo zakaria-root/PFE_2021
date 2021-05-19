@@ -50,21 +50,26 @@
                 <td>
                         <a type="button"
                         data-value_emp="{{ $emp->id }}" 
-                        data-value_nom="{{ $emp->login }}" 
-                        data-value_email="{{ $emp->email }}" 
-                        data-value_pass="{{ $emp->motDePass }}" 
+                        data-value_nom_employe="{{ $emp->nomEmploye }}" 
+                        data-value_prenom_employe="{{ $emp->prenomEmploye }}" 
+                        data-value_adress_employe="{{ $emp->adressEmploye }}" 
+                        data-value_fonction="{{ $emp->fonction }}" 
+                        data-value_salaire="{{ $emp->salaire }}" 
+                        data-value_commission="{{ $emp->commission }}" 
                         data-toggle="modal" 
-                        data-target="#editutilisateur" >
+                        data-target="#editEmployee" >
                         <i class="fas fa-user-edit mr-2 teal"></i>
                         </a>
                         /
                         <a type="button"
-                        
-                        data-value_user="{{ $emp->id }}"  
+                            
+                        data-value_emp="{{ $emp->id }}"  
                         data-toggle="modal" 
-                        data-target="#deleteUtidiant" >
+                        data-target="#deleteEmployee" >
                         <i class="fas fa-user-times ml-2 red"></i>
                         </a>
+                    
+                </td>
                     
                 </td>
               </tr>
