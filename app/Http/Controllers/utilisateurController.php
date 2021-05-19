@@ -78,7 +78,7 @@ class utilisateurController extends Controller
         //
     }
 
-    /**
+    /** 
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -90,7 +90,7 @@ class utilisateurController extends Controller
         $user = Utilisateur::findOrFail($request->value);
         $user->login = $request->input('nom');
         $user->email = $request->input('email');
-        $user->motDePass = $request->input('motDePass');
+        $user->motDePass = Hash::make($request['motDePass']);
         session()->flash('modifier',' l\'utilisateur a ete bien modifier !!');
         $user->save();
         return back();

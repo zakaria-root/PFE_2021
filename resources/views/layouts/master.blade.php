@@ -10,7 +10,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <title>AdminLTE 3 | Starter</title>
+  <title>CaffeRestaut</title>
 
   <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
@@ -92,7 +92,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ url('/employees') }}" class="nav-link">
                     <i class="fas fa-user-cog nav-icon"></i>
                   <p>employee</p>
                 </a>
@@ -237,14 +237,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- /.control-sidebar -->
 
   <!-- Main Footer -->
-  <footer class="main-footer">
-    <!-- To the right -->
-    <div class="float-right d-none d-sm-inline">
-      Anything you want
-    </div>
-    <!-- Default to the left -->
-    <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
-  </footer>
+
 </div>
 <!-- ./wrapper -->
 
@@ -252,11 +245,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- Button trigger modal -->
 
 
-<!-- Modal -->
+<!-- Modal utilisateur-->
 <div class="modal fade " id="ajouter" tabindex="-1" role="dialog" aria-labelledby="ajouterLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header bg-teal">
         <h5 class="modal-title" id="ajouterLabel">ajouter utilisateur</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -279,10 +272,59 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <input type="password" class="form-control" name="motDePass" id="exampleInputPassword1" placeholder="mot de pass" value="">
           </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary swalDefaultSuccess" data-dismiss="modal">fermer</button>
+      <div class="modal-footer  justify-content-between">
+        <button type="button" class="btn btn-secondary swalDefaultSuccess px-4" data-dismiss="modal">fermer</button>
        
-        <button type="submit" class="btn btn-success">cree</button>
+        <button type="submit" class="btn btn-success px-5">cree</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+<!-- Modal employee-->
+<div class="modal fade " id="ajouterEmployee" tabindex="-1" role="dialog" aria-labelledby="ajouterLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-teal">
+        <h5 class="modal-title" id="ajouterLabel">Ajouter employee</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="{{ route('employees.index') }}" method="post">
+        @csrf
+      <div class="modal-body">        
+        <div class="form-group ">
+          <label for="nom">Nom</label>
+          <input type="text" class="form-control" name="nomEmploye"    placeholder="entrer le nom" value="{{ old('nom') }}"> 
+         
+        </div>
+          <div class="form-group ">
+            <label for="exampleInputEmail1">Prenom</label>
+            <input type="text" class="form-control" name="prenomEmploye"  placeholder="entrer le prenom" value="{{ old('prenom') }}"> 
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Adress</label>
+            <input type="text" class="form-control" name="adressEmploye"  placeholder="entrer l'adress" value="">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Fonction</label>
+            <input type="text" class="form-control" name="fonction"  placeholder="entrer le fonctionnement" value="">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">salaire</label>
+            <input type="text" class="form-control" name="salaire" placeholder="entrer le salaire" value="">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">commission</label>
+            <input type="text" class="form-control" name="commission" placeholder="entrer la commission" value="">
+          </div>
+          
+      </div>
+      <div class="modal-footer  justify-content-between">
+        <button type="button" class="btn btn-secondary swalDefaultSuccess px-4" data-dismiss="modal">fermer</button>
+       
+        <button type="submit" class="btn btn-success px-5">cree</button>
       </div>
     </form>
     </div>
@@ -292,7 +334,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <div class="modal fade " id="editutilisateur" tabindex="-1" role="dialog" aria-labelledby="ajouterLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header bg-blue1">
         <h5 class="modal-title" id="ajouterLabel">modifier utilisateur</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -319,9 +361,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <input type="password" class="form-control" name="motDePass" id="pass"  value="">
           </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
-        <button type="submit" class="btn btn-success">sauvgarder</button>
+      <div class="modal-footer  justify-content-between">
+        <button type="button"  class="btn btn-secondary px-4" data-dismiss="modal">fermer</button>
+        <button type="submit" class="btn btn-info px-4">sauvgarder</button>
       </div>
     </form>
     </div>
@@ -348,8 +390,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <p>! êtes-vous sûr  que vous voulez supprimer cet utilisateur...?</p>
       </div>
       <div class="modal-footer justify-content-between">
-        <button type="button" class="btn btn-outline-light" data-dismiss="modal">fermer</button>
-        <button type="submit" class="btn btn-outline-light">valide</button>
+        <button type="button" class="btn btn-outline-light px-4" data-dismiss="modal">fermer</button>
+        <button type="submit" class="btn btn-outline-light px-4">valide</button>
       </div>
     </form>
       <!-- /.modal-content -->

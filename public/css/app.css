@@ -31221,6 +31221,86 @@ a.text-muted:hover {
 }
 /*# sourceMappingURL=adminlte.css.map */
 @charset "UTF-8";
+.bg-blue {
+  background-color: blue;
+}
+
+.bg-indigo {
+  background-color: indigo;
+}
+
+.bg-purple {
+  background-color: purple;
+}
+
+.bg-pink {
+  background-color: pink;
+}
+
+.bg-red {
+  background-color: rgba(255, 0, 0, 0.746);
+}
+
+.bg-orange {
+  background-color: orange;
+}
+
+.bg-yellow {
+  background-color: yellow;
+}
+
+.bg-green {
+  background-color: green;
+}
+
+.bg-teal {
+  background-color: teal;
+}
+
+.bg-blue1 {
+  background-color: #17a2b8;
+}
+
+.blue {
+  color: blue;
+}
+
+.indigo {
+  color: indigo;
+}
+
+.purple {
+  color: purple;
+}
+
+.pink {
+  color: pink;
+}
+
+.red {
+  color: rgba(255, 0, 0, 0.746);
+}
+
+.orange {
+  color: orange;
+}
+
+.yellow {
+  color: yellow;
+}
+
+.green {
+  color: green;
+}
+
+.teal {
+  color: teal;
+}
+
+.cyan {
+  color: cyan;
+}
+
 /*!
  * Bootstrap v4.6.0 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors

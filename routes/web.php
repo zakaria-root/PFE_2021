@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\employeeController;
 use App\Http\Controllers\utilisateurController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -16,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('welcome');
 });
 
 Auth::routes();
@@ -24,3 +25,5 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('/utilisateurs', utilisateurController::class);
+
+Route::resource('/employees', employeeController::class);
