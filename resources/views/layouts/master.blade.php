@@ -13,6 +13,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <title>CaffeRestaut</title>
 
   <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+  
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -126,7 +127,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="/PAlimantaires" class="nav-link">
                   
                   <i class="fas fa-layer-group nav-icon"></i>
                   <p>matier premier</p>
@@ -446,9 +447,121 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- /.modal-dialog -->
 </div>
 
+<!-- Modal produit alimentaire ajouter-->
+<div class="modal fade " id="ajouterPAlimantaire" tabindex="-1" role="dialog" aria-labelledby="ajouterLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-teal">
+        <h5 class="modal-title" id="ajouterLabel">Ajouter Produit Alimentaire </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="{{ route('PAlimantaires.store') }}" method="post">
+        @csrf
+      <div class="modal-body">        
+        <div class="form-group ">
+          <label for="nom">Nom</label>
+          <input type="text" class="form-control"name="nomProduit"  id="nom" placeholder="entrer le nom" value="{{ old('nom') }}"> 
+         
+        </div>
+          <div class="form-group ">
+            <label for="exampleInputEmail1">Prix</label>
+            <input type="text" class="form-control" name="prixProduit" id="Prix" placeholder="entrer le Prix" value="{{ old('Prix') }}"> 
+          </div>
+          <div class="form-group pmd-textfield pmd-textfield-floating-label">
+            <label class="control-label" for="datetimepicker-default">la date d'expiration</label>
+            <input type="date" id="datetimepicker-default" name="dateExpiration" id="date"  class="form-control"  value="{{ old('dateExpiration') }}"/>
+          </div>
+       
+        </div>
+        
+      <div class="modal-footer  justify-content-between">
+        <button type="button" class="btn btn-secondary swalDefaultSuccess px-4" data-dismiss="modal">fermer</button>
+       
+        <button type="submit" class="btn btn-success px-5">cree</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
 
 
-{{-- model cafeRestaurant odifier --}}
+<!-- Modal produit alimentaire supprimer -->
+
+<div class="modal fade" id="deletPAlimentaire" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-danger">
+      <div class="modal-header">
+        <h4 class="modal-title text-center">Supprimer produit alimentaire</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <form action="{{ route('PAlimantaires.destroy', 'test') }}" method="post">
+        @csrf
+        @method('delete')
+        
+        
+        <div class="modal-body text-center" >        
+        <input id="pa_id" class="prodId" name="value" type="hidden" value="" />
+        
+          <p>! êtes-vous sûr  que vous voulez supprimer cet produit...?</p>
+      </div>
+      <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-outline-light px-4" data-dismiss="modal">fermer</button>
+        <button type="submit" class="btn btn-outline-light px-4">valide</button>
+      </div>
+    </form>
+      <!-- /.modal-content -->
+    </div>
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+
+{{-- model preduit alimentaire modifier --}}
+<div class="modal fade " id="editPAlimentaire" tabindex="-1" role="dialog" aria-labelledby="ajouterLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-blue1">
+        <h5 class="modal-title" id="ajouterLabel">modifier produit alimentaire</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="{{ route('PAlimantaires.update', 'test') }}" method="post">
+        @csrf
+        @method('patch')
+        <div class="modal-body" >        
+        <input id="prodId" class="prodId" name="value" type="hidden" value="" />
+
+        <div class="form-group ">
+          <label for="nom">Nom</label>
+          <input type="text" class="form-control"name="nomProduit"  id="nom" placeholder="entrer le nom" value="{{ old('nom') }}"> 
+         
+        </div>
+          <div class="form-group ">
+            <label for="exampleInputEmail1">Prix</label>
+            <input type="text" class="form-control" name="prixProduit" id="Prix" placeholder="entrer le Prix" value="{{ old('Prix') }}"> 
+          </div>
+          <div class="form-group pmd-textfield pmd-textfield-floating-label">
+            <label class="control-label" for="datetimepicker-default">la date d'expiration</label>
+            <input type="date" id="datetimepicker-default" name="dateExpiration" id="date"  class="form-control"  value="{{ old('dateExpiration') }}"/>
+          </div>
+
+      </div>
+      <div class="modal-footer  justify-content-between">
+        <button type="button"  class="btn btn-secondary px-4" data-dismiss="modal">fermer</button>
+        <button type="submit" class="btn btn-info px-4">sauvgarder</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+
+
+
+{{-- model cafeRestaurant modifier --}}
 <div class="modal fade " id="editCafeRestaut" tabindex="-1" role="dialog" aria-labelledby="ajouterLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -729,12 +842,142 @@ scratch. This page gets rid of all links and provides the needed markup only.
 </div>
 
 
-
 <script src="{{ asset('js/app.js') }}"></script>
 <script>
-  function success_toast() {
-    toastr.success("success message");
+
+$(function () {
+    //Initialize Select2 Elements
+    $('.select2').select2()
+
+    //Initialize Select2 Elements
+    $('.select2bs4').select2({
+      theme: 'bootstrap4'
+    })
+
+    //Datemask dd/mm/yyyy
+    $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
+    //Datemask2 mm/dd/yyyy
+    $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
+    //Money Euro
+    $('[data-mask]').inputmask()
+
+    //Date picker
+    $('#reservationdate').datetimepicker({
+        format: 'L'
+    });
+
+    //Date and time picker
+    $('#reservationdatetime').datetimepicker({ icons: { time: 'far fa-clock' } });
+
+    //Date range picker
+    $('#reservation').daterangepicker()
+    //Date range picker with time picker
+    $('#reservationtime').daterangepicker({
+      timePicker: true,
+      timePickerIncrement: 30,
+      locale: {
+        format: 'MM/DD/YYYY hh:mm A'
+      }
+    })
+    //Date range as a button
+    $('#daterange-btn').daterangepicker(
+      {
+        ranges   : {
+          'Today'       : [moment(), moment()],
+          'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+          'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
+          'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+          'This Month'  : [moment().startOf('month'), moment().endOf('month')],
+          'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+        },
+        startDate: moment().subtract(29, 'days'),
+        endDate  : moment()
+      },
+      function (start, end) {
+        $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
+      }
+    )
+
+    //Timepicker
+    $('#timepicker').datetimepicker({
+      format: 'LT'
+    })
+
+    //Bootstrap Duallistbox
+    $('.duallistbox').bootstrapDualListbox()
+
+    //Colorpicker
+    $('.my-colorpicker1').colorpicker()
+    //color picker with addon
+    $('.my-colorpicker2').colorpicker()
+
+    $('.my-colorpicker2').on('colorpickerChange', function(event) {
+      $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
+    })
+
+    $("input[data-bootstrap-switch]").each(function(){
+      $(this).bootstrapSwitch('state', $(this).prop('checked'));
+    })
+
+  })
+  // BS-Stepper Init
+  document.addEventListener('DOMContentLoaded', function () {
+    window.stepper = new Stepper(document.querySelector('.bs-stepper'))
+  })
+
+  // DropzoneJS Demo Code Start
+  Dropzone.autoDiscover = false
+
+  // Get the template HTML and remove it from the doumenthe template HTML and remove it from the doument
+  var previewNode = document.querySelector("#template")
+  previewNode.id = ""
+  var previewTemplate = previewNode.parentNode.innerHTML
+  previewNode.parentNode.removeChild(previewNode)
+
+  var myDropzone = new Dropzone(document.body, { // Make the whole body a dropzone
+    url: "/target-url", // Set the url
+    thumbnailWidth: 80,
+    thumbnailHeight: 80,
+    parallelUploads: 20,
+    previewTemplate: previewTemplate,
+    autoQueue: false, // Make sure the files aren't queued until manually added
+    previewsContainer: "#previews", // Define the container to display the previews
+    clickable: ".fileinput-button" // Define the element that should be used as click trigger to select files.
+  })
+
+  myDropzone.on("addedfile", function(file) {
+    // Hookup the start button
+    file.previewElement.querySelector(".start").onclick = function() { myDropzone.enqueueFile(file) }
+  })
+
+  // Update the total progress bar
+  myDropzone.on("totaluploadprogress", function(progress) {
+    document.querySelector("#total-progress .progress-bar").style.width = progress + "%"
+  })
+
+  myDropzone.on("sending", function(file) {
+    // Show the total progress bar when upload starts
+    document.querySelector("#total-progress").style.opacity = "1"
+    // And disable the start button
+    file.previewElement.querySelector(".start").setAttribute("disabled", "disabled")
+  })
+
+  // Hide the total progress bar when nothing's uploading anymore
+  myDropzone.on("queuecomplete", function(progress) {
+    document.querySelector("#total-progress").style.opacity = "0"
+  })
+
+  // Setup the buttons for all transfers
+  // The "add files" button doesn't need to be setup because the config
+  // `clickable` has already been specified.
+  document.querySelector("#actions .start").onclick = function() {
+    myDropzone.enqueueFiles(myDropzone.getFilesWithStatus(Dropzone.ADDED))
   }
+  document.querySelector("#actions .cancel").onclick = function() {
+    myDropzone.removeAllFiles(true)
+  }
+  // DropzoneJS Demo Code End
+
 </script>
 <script>
   $(document).ready(function(){
@@ -895,12 +1138,47 @@ $('#deleteMateriel').on('show.bs.modal', function (event) {
   modal.find('.modal-body input#prodId ').val(value);
 })
 
+// modale materiel pour update
+$('#editPAlimentaire').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget)
+   // Button that triggered the modal
+  var value = button.data('value_pa') // Extract info from data-* attributes
+  var value_nom_produit = button.data('value_nom_produit') // Extract info from data-* attributes
+  var value_prix_produit = button.data('value_prix_produit') // Extract info from data-* attributes
+  var value_date = button.data('value_date') // Extract info from data-* attributes
+ // Extract info from data-* attributes
+  // Extract info from data-* attributes
+  // var value_pass = button.data('value_pass') // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+
+  console.log(value);
+  console.log(value_nom_produit);
+  var modal = $(this)
+  
+  modal.find('.modal-body input#prodId ').val(value);
+  modal.find('.modal-body input#nom ').val(value_nom_produit);
+  modal.find('.modal-body input#Prix ').val(value_prix_produit);
+  modal.find('.modal-body input#date ').val(value_date);
+
+})
+// modale produit alimentaire pour delete
+$('#deletPAlimentaire').on('show.bs.modal', function (event) {
+    console.log('test valide');
+  var button = $(event.relatedTarget)
+   // Button that triggered the modal
+  var value = button.data('value_pa') // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  console.log(value);
+  var modal = $(this)
+  
+  modal.find('.modal-body input#pa_id').val(value);
+})
+
 });
 
-
 </script>
-
-
 
 </body>
 </html>

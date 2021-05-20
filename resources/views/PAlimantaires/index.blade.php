@@ -11,7 +11,7 @@
             <h3 class="card-title">tableau des materils</h3>
             <div class="col-12 col-4">
               <div class="col-4 offset-10 ">
-                  <button type="button" style="margin-left:20px; padding-bottom:10px; padding-top:10px;" class="btn btn-outline-success " data-toggle="modal" data-target="#ajouterMateriel" >
+                  <button type="button" style="margin-left:20px; padding-bottom:10px; padding-top:10px;" class="btn btn-outline-success " data-toggle="modal" data-target="#ajouterPAlimantaire" >
                       <i class="fas fa-user-plus"></i>
                       Ajouter nouveau
                   </button>
@@ -28,34 +28,34 @@
                 <tr>
                   <th>Id</th>
                   <th>Nom </th>
-                  <th>prix </th>
-                  <th> Marque</th>
+                  <th>Prix </th>
+                  <th>Date d'expiration</th>
                   <th>Action</th>
                 </tr>
               </thead>
-              @foreach ($mts as $mt)
+              @foreach ($pas as $pa)
                 <tr>
-                    <th scope="row">{{ $mt->id }}</th>
-                    <td>{{ $mt->nomProduit }}</td>
-                    <td>{{ $mt->prixProduit }}</td>
-                    <td>{{ $mt->marque }}</td>
+                    <th scope="row">{{ $pa->id }}</th>
+                    <td>{{ $pa->nomProduit }}</td>
+                    <td>{{ $pa->prixProduit }}</td>
+                    <td>{{ $pa->dateExpiration }}</td>
                     <td>
                         
                             <a type="button"
-                            data-value_mt="{{ $mt->id }}" 
-                            data-value_nom_produit="{{ $mt->nomProduit }}" 
-                            data-value_prix_produit="{{ $mt->prixProduit }}"
-                            data-value_marque="{{ $mt->marque }}"
+                            data-value_pa="{{ $pa->id }}" 
+                            data-value_nom_produit="{{ $pa->nomProduit }}" 
+                            data-value_prix_produit="{{ $pa->prixProduit }}"
+                            data-value_date="{{ $pa->dateExpiration }}"
                             data-toggle="modal" 
-                            data-target="#editeMateriel" >
+                            data-target="#editPAlimentaire" >
                             <i class="fas fa-user-edit mr-2 teal"></i>
                             </a>
                             /
                             <a type="button"
                             
-                            data-value_mt="{{ $mt->id }}"  
+                            data-value_pa="{{ $pa->id }}"  
                             data-toggle="modal" 
-                            data-target="#deleteMateriel" >
+                            data-target="#deletPAlimentaire" >
                             <i class="fas fa-user-times ml-2 red"></i>
                             </a>
                         

@@ -3,6 +3,7 @@
 use App\Http\Controllers\CafeRestaurantController;
 use App\Http\Controllers\employeeController;
 use App\Http\Controllers\MaterielController;
+use App\Http\Controllers\PAlimantaireController;
 use App\Http\Controllers\utilisateurController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -32,5 +33,6 @@ Route::resource('/employees', employeeController::class);
 
 Route::resource('/cafeRestaurants', CafeRestaurantController::class);
 
-
 Route::resource('/materiels', MaterielController::class);
+
+Route::resource('/PAlimantaires', PAlimantaireController::class);
