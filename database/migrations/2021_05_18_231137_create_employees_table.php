@@ -21,6 +21,8 @@ class CreateEmployeesTable extends Migration
             $table->string('fonction');
             $table->double('salaire')->unsigned();
             $table->double('commission')->unsigned();
+            $table->bigInteger('idCafeRestaurant')->unsigned();
+            $table->foreign('idCafeRestaurant')->references('id')->on('cafe_restaurants');
             $table->timestamps();
         });
     }

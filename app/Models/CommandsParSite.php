@@ -23,10 +23,12 @@ class CommandsParSite extends Model
     {
         return $this->belongsTo('app/Models/Serveur');
     }
-    
+
     public function CafeRestaurant()
     {
         return $this->belongsTo('app/Models/CafeRestaurant');
     }
+
+    
 
 }

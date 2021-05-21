@@ -24,4 +24,10 @@ class CafeRestaurant extends Model
         return $this->hasMany('App\Models\CommandsParSite');
     }
     
+
+    public function Employee()
+    {
+        return $this->hasMany('App\Models\Employee');
+    }
+
 }

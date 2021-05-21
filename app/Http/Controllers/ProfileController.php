@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\profileRequest;
+use App\Models\Serveur;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
@@ -17,6 +19,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
+        
         return view('auth.profile.index',['user' => Auth::user() ]);
     }
 

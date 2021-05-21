@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddColDeletedAtEmployees extends Migration
+class CreatePlatsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class AddColDeletedAtEmployees extends Migration
      */
     public function up()
     {
-        Schema::table('employees', function (Blueprint $table) {
-
-            
-                $table->dateTime('deleted_at')->nullable();
-             
-           
+        Schema::create('plats', function (Blueprint $table) {
+            $table->id();
+            $table->string('nomPlat');
+            $table->double('prix');
+            $table->strting('description');
+            $table->timestamps();
         });
     }
 
@@ -29,11 +29,6 @@ class AddColDeletedAtEmployees extends Migration
      */
     public function down()
     {
-        Schema::table('employees', function (Blueprint $table) {
-            
-            $table->dropColumn('deleted_at');
-            
-
-        });
+        Schema::dropIfExists('plats');
     }
 }
