@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\utRequest;
-use App\Models\Utilisateur;
 use Dotenv\Validator;
+use App\Models\Utilisateur;
 use Illuminate\Http\Request;
+use App\Http\Requests\utRequest;
 use Illuminate\Support\Facades\Hash;
 
 class utilisateurController extends Controller

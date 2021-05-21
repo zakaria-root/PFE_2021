@@ -19,4 +19,9 @@ class CafeRestaurant extends Model
 
     protected $dates = ['deleted_at'];
 
+    public function CommandsParSite()
+    {
+        return $this->hasMany('App\Models\CommandsParSite');
+    }
+    
 }

@@ -4,6 +4,7 @@ use App\Http\Controllers\CafeRestaurantController;
 use App\Http\Controllers\employeeController;
 use App\Http\Controllers\MaterielController;
 use App\Http\Controllers\PAlimantaireController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\utilisateurController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -18,12 +19,13 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
     return view('welcome');
 });
 
 Auth::routes();
+
+Route::resource('/profile', ProfileController::class);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

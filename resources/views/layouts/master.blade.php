@@ -55,10 +55,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="logo.png" class="img-circle elevation-2" alt="User Image">
+          <img src="default.jpg" style="width: 30px; height:30px" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">{{ Auth::user()->name }}</a>
+          <a href="{{ url('/profile') }}" class="d-block">{{ Auth::user()->name }}</a>
         </div>
       </div>
 
@@ -69,7 +69,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                with font-awesome or any other icon font library -->
                  
                <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ url('/profile') }}" class="nav-link">
                   <i class="nav-icon fas fa-user-tie"></i>
                   <p>
                     profile
@@ -274,6 +274,46 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- /.modal-dialog -->
 </div>
 
+{{-- model materiel modifier --}}
+<div class="modal fade " id="editeProfile" tabindex="-1" role="dialog" aria-labelledby="ajouterLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-blue1">
+        <h5 class="modal-title" id="ajouterLabel">Modifier le profile</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="{{ route('profile.update', 'test') }}" method="post" enctype="multipart/form-data">
+        @csrf
+        @method('patch')
+        <div class="modal-body" >        
+        <input id="prodId" class="prodId" name="value" type="hidden" value="" />
+
+        <div class="form-group ">
+          <label for="nom">Nom</label>
+          <input type="text" class="form-control"name="nom"  id="nom"  placeholder="entrer le nom" value="{{ auth::user()->name }}"> 
+         
+        </div>
+          <div class="form-group ">
+            <label for="exampleInputEmail1">Adress email</label>
+            <input type="email" class="form-control" name="email" id="email"  placeholder="entrer le email" value="{{ auth::user()->email }}"> 
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Mot de passe</label>
+            <input type="password" class="form-control" name="motDePass" id="pass"  value="">
+          </div>
+          
+      </div>
+      <div class="modal-footer  justify-content-between">
+        <button type="button"  class="btn btn-secondary px-4" data-dismiss="modal">fermer</button>
+        <button type="submit" class="btn btn-info px-4">sauvgarder</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+
 <!-- Modal cafeRestaurant ajouter-->
 <div class="modal fade " id="ajouterCafe" tabindex="-1" role="dialog" aria-labelledby="ajouterLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -339,7 +379,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- /.modal-dialog -->
 </div>
 
-<!-- Modal utilisateur ajouter-->
+<!-- Modal utilisateur materiel-->
 <div class="modal fade " id="ajouterMateriel" tabindex="-1" role="dialog" aria-labelledby="ajouterLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">

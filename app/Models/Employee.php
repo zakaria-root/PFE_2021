@@ -20,4 +20,10 @@ class Employee extends Model
     ];
 
     protected $dates = ['deleted_at'];
+
+        
+    public function Serveur()
+    {
+        return $this->belongsTo('app/Models/Serveur');
+    }
 }
