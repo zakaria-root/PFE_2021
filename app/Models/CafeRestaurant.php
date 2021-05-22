@@ -30,4 +30,23 @@ class CafeRestaurant extends Model
         return $this->hasMany('App\Models\Employee');
     }
 
+    public function Plat()
+    {
+        return $this->hasMany('App\Models\Plat');
+    }
+
+    public function CommandsOrdinaire()
+    {
+        return $this->hasMany('App\Models\CommandsOrdinaire');
+    }
+
+    public function ProduitAlimantaire()
+    {
+        return $this->hasMany('App\Models\ProduitAlimantaire');
+    }
+
+    public function Materiel()
+    {
+        return $this->hasMany('App\Models\Materiel');
+    }
 }

@@ -17,7 +17,9 @@ class CreatePlatsTable extends Migration
             $table->id();
             $table->string('nomPlat');
             $table->double('prix');
-            $table->strting('description');
+            $table->text('description');
+            $table->bigInteger('idCafeRestaurant')->unsigned();
+            $table->foreign('idCafeRestaurant')->references('id')->on('cafe_restaurants');
             $table->timestamps();
         });
     }

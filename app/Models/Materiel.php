@@ -20,4 +20,13 @@ class Materiel extends Model
     ];
     protected $dates = ['deleted_at'];
 
+    public function CafeRestaurant()
+    {
+        return $this->belongsTo('app/Models/CafeRestaurant');
+    }
+
+    public function Fourniseur()
+    {
+        return $this->belongsTo('app/Models/CafeRestaurant');
+    }
 }

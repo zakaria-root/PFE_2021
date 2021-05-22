@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProduitAlimantairesTable extends Migration
+class CreateCommandsOrdinairesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,11 @@ class CreateProduitAlimantairesTable extends Migration
      */
     public function up()
     {
-        Schema::create('produit_alimantaires', function (Blueprint $table) {
+        Schema::create('commands_ordinaires', function (Blueprint $table) {
             $table->id();
-            $table->string('nomProduit');
-            $table->string('prixProduit');
-            $table->date('dateExpiration');
+            $table->date('dateCommandeOrdinnaire');
             $table->bigInteger('idCafeRestaurant')->unsigned();
             $table->foreign('idCafeRestaurant')->references('id')->on('cafe_restaurants');
-            
-            $table->bigInteger('idFourniseur')->unsigned();
-            $table->foreign('idFourniseur')->references('id')->on('fourniseurs');
             $table->timestamps();
         });
     }
@@ -34,6 +29,6 @@ class CreateProduitAlimantairesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('produit_alimantaires');
+        Schema::dropIfExists('commands_ordinaires');
     }
 }

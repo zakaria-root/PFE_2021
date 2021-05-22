@@ -18,6 +18,12 @@ class CreateMaterielsTable extends Migration
             $table->string('nomProduit');
             $table->string('marque');
             $table->double('prixProduit');
+            
+            $table->bigInteger('idCafeRestaurant')->unsigned();
+            $table->foreign('idCafeRestaurant')->references('id')->on('cafe_restaurants');
+            $table->bigInteger('idFourniseur')->unsigned();
+            $table->foreign('idFourniseur')->references('id')->on('fourniseurs');
+
             $table->timestamps();
         });
     }
