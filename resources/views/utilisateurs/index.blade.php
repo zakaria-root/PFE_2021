@@ -10,10 +10,10 @@
           <div class="card-header">
             <h3 class="card-title">tableau des utilisateurs</h3>
             <div class="col-12 col-4">
-              <div class="col-4 offset-10 ">
-                  <button type="button" style="margin-left:20px; padding-bottom:10px; padding-top:10px;" class="btn btn-outline-success " data-toggle="modal" data-target="#ajouter" >
+              <div class="col-4 offset-11">
+                  <button type="button" style="margin-left:45px !important ; padding-top: 3px !important;padding-bottom: 3px !important;" class="btn btn-success px-3 my-0" data-toggle="modal" data-target="#ajouter" >
                       <i class="fas fa-user-plus"></i>
-                      Ajouter nouveau
+                      
                   </button>
                       
               </div>
@@ -41,22 +41,23 @@
                     <td>{{ $user->created_at }}</td>
                     <td>
                         
-                            <a type="button"
+                            <a type="button" 
+                            class="btn btn-primary px-3 py-1" style="color: white"
                             data-value_user="{{ $user->id }}" 
                             data-value_nom="{{ $user->login }}" 
                             data-value_email="{{ $user->email }}" 
                             data-value_pass="{{ $user->motDePass }}" 
                             data-toggle="modal" 
                             data-target="#editutilisateur" >
-                            <i class="fas fa-user-edit mr-2 teal"></i>
+                            <i class="fas fa-user-edit "></i>
                             </a>
-                            /
-                            <a type="button"
                             
+                            <a type="button"
+                            class="btn btn-danger px-3 py-1" style="color: white"
                             data-value_user="{{ $user->id }}"  
                             data-toggle="modal" 
                             data-target="#deleteUtidiant" >
-                            <i class="fas fa-user-times ml-2 red"></i>
+                            <i class="fas fa-user-times  "></i>
                             </a>
                         
                     </td>

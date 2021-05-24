@@ -10,10 +10,10 @@
           <div class="card-header">
             <h3 class="card-title">tableau des materils</h3>
             <div class="col-12 col-4">
-              <div class="col-4 offset-10 ">
-                  <button type="button" style="margin-left:20px; padding-bottom:10px; padding-top:10px;" class="btn btn-outline-success " data-toggle="modal" data-target="#ajouterMateriel" >
+              <div class="col-4 offset-11 ">
+                  <button type="button" style="margin-left:45px !important ; padding-top: 3px !important;padding-bottom: 3px !important;" class="btn btn-success px-3 my-0" data-toggle="modal" data-target="#ajouterMateriel" >
                       <i class="fas fa-user-plus"></i>
-                      Ajouter nouveau
+                      
                   </button>
                       
               </div>
@@ -42,6 +42,7 @@
                     <td>
                         
                             <a type="button"
+                            class="btn btn-primary px-3 py-1" style="color: white"
                             data-value_mt="{{ $mt->id }}" 
                             data-value_nom_produit="{{ $mt->nomProduit }}" 
                             data-value_prix_produit="{{ $mt->prixProduit }}"
@@ -52,7 +53,7 @@
                             </a>
                             /
                             <a type="button"
-                            
+                            class="btn btn-danger px-3 py-1" style="color: white"
                             data-value_mt="{{ $mt->id }}"  
                             data-toggle="modal" 
                             data-target="#deleteMateriel" >

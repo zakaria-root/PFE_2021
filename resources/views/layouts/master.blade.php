@@ -819,6 +819,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <label for="exampleInputPassword1">commission</label>
             <input type="text" class="form-control" name="commission" placeholder="entrer la commission" value="{{ old('commission') }}">
           </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">cafe_restaurant</label>
+            <select name="cafeRestaut" id="exampleInputPassword1">
+              <option value=""></option>
+            </select>
+          </div>
           
       </div>
       <div class="modal-footer  justify-content-between">

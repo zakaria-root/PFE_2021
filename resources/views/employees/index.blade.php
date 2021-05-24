@@ -9,10 +9,10 @@
       <div class="card-header">
         <h3 class="card-title">tableau des employees</h3>
         <div class="col-12 col-4">
-          <div class="col-4 offset-10 ">
-              <button type="button" style="margin-left:20px; padding-bottom:10px; padding-top:10px;" class="btn btn-outline-success " data-toggle="modal" data-target="#ajouterEmployee" >
+          <div class="col-4 offset-11 ">
+              <button type="button" style="margin-left:45px !important ; padding-top: 3px !important;padding-bottom: 3px !important;" class="btn btn-success px-3 my-0" data-toggle="modal" data-target="#ajouterEmployee" >
                   <i class="fas fa-user-plus"></i>
-                  Ajouter nouveau
+                  
               </button>
                   
           </div>
@@ -46,9 +46,11 @@
                 <td>{{ $emp->fonction }}</td>
                 <td>{{ $emp->salaire }}</td>  
                 <td>{{ $emp->commission }}</td>
+                {{ $emp->CafeRestaurant()->idcafe }}
                 <td>{{ $emp->created_at }}</td>
                 <td>
                         <a type="button"
+                        class="btn btn-primary px-3 py-1" style="color: white"
                         data-value_emp="{{ $emp->id }}" 
                         data-value_nom_employe="{{ $emp->nomEmploye }}" 
                         data-value_prenom_employe="{{ $emp->prenomEmploye }}" 
@@ -62,7 +64,7 @@
                         </a>
                         /
                         <a type="button"
-                            
+                        class="btn btn-danger px-3 py-1" style="color: white"
                         data-value_emp="{{ $emp->id }}"  
                         data-toggle="modal" 
                         data-target="#deleteEmployee" >
