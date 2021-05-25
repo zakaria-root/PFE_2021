@@ -284,6 +284,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- /.modal-dialog -->
 </div>
 
+
 {{-- model materiel modifier --}}
 <div class="modal fade " id="editeProfile" tabindex="-1" role="dialog" aria-labelledby="ajouterLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -390,6 +391,37 @@ scratch. This page gets rid of all links and provides the needed markup only.
 </div>
 
 
+<!-- Modal plat supprimer-->
+
+<div class="modal fade" id="deletplat" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-danger">
+      <div class="modal-header">
+        <h4 class="modal-title text-center">supprimer plat</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <form action="{{ route('plats.destroy', 'test') }}" method="post">
+        @csrf
+        @method('delete')
+        
+        
+        <div class="modal-body text-center" >        
+        <input id="value_plat" class="prodId" name="value" type="hidden" value="" />
+        
+          <p>! êtes-vous sûr  que vous voulez supprimer cet plat...?</p>
+      </div>
+      <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-outline-light px-4" data-dismiss="modal">fermer</button>
+        <button type="submit" class="btn btn-outline-light px-4">valide</button>
+      </div>
+    </form>
+      <!-- /.modal-content -->
+    </div>
+  </div>
+  <!-- /.modal-dialog -->
+</div>
 
 
 
@@ -646,7 +678,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- Modal employee ajouter-->
 
 
-<!-- Modal modifier-->
 
 
 
@@ -985,10 +1016,45 @@ $('#deletPAlimentaire').on('show.bs.modal', function (event) {
   
   modal.find('.modal-body input#pa_id').val(value);
 })
+// modale plat pour update
+$('#editplat').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget)
+   // Button that triggered the modal
+  var value_plat = button.data('value_plat') // Extract info from data-* attributes
+  var value_nom_plat = button.data('value_nom_plat') // Extract info from data-* attributes
+  var value_prix = button.data('value_prix') // Extract info from data-* attributes
+  var value_description = button.data('value_description') // Extract info from data-* attributes
+ // Extract info from data-* attributes
+  // Extract info from data-* attributes
+  // var value_pass = button.data('value_pass') // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
 
+  console.log(value_plat);
+  
+  var modal = $(this)
+  
+  modal.find('.modal-body input#value_plat ').val(value_plat);
+  modal.find('.modal-body input#value_nom_plat ').val(value_nom_plat);
+  modal.find('.modal-body input#value_prix ').val(value_prix);
+  modal.find('.modal-body textarea ').text(value_description);
+
+})
+// modale plat pour delete
+$('#deletplat').on('show.bs.modal', function (event) {
+    console.log('test valide');
+  var button = $(event.relatedTarget)
+   // Button that triggered the modal
+  var value_plat = button.data('value_plat') // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  console.log(value_plat);
+  var modal = $(this)
+  
+  modal.find('.modal-body input#value_plat').val(value_plat);
+})
 });
 
 </script>
-
 </body>
 </html>

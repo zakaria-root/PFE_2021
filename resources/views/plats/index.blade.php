@@ -45,10 +45,10 @@
                             class="btn btn-primary px-3 py-1" style="color: white ;"
                             data-value_plat="{{ $plat->id }}" 
                             data-value_nom_plat="{{ $plat->nomPlat }}" 
-                            data-value_prix_prix="{{ $plat->prix }}"
+                            data-value_prix="{{ $plat->prix }}"
                             data-value_description="{{ $plat->description }}"
                             data-toggle="modal" 
-                            data-target="#editePlat" >
+                            data-target="#editplat" >
                             <i class="fas fa-edit "></i>
                             </a>
                             
@@ -56,7 +56,7 @@
                             class="btn btn-danger px-3 py-1" style="color: white"
                             data-value_plat="{{ $plat->id }}"  
                             data-toggle="modal" 
-                            data-target="#deleteMateriel" >
+                            data-target="#deletplat" >
                             <i class="fas fa-trash"></i>
                             </a>
                         
@@ -124,59 +124,59 @@
     </div>
   </div>
 </div>
+<!-- Modal modifier-->
 
-{{-- model materiel modifier --}}
-
-<div class="modal fade " id="editePlat" tabindex="-1" role="dialog" aria-labelledby="ajouterLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header bg-blue1">
-        <h5 class="modal-title" id="ajouterLabel">modifier materiel</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <form action="{{ route('plats.update', 'test') }}" method="post">
-        @csrf
-        @method('patch')
-        <div class="modal-body" >        
-        <input id="prodId" class="prodId" name="value" type="hidden" value="" />
-
-        <div class="form-group ">
-            <label for="nom">Nom</label>
-            <input type="text" class="form-control" name="nomPlat"  id="nom" placeholder="entrer le nom" value="{{ old('nomPlat') }}"> 
-           
-          </div>
-            <div class="form-group ">
-              <label for="exampleInputEmail1">Prix</label>
-              <input type="number" class="form-control" name="prix" id="Prix" placeholder="entrer le Prix" value="{{ old('Prix') }}"> 
+<div class="modal fade " id="editplat" tabindex="-1" role="dialog" aria-labelledby="ajouterLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-blue1">
+          <h5 class="modal-title" id="ajouterLabel">modifier materiel</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form action="{{ route('plats.update', 'test') }}" method="post">
+          @csrf
+          @method('patch')
+          <div class="modal-body" >        
+          <input id="value_plat" class="prodId" name="value" type="hidden" value="" />
+  
+          <div class="form-group ">
+              <label for="nom">Nom</label>
+              <input type="text" class="form-control" name="nomPlat"  id="value_nom_plat" placeholder="entrer le nom" value="{{ old('nomPlat') }}"> 
+             
             </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1">Description</label>
-              <textarea type="text" class="form-control" name="description" id="Marque" placeholder="mot de description" value="{{ old('description') }}"></textarea>
-            </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1">Endroit de travail</label>
-            <select 
-            class="form-select form-select-lg col-12 py-1 mt-2" 
-            aria-label=".form-select-lg example"
-            name="cafe" 
-            id="cafe_id">
-              <option selected value="{{ $cafes->first()->id }}">{{$cafes->first()->nomCafeRestaurant }}</option>
-              @foreach ($cafes as $cafe)
-              @if ($loop->first) @continue @endif
-              <option value="{{ $cafe->id }}">{{ $cafe->nomCafeRestaurant }}</option>
-              @endforeach
-            </select>
-            </div>
+              <div class="form-group ">
+                <label for="exampleInputEmail1">Prix</label>
+                <input type="number" class="form-control" name="prix" id="value_prix" placeholder="entrer le Prix" value="{{ old('Prix') }}"> 
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Description</label>
+                <textarea type="text" class="form-control" name="description" id="value_description" placeholder="mot de description" value="">{{ old('description') }}</textarea>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Endroit de travail</label>
+              <select 
+              class="form-select form-select-lg col-12 py-1 mt-2" 
+              aria-label=".form-select-lg example"
+              name="cafe" 
+              id="cafe_id">
+                <option selected value="{{ $cafes->first()->id }}">{{$cafes->first()->nomCafeRestaurant }}</option>
+                @foreach ($cafes as $cafe)
+                @if ($loop->first) @continue @endif
+                <option value="{{ $cafe->id }}">{{ $cafe->nomCafeRestaurant }}</option>
+                @endforeach
+              </select>
+              </div>
+        </div>
+        <div class="modal-footer  justify-content-between">
+          <button type="button"  class="btn btn-secondary px-4" data-dismiss="modal">fermer</button>
+          <button type="submit" class="btn btn-info px-4">sauvgarder</button>
+        </div>
+      </form>
       </div>
-      <div class="modal-footer  justify-content-between">
-        <button type="button"  class="btn btn-secondary px-4" data-dismiss="modal">fermer</button>
-        <button type="submit" class="btn btn-info px-4">sauvgarder</button>
-      </div>
-    </form>
     </div>
   </div>
-</div>
+
 
 @endsection

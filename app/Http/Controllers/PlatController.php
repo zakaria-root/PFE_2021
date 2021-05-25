@@ -44,7 +44,7 @@ class PlatController extends Controller
             'description' => $request['description'],
             'cafe_restaurants_id' => $request['cafe'],
         ]);
-        session()->flash('ajouter',' le produit a ete bien ajouter !!');
+        session()->flash('ajouter',' le plat a ete bien ajouter !!');
         return back();
     }
 
@@ -79,12 +79,14 @@ class PlatController extends Controller
      */
     public function update(Request $request)
     {
+        
         $mt = Plat::findOrFail($request->value);
+        
         $mt->nomPlat = $request->input('nomPlat');
         $mt->prix = $request->input('prix');
         $mt->description = $request->input('description');
-        $mt->cafe_restaurants_id = $request->select('cafe');
-        session()->flash('modifier',' le materiel a ete bien modifier !!');
+        $mt->cafe_restaurants_id = $request->input('cafe');
+        session()->flash('modifier',' le plat a ete bien modifier !!');
         $mt->save();
         return back();
     }
@@ -95,8 +97,13 @@ class PlatController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+
+        
+        $pa = Plat::findOrFail($request->value);
+        session()->flash('supprimer',' le plat a ete bien supprimer !!');
+        $pa->delete();
+        return back();
     }
 }
