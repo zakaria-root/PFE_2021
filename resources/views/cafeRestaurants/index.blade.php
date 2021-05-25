@@ -22,14 +22,14 @@
             
           </div>
           <!-- /.card-header -->
-          <div class="card-body table-responsive p-0">
-            <table class="table table-hover">
+          <div class="card-body table-responsive p-0 ">
+            <table class="table table-hover ">
               <thead>
                 <tr>
                   <th>Id</th>
                   <th>Nom cafe_restaurant</th>
                   <th>Ville</th>
-                  <th>Action</th>
+                  <th >Action</th>
                 </tr>
               </thead>
               @foreach ($crs as $cr)
@@ -40,22 +40,22 @@
                     <td>
                         
                             <a type="button"
-                            class="btn btn-primary px-3 py-1" style="color: white"
+                            class="btn btn-primary px-3 py-1 " style="color: white "
                             data-value_cr="{{ $cr->id }}" 
                             data-value_nom_cafe="{{ $cr->nomCafeRestaurant }}" 
                             data-value_ville="{{ $cr->ville }}"
                             data-toggle="modal" 
                             data-target="#editCafeRestaut" >
-                            <i class="fas fa-user-edit mr-2 teal"></i>
+                            <i class="fas fa-edit "></i>
                             </a>
-                            /
+                            
                             <a type="button"
-                            class="btn btn-danger px-3 py-1" style="color: white"
+                            class="btn btn-danger px-3 py-1 " style="color: white"
                             data-value_cr="{{ $cr->id }}"  
                             data-toggle="modal" 
                             data-target="#deleteCafeRestaurant" >
-                            <i class="fas fa-user-times ml-2 red"></i>
-                            </a>
+                            <i class="fas fa-trash"></i>
+                              </a>
                         
                     </td>
                   </tr>

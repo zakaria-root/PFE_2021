@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\emRequest;
 use App\Http\Requests\utRequest;
+use App\Models\CafeRestaurant;
 use App\Models\Employee;
 use App\Models\Utilisateur;
 use Illuminate\Http\Request;
@@ -19,7 +20,8 @@ class employeeController extends Controller
     { 
         
         $eplouyee = Employee::all();
-        return view('employees.index' , ['emps' => $eplouyee ]);
+        $cafes = CafeRestaurant::all();
+        return view('employees.index' , ['emps' => $eplouyee ,'cafes' => $cafes]);
 
     }
 
@@ -48,6 +50,7 @@ class employeeController extends Controller
             'fonction' => $request['fonction'],
             'salaire' => $request['salaire'],
             'commission' => $request['commission'],
+            'cafe_restaurants_id' => $request['cafe'],
             
         ]);
         session()->flash('ajouter',' l\'employe a ete bien ajouter !!');
@@ -109,11 +112,10 @@ class employeeController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function destroy(emRequest $request)
+    public function destroy(Request $request)
     {
 
-        
-        $emp = Utilisateur::findOrFail($request->value);
+        $emp = Employee::findOrFail($request->value);
         session()->flash('supprimer',' l\'employe a ete bien supprimer !!');
         $emp->delete();
         return back();

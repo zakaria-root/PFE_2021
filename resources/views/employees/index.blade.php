@@ -46,11 +46,10 @@
                 <td>{{ $emp->fonction }}</td>
                 <td>{{ $emp->salaire }}</td>  
                 <td>{{ $emp->commission }}</td>
-                {{ $emp->CafeRestaurant()->idcafe }}
                 <td>{{ $emp->created_at }}</td>
                 <td>
                         <a type="button"
-                        class="btn btn-primary px-3 py-1" style="color: white"
+                        class="btn btn-primary px-3 py-1" style="color: white ;"
                         data-value_emp="{{ $emp->id }}" 
                         data-value_nom_employe="{{ $emp->nomEmploye }}" 
                         data-value_prenom_employe="{{ $emp->prenomEmploye }}" 
@@ -58,17 +57,18 @@
                         data-value_fonction="{{ $emp->fonction }}" 
                         data-value_salaire="{{ $emp->salaire }}" 
                         data-value_commission="{{ $emp->commission }}" 
+                        data-value_cafe="{{ $emp->cafe_restaurants->nomCafeRestaurant }}" 
                         data-toggle="modal" 
                         data-target="#editEmployee" >
-                        <i class="fas fa-user-edit mr-2 teal"></i>
+                        <i class="fas fa-user-edit "></i>
                         </a>
-                        /
+                        
                         <a type="button"
                         class="btn btn-danger px-3 py-1" style="color: white"
                         data-value_emp="{{ $emp->id }}"  
                         data-toggle="modal" 
                         data-target="#deleteEmployee" >
-                        <i class="fas fa-user-times ml-2 red"></i>
+                        <i class="fas fa-user-times "></i>
                         </a>
                     
                 </td>
@@ -82,8 +82,151 @@
       </div>
       <!-- /.card-body -->
     </div>
-    <!-- /.card -->
+    
   </div>
 </div>
+</div>
+
+
+<!-- TODO: ajouter model employee  -->
+
+<div class="modal fade " id="ajouterEmployee" tabindex="-1" role="dialog" aria-labelledby="ajouterLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-teal">
+        <h5 class="modal-title" id="ajouterLabel">Ajouter employee</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <form action="{{ route('employees.store') }}" method="post">
+        @csrf
+      <div class="modal-body">        
+        <div class="form-group ">
+          <label for="nom">Nom</label>
+          <input type="text" class="form-control" name="nomEmploye"    placeholder="entrer le nom" value="{{ old('nomEmploye') }}"> 
+        
+        </div>
+          <div class="form-group ">
+            <label for="exampleInputEmail1">Prenom</label>
+            <input type="text" class="form-control" name="prenomEmploye"  placeholder="entrer le prenom" value="{{ old('prenomEmploye') }}"> 
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Adress</label>
+            <input type="text" class="form-control" name="adressEmploye"  placeholder="entrer l'adress" value="{{ old('adressEmploye') }}">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Fonction</label>
+            <select 
+            class="form-select form-select-lg col-12 py-1 mt-2" 
+            aria-label=".form-select-lg example"
+            name="fonction" >
+              <option selected value="serveur">serveur</option>
+              <option value="barman">barman</option>
+              <option value="cuisinier">cuisinier</option>
+              <option value="menage">menage</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">salaire</label>
+            <input type="number" class="form-control" name="salaire" placeholder="entrer le salaire" value="{{ old('salaire') }}">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">commission</label>
+            <input type="number" class="form-control" name="commission" placeholder="entrer la commission" value="{{ old('commission') }}">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Endroit de travail</label>
+            <select 
+            class="form-select form-select-lg col-12 py-1 mt-2" 
+            aria-label=".form-select-lg example"
+            name="cafe">
+              <option selected value="{{ $cafes->first()->id }}">{{$cafes->first()->nomCafeRestaurant }}</option>
+              @foreach ($cafes as $cafe)
+              @if ($loop->first) @continue @endif
+              <option value="{{ $cafe->id }}">{{ $cafe->nomCafeRestaurant }}</option>
+              @endforeach
+            </select>
+          </div>
+          
+      </div>
+      <div class="modal-footer  justify-content-between">
+        <button type="button" class="btn btn-secondary swalDefaultSuccess px-4" data-dismiss="modal">fermer</button>
+        
+        <button type="submit" class="btn btn-success px-5">cree</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+<div class="modal fade " id="editEmployee" tabindex="-1" role="dialog" aria-labelledby="ajouterLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-blue1">
+        <h5 class="modal-title" id="ajouterLabel">modifier employee</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="{{ route('employees.update', 'test') }}" method="post">
+        @csrf
+        @method('patch')
+        <div class="modal-body" >        
+        <input id="prodId" class="prodId" name="value" type="hidden" value="" />
+        <div class="form-group ">
+          <label for="nom">Nom</label>
+          <input type="text" class="form-control" name="nomEmploye"  id="nom_employe"   placeholder="entrer le nom" value=""> 
+        <div class="form-group ">
+          <label for="exampleInputEmail1">Prenom</label>
+          <input type="text" class="form-control" name="prenomEmploye" id="prenom_employe"  placeholder="entrer le prenom" value=""> 
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Adress</label>
+          <input type="text" class="form-control" name="adressEmploye" id="adress_employe"  placeholder="entrer l'adress" value="">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Fonction</label>
+            <select 
+            class="form-select form-select-lg col-12 py-1 mt-2" 
+            aria-label=".form-select-lg example"
+            name="fonction"
+            id="fonction" >
+              <option selected value="serveur">serveur</option>
+              <option value="barman">barman</option>
+              <option value="cuisinier">cuisinier</option>
+              <option value="menage">menage</option>
+            </select>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">salaire</label>
+          <input type="number" class="form-control" name="salaire" id="salaire"  placeholder="entrer le salaire" value="">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">commission</label>
+          <input type="number" class="form-control" name="commission" id="commission" placeholder="entrer la commission" value="">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Endroit de travail</label>
+          <select 
+          class="form-select form-select-lg col-12 py-1 mt-2" 
+          aria-label=".form-select-lg example"
+          name="cafe" 
+          id="cafe_id">
+            <option selected value="{{ $cafes->first()->id }}">{{$cafes->first()->nomCafeRestaurant }}</option>
+            @foreach ($cafes as $cafe)
+            @if ($loop->first) @continue @endif
+            <option value="{{ $cafe->id }}">{{ $cafe->nomCafeRestaurant }}</option>
+            @endforeach
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer  justify-content-between">
+        <button type="button"  class="btn btn-secondary px-4" data-dismiss="modal">fermer</button>
+        <button type="submit" class="btn btn-info px-4">sauvgarder</button>
+      </div>
+    </form>
+    </div>
+  </div>
 </div>
 @endsection

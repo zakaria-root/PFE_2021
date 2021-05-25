@@ -30,6 +30,7 @@ class emRequest extends FormRequest
             'fonction' => ['required', 'string', 'max:255' ,'min:3'],
             'salaire' => ['required', 'numeric'],
             'commission' => ['required', 'numeric' ],
+            'cafe' =>  ['required' ],
         ];
     }
 }

@@ -22,7 +22,7 @@
             <b>Email Profile</b> <a class="float-right">{{ Auth::user()->email }}</a>
           </li>
           <li class="list-group-item">
-            <b>la numero </b> <a class="float-right">0665846999</a>
+            <b>le numero </b> <a class="float-right">0665846999</a>
           </li>
         </ul>
   

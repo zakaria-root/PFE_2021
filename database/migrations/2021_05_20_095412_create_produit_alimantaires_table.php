@@ -18,11 +18,11 @@ class CreateProduitAlimantairesTable extends Migration
             $table->string('nomProduit');
             $table->string('prixProduit');
             $table->date('dateExpiration');
-            $table->bigInteger('idCafeRestaurant')->unsigned();
-            $table->foreign('idCafeRestaurant')->references('id')->on('cafe_restaurants');
+            $table->bigInteger('cafe_restaurants_id')->unsigned();
+            $table->foreign('cafe_restaurants_id')->references('id')->on('cafe_restaurants');
             
-            $table->bigInteger('idFourniseur')->unsigned();
-            $table->foreign('idFourniseur')->references('id')->on('fourniseurs');
+            $table->bigInteger('fourniseurs_id')->unsigned();
+            $table->foreign('fourniseurs_id')->references('id')->on('fourniseurs');
             $table->timestamps();
         });
     }

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\mtRequest;
+use App\Models\CafeRestaurant;
+use App\Models\Fourniseur;
 use App\Models\Materiel;
 use DeepCopy\Matcher\Matcher;
 use Hamcrest\Matchers;
@@ -18,7 +20,9 @@ class MaterielController extends Controller
     public function index()
     {
         $mts = Materiel::all();
-        return view('materiels.index' , ['mts' => $mts ]);
+        $cafes = CafeRestaurant::all();
+        $frs = Fourniseur::all();
+        return view('materiels.index' , ['mts' => $mts ,'cafes' => $cafes, 'frs' => $frs ]);
     }
 
     /**
@@ -43,6 +47,8 @@ class MaterielController extends Controller
             'nomProduit' => $request['nomProduit'],
             'marque' => $request['marque'],
             'prixProduit' => $request['prixProduit'],
+            'cafe_restaurants_id' => $request['cafe'],
+            'fourniseurs_id' => $request['fourniseur'],
             
         ]);
         session()->flash('ajouter',' le materiel a ete bien ajouter !!');
@@ -84,6 +90,8 @@ class MaterielController extends Controller
         $mt->nomProduit = $request->input('nomProduit');
         $mt->marque = $request->input('marque');
         $mt->prixProduit = $request->input('prixProduit');
+        $mt->cafe_restaurants_id = $request->select('cafe');
+        $mt->fourniseurs_id = $request->select('fourniseur');
         session()->flash('modifier',' le materiel a ete bien modifier !!');
         $mt->save();
         return back();
@@ -95,7 +103,7 @@ class MaterielController extends Controller
      * @param  \App\Models\Materiel  $materiel
      * @return \Illuminate\Http\Response
      */
-    public function destroy(mtRequest $request)
+    public function destroy(Request $request)
     {
         $mt = Materiel::findOrFail($request->value);
         session()->flash('supprimer',' le materiel a ete bien supprimer !!');

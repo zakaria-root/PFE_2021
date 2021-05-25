@@ -13,9 +13,12 @@ class Materiel extends Model
     use HasFactory;
 
     protected $fillable = [
+        'id',
         'nomProduit',
         'marque',
         'prixProduit',
+        'cafe_restaurants_id',
+        'fourniseurs_id',
 
     ];
     protected $dates = ['deleted_at'];

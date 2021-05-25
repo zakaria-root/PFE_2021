@@ -12,9 +12,12 @@ class ProduitAlimantaire extends Model
     use SoftDeletes;
 
     protected $fillable = [
+        'id',
         'nomProduit',
         'prixProduit',
         'dateExpiration',
+        'cafe_restaurants_id',
+        'fourniseurs_id',
     ];
 
     protected $dates = ['deleted_at'];

@@ -133,7 +133,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <p>matier premier</p>
                 </a>
               </li>
+              
             </ul>
+            <li class="nav-item">
+              <a href="{{ url('/plats') }}" class="nav-link">
+                <i class="fas fa-cheese nav-icon"> </i>
+                   <p>
+                  Plats
+                  
+                </p>
+              </a>
+            </li>
           </li></li><li class="nav-item">
               <a class="dropdown-item nav-link" 
               data-toggle="modal" data-target="#modal-default">
@@ -379,81 +389,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- /.modal-dialog -->
 </div>
 
-<!-- Modal utilisateur materiel-->
-<div class="modal fade " id="ajouterMateriel" tabindex="-1" role="dialog" aria-labelledby="ajouterLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header bg-teal">
-        <h5 class="modal-title" id="ajouterLabel">ajouter materiel</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <form action="{{ route('materiels.index') }}" method="post">
-        @csrf
-      <div class="modal-body">        
-        <div class="form-group ">
-          <label for="nom">Nom</label>
-          <input type="text" class="form-control"name="nomProduit"  id="nom" placeholder="entrer le nom" value="{{ old('nom') }}"> 
-         
-        </div>
-          <div class="form-group ">
-            <label for="exampleInputEmail1">Prix</label>
-            <input type="text" class="form-control" name="prixProduit" id="Prix" placeholder="entrer le Prix" value="{{ old('Prix') }}"> 
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">Marque</label>
-            <input type="text" class="form-control" name="marque" id="Marque" placeholder="mot de Marque" value="{{ old('Marque') }}">
-          </div>
-      </div>
-      <div class="modal-footer  justify-content-between">
-        <button type="button" class="btn btn-secondary swalDefaultSuccess px-4" data-dismiss="modal">fermer</button>
-       
-        <button type="submit" class="btn btn-success px-5">cree</button>
-      </div>
-    </form>
-    </div>
-  </div>
-</div>
 
-{{-- model materiel modifier --}}
-<div class="modal fade " id="editeMateriel" tabindex="-1" role="dialog" aria-labelledby="ajouterLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header bg-blue1">
-        <h5 class="modal-title" id="ajouterLabel">modifier materiel</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <form action="{{ route('materiels.update', 'test') }}" method="post">
-        @csrf
-        @method('patch')
-        <div class="modal-body" >        
-        <input id="prodId" class="prodId" name="value" type="hidden" value="" />
 
-        <div class="form-group ">
-          <label for="nom">Nom</label>
-          <input type="text" class="form-control"name="nomProduit"  id="nom_produit" placeholder="entrer le nom" value="{{ old('nomProduit') }}"> 
-         
-        </div>
-          <div class="form-group ">
-            <label for="exampleInputEmail1">Prix</label>
-            <input type="text" class="form-control" name="prixProduit" id="value_prix_produit" placeholder="entrer le Prix" value="{{ old('prixProduit') }}"> 
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">Marque</label>
-            <input type="text" class="form-control" name="marque" id="value_marque" placeholder="mot de Marque" value="{{ old('Marque') }}">
-          </div>
-      </div>
-      <div class="modal-footer  justify-content-between">
-        <button type="button"  class="btn btn-secondary px-4" data-dismiss="modal">fermer</button>
-        <button type="submit" class="btn btn-info px-4">sauvgarder</button>
-      </div>
-    </form>
-    </div>
-  </div>
-</div>
+
 
 <!-- Modal materiel supprimer-->
 
@@ -487,44 +425,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- /.modal-dialog -->
 </div>
 
-<!-- Modal produit alimentaire ajouter-->
-<div class="modal fade " id="ajouterPAlimantaire" tabindex="-1" role="dialog" aria-labelledby="ajouterLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header bg-teal">
-        <h5 class="modal-title" id="ajouterLabel">Ajouter Produit Alimentaire </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <form action="{{ route('PAlimantaires.store') }}" method="post">
-        @csrf
-      <div class="modal-body">        
-        <div class="form-group ">
-          <label for="nom">Nom</label>
-          <input type="text" class="form-control"name="nomProduit"  id="nom" placeholder="entrer le nom" value="{{ old('nom') }}"> 
-         
-        </div>
-          <div class="form-group ">
-            <label for="exampleInputEmail1">Prix</label>
-            <input type="text" class="form-control" name="prixProduit" id="Prix" placeholder="entrer le Prix" value="{{ old('Prix') }}"> 
-          </div>
-          <div class="form-group pmd-textfield pmd-textfield-floating-label">
-            <label class="control-label" for="datetimepicker-default">la date d'expiration</label>
-            <input type="date" id="datetimepicker-default" name="dateExpiration" id="date"  class="form-control"  value="{{ old('dateExpiration') }}"/>
-          </div>
-       
-        </div>
-        
-      <div class="modal-footer  justify-content-between">
-        <button type="button" class="btn btn-secondary swalDefaultSuccess px-4" data-dismiss="modal">fermer</button>
-       
-        <button type="submit" class="btn btn-success px-5">cree</button>
-      </div>
-    </form>
-    </div>
-  </div>
-</div>
 
 
 <!-- Modal produit alimentaire supprimer -->
@@ -559,45 +459,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- /.modal-dialog -->
 </div>
 
-{{-- model preduit alimentaire modifier --}}
-<div class="modal fade " id="editPAlimentaire" tabindex="-1" role="dialog" aria-labelledby="ajouterLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header bg-blue1">
-        <h5 class="modal-title" id="ajouterLabel">modifier produit alimentaire</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <form action="{{ route('PAlimantaires.update', 'test') }}" method="post">
-        @csrf
-        @method('patch')
-        <div class="modal-body" >        
-        <input id="prodId" class="prodId" name="value" type="hidden" value="" />
 
-        <div class="form-group ">
-          <label for="nom">Nom</label>
-          <input type="text" class="form-control"name="nomProduit"  id="nom" placeholder="entrer le nom" value="{{ old('nom') }}"> 
-         
-        </div>
-          <div class="form-group ">
-            <label for="exampleInputEmail1">Prix</label>
-            <input type="text" class="form-control" name="prixProduit" id="Prix" placeholder="entrer le Prix" value="{{ old('Prix') }}"> 
-          </div>
-          <div class="form-group pmd-textfield pmd-textfield-floating-label">
-            <label class="control-label" for="datetimepicker-default">la date d'expiration</label>
-            <input type="date" id="datetimepicker-default" name="dateExpiration" id="date"  class="form-control"  value="{{ old('dateExpiration') }}"/>
-          </div>
-
-      </div>
-      <div class="modal-footer  justify-content-between">
-        <button type="button"  class="btn btn-secondary px-4" data-dismiss="modal">fermer</button>
-        <button type="submit" class="btn btn-info px-4">sauvgarder</button>
-      </div>
-    </form>
-    </div>
-  </div>
-</div>
 
 
 
@@ -782,110 +644,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 </div>
 
 <!-- Modal employee ajouter-->
-<div class="modal fade " id="ajouterEmployee" tabindex="-1" role="dialog" aria-labelledby="ajouterLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header bg-teal">
-        <h5 class="modal-title" id="ajouterLabel">Ajouter employee</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <form action="{{ route('employees.index') }}" method="post">
-        @csrf
-      <div class="modal-body">        
-        <div class="form-group ">
-          <label for="nom">Nom</label>
-          <input type="text" class="form-control" name="nomEmploye"    placeholder="entrer le nom" value="{{ old('nomEmploye') }}"> 
-         
-        </div>
-          <div class="form-group ">
-            <label for="exampleInputEmail1">Prenom</label>
-            <input type="text" class="form-control" name="prenomEmploye"  placeholder="entrer le prenom" value="{{ old('prenomEmploye') }}"> 
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">Adress</label>
-            <input type="text" class="form-control" name="adressEmploye"  placeholder="entrer l'adress" value="{{ old('adressEmploye') }}">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">Fonction</label>
-            <input type="text" class="form-control" name="fonction"  placeholder="entrer le fonctionnement" value="{{ old('fonction') }}">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">salaire</label>
-            <input type="text" class="form-control" name="salaire" placeholder="entrer le salaire" value="{{ old('salaire') }}">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">commission</label>
-            <input type="text" class="form-control" name="commission" placeholder="entrer la commission" value="{{ old('commission') }}">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">cafe_restaurant</label>
-            <select name="cafeRestaut" id="exampleInputPassword1">
-              <option value=""></option>
-            </select>
-          </div>
-          
-      </div>
-      <div class="modal-footer  justify-content-between">
-        <button type="button" class="btn btn-secondary swalDefaultSuccess px-4" data-dismiss="modal">fermer</button>
-       
-        <button type="submit" class="btn btn-success px-5">cree</button>
-      </div>
-    </form>
-    </div>
-  </div>
-</div>
+
 
 <!-- Modal modifier-->
-<div class="modal fade " id="editEmployee" tabindex="-1" role="dialog" aria-labelledby="ajouterLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header bg-blue1">
-        <h5 class="modal-title" id="ajouterLabel">modifier employee</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <form action="{{ route('employees.update', 'test') }}" method="post">
-        @csrf
-        @method('patch')
-        
-        
-        <div class="modal-body" >        
-        <input id="prodId" class="prodId" name="value" type="hidden" value="" />
-        <div class="form-group ">
-          <label for="nom">Nom</label>
-          <input type="text" class="form-control" name="nomEmploye"  id="nom_employe"   placeholder="entrer le nom" value=""> 
-        <div class="form-group ">
-          <label for="exampleInputEmail1">Prenom</label>
-          <input type="text" class="form-control" name="prenomEmploye" id="prenom_employe"  placeholder="entrer le prenom" value=""> 
-        </div>
-        <div class="form-group">
-          <label for="exampleInputPassword1">Adress</label>
-          <input type="text" class="form-control" name="adressEmploye" id="adress_employe"  placeholder="entrer l'adress" value="">
-        </div>
-        <div class="form-group">
-          <label for="exampleInputPassword1">Fonction</label>
-          <input type="text" class="form-control" name="fonction" id="fonction"  placeholder="entrer le fonctionnement" value="">
-        </div>
-        <div class="form-group">
-          <label for="exampleInputPassword1">salaire</label>
-          <input type="text" class="form-control" name="salaire" id="salaire"  placeholder="entrer le salaire" value="">
-        </div>
-        <div class="form-group">
-          <label for="exampleInputPassword1">commission</label>
-          <input type="text" class="form-control" name="commission" id="commission" placeholder="entrer la commission" value="">
-        </div>
-      </div>
-      <div class="modal-footer  justify-content-between">
-        <button type="button"  class="btn btn-secondary px-4" data-dismiss="modal">fermer</button>
-        <button type="submit" class="btn btn-info px-4">sauvgarder</button>
-      </div>
-    </form>
-    </div>
-  </div>
-</div>
+
 
 
 <script src="{{ asset('js/app.js') }}"></script>
@@ -1078,21 +840,23 @@ $('#editEmployee').on('show.bs.modal', function (event) {
   var value_fonction = button.data('value_fonction') // Extract info from data-* attributes
   var value_salaire = button.data('value_salaire') // Extract info from data-* attributes
   var value_commission = button.data('value_commission') // Extract info from data-* attributes
+  var value_cafe = button.data('value_cafe') // Extract info from data-* attributes
   // Extract info from data-* attributes
   // var value_pass = button.data('value_pass') // Extract info from data-* attributes
   // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
   // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
 
-  console.log(value);
+  console.log(value_cafe);
   var modal = $(this)
   
   modal.find('.modal-body input#prodId ').val(value);
   modal.find('.modal-body input#nom_employe ').val(value_nom_employe);
   modal.find('.modal-body input#prenom_employe ').val(value_prenom_employe);
   modal.find('.modal-body input#adress_employe ').val(value_adress_employe);
-  modal.find('.modal-body input#fonction ').val(value_fonction);
+  modal.find('.modal-body #fonction ').val(value_fonction);
   modal.find('.modal-body input#salaire ').val(value_salaire);
   modal.find('.modal-body input#commission ').val(value_commission);
+ 
   
 
 })
@@ -1205,7 +969,7 @@ $('#editPAlimentaire').on('show.bs.modal', function (event) {
   modal.find('.modal-body input#prodId ').val(value);
   modal.find('.modal-body input#nom ').val(value_nom_produit);
   modal.find('.modal-body input#Prix ').val(value_prix_produit);
-  modal.find('.modal-body input#date ').val(value_date);
+  modal.find('.modal-body input#date1 ').val(value_date);
 
 })
 // modale produit alimentaire pour delete

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\paRequest;
+use App\Models\CafeRestaurant;
+use App\Models\Fourniseur;
 use App\Models\ProduitAlimantaire;
 use Illuminate\Http\Request;
 
@@ -14,9 +16,10 @@ class PAlimantaireController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   $cafes = CafeRestaurant::all();
+        $frs = Fourniseur::all();
         $pas = ProduitAlimantaire::all();
-        return view('PAlimantaires.index', ['pas' => $pas]);
+        return view('PAlimantaires.index', ['pas' => $pas ,'cafes' => $cafes, 'frs' => $frs]);
     }
 
     /**
@@ -42,7 +45,8 @@ class PAlimantaireController extends Controller
             'nomProduit' => $request['nomProduit'],
             'prixProduit' => $request['prixProduit'],
             'dateExpiration' => $request['dateExpiration'],
-            
+            'cafe_restaurants_id' => $request['cafe'],
+            'fourniseurs_id' => $request['fourniseur']
         ]);
         session()->flash('ajouter',' le produit a ete bien ajouter !!');
         return back();
@@ -83,7 +87,8 @@ class PAlimantaireController extends Controller
         $pa->nomProduit = $request->input('nomProduit');
         $pa->prixProduit = $request->input('prixProduit');
         $pa->dateExpiration = $request->input('dateExpiration');
-        
+        $pa->cafe_restaurants_id = $request->input('cafe');
+        $pa->fourniseurs_id = $request->input('fourniseur');
         session()->flash('modifier',' le produit a ete bien modifier !!');
         $pa->save();
         return back();
@@ -95,7 +100,7 @@ class PAlimantaireController extends Controller
      * @param  \App\Models\ProduitAlimantaire  $produitAlimantaire
      * @return \Illuminate\Http\Response
      */
-    public function destroy(paRequest $request)
+    public function destroy(Request $request)
     {
         $pa = ProduitAlimantaire::findOrFail($request->value);
         session()->flash('supprimer',' le produit a ete bien supprimer !!');

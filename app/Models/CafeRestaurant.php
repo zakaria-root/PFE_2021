@@ -11,10 +11,11 @@ class CafeRestaurant extends Model
 
     use SoftDeletes;
     use HasFactory;
+
     protected $fillable = [
+        'id',
         'nomCafeRestaurant',
         'ville',
-
     ];
 
     protected $dates = ['deleted_at'];
@@ -25,9 +26,9 @@ class CafeRestaurant extends Model
     }
     
 
-    public function Employee()
+    public function employees()
     {
-        return $this->hasMany('App\Models\Employee');
+        return $this->hasMany(Employee::class);
     }
 
     public function Plat()

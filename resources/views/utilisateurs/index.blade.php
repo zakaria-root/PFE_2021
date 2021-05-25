@@ -8,7 +8,11 @@
       <div class="col-12">
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">tableau des utilisateurs</h3>
+            
+            <h3 class="card-title">
+              <i class="fas fa-users p-1 p"></i>
+              tableau des utilisateurs
+            </h3>
             <div class="col-12 col-4">
               <div class="col-4 offset-11">
                   <button type="button" style="margin-left:45px !important ; padding-top: 3px !important;padding-bottom: 3px !important;" class="btn btn-success px-3 my-0" data-toggle="modal" data-target="#ajouter" >

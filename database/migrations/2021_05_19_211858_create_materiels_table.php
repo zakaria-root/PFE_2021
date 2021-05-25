@@ -19,10 +19,10 @@ class CreateMaterielsTable extends Migration
             $table->string('marque');
             $table->double('prixProduit');
             
-            $table->bigInteger('idCafeRestaurant')->unsigned();
-            $table->foreign('idCafeRestaurant')->references('id')->on('cafe_restaurants');
-            $table->bigInteger('idFourniseur')->unsigned();
-            $table->foreign('idFourniseur')->references('id')->on('fourniseurs');
+            $table->bigInteger('cafe_restaurants_id')->unsigned();
+            $table->foreign('cafe_restaurants_id')->references('id')->on('cafe_restaurants');
+            $table->bigInteger('fourniseurs_id')->unsigned();
+            $table->foreign('fourniseurs_id')->references('id')->on('fourniseurs');
 
             $table->timestamps();
         });

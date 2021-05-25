@@ -9,6 +9,14 @@ class Plat extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'id',
+        'nomPlat',
+        'prix',
+        'description',
+        'cafe_restaurants_id',
+    ];
+
     public function CafeRestaurant()
     {
         return $this->belongsTo('app/Models/CafeRestaurant');
@@ -23,4 +31,5 @@ class Plat extends Model
     {
         return $this->BelongsToMany('app/Models/CommandsOrdinaire');
     
+}
 }
