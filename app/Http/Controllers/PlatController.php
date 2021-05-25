@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\plRequest;
 use App\Models\CafeRestaurant;
 use App\Models\Plat;
 use Illuminate\Http\Request;
@@ -36,7 +37,7 @@ class PlatController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(plRequest $request)
     {
         Plat::create([
             'nomPlat' =>  $request['nomPlat'],
@@ -77,7 +78,7 @@ class PlatController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(plRequest $request)
     {
         
         $mt = Plat::findOrFail($request->value);
