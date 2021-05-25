@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddColAdminUsers extends Migration
+class AddColRoleUsers extends Migration
 {
     /**
      * Run the migrations.
@@ -14,10 +14,9 @@ class AddColAdminUsers extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->boolean('is_admin')->default(0);
+            $table->string('role')->default("user");
         });
     }
-
     /**
      * Reverse the migrations.
      *
@@ -26,7 +25,7 @@ class AddColAdminUsers extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('is_admin');
+            $table->dropColumn('role');
         });
     }
 }

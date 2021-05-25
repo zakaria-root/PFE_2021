@@ -15,8 +15,8 @@ class CreateDetailsCommandsOrdinairesTable extends Migration
     {
         Schema::create('details_commands_ordinaires', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('idCammandParOrdinaire')->unsigned();
-            $table->bigInteger('idPlat')->unsigned();
+            $table->bigInteger('commands_ordinaires_id')->unsigned();
+            $table->bigInteger('plats_id')->unsigned();
             $table->integer('quantite')->unsigned();
             $table->timestamps();
         });

@@ -33,11 +33,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
       </li>
     </ul>
 
-
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
     
-
   </nav>
   <!-- /.navbar -->
     
@@ -45,7 +43,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="/home" class="brand-link">
         <i class="fas fa-coffee ml-3 "></i>
       <span class="brand-text font-weight-light">CafeRestaut</span>
     </a>
@@ -60,6 +58,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="info">
           <a href="{{ url('/profile') }}" class="d-block">{{ Auth::user()->name }}</a>
         </div>
+        
       </div>
 
       <!-- Sidebar Menu -->
@@ -73,12 +72,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <i class="nav-icon fas fa-user-tie"></i>
                   <p>
                     profile
-                    <span class="right badge badge-danger">admin</span>
+                    
                   </p>
                 </a>
               </li>
           <li class="nav-item has-treeview ">
-            <a href="#" class="nav-link active">
+            <a href="#" class="nav-link ">
               <i class="nav-icon fas fa-users"></i>
               <p>
                 utilisateurs
@@ -87,7 +86,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ url('/utilisateurs') }}" class="nav-link active">
+                <a href="{{ url('/utilisateurs') }}" class="nav-link ">
                   <i class="fas fa-user-tag nav-icon"></i>
                   <p>client</p>
                 </a>
@@ -112,7 +111,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </li>
 
            <li class="nav-item has-treeview ">
-            <a href="#" class="nav-link active">
+            <a href="#" class="nav-link ">
               <i class="nav-icon fas fa-archive"></i>
               <p>
                 produit
@@ -121,7 +120,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ url('/materiels') }}" class="nav-link active">
+                <a href="{{ url('/materiels') }}" class="nav-link ">
                   <i class="fa fa-business-time nav-icon"></i>
                   <p>materiel</p>
                 </a>
@@ -137,7 +136,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </ul>
             <li class="nav-item">
               <a href="{{ url('/plats') }}" class="nav-link">
-                <i class="fas fa-cheese nav-icon"> </i>
+                <i class="fas fa-concierge-bell nav-icon"></i>
                    <p>
                   Plats
                   

@@ -24,11 +24,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if (Auth::user()->is_admin) {
+        if (Auth::user()->role === "admin") {
             return view('home');
         }else
         {
-            return view('dashboard');
+            return redirect()->route('cafeRestaurants.index');
         }
     }
 }

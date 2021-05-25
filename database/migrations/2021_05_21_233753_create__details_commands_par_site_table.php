@@ -15,8 +15,8 @@ class CreateDetailsCommandsParSiteTable extends Migration
     {
         Schema::create('details_commands_par_site', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('idCammandParSite')->unsigned();
-            $table->bigInteger('idPlat')->unsigned();
+            $table->bigInteger('commands_par_sites_id')->unsigned();
+            $table->bigInteger('plats_id')->unsigned();
             $table->integer('quantite')->unsigned();
             $table->timestamps();
         });

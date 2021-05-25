@@ -7,7 +7,8 @@ use App\Http\Requests\plRequest;
 use App\Models\CafeRestaurant;
 use App\Models\Plat;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class PlatController extends Controller
 {
@@ -20,9 +21,37 @@ class PlatController extends Controller
     {
         $cafes = CafeRestaurant::all();
         $plats = plat::all();
-        return view('plats.index', ["cafes" => $cafes, "plats" => $plats ]);
+        if (Auth::user()->role === "admin") {
+            
+            return view('plats.index', ["cafes" => $cafes, "plats" => $plats ]);
+        }else{
+            return view('plats_user.index',[
+                'plats'=>Plat::all()
+            ]);
+        }
     }
 
+    public function fitchR($categorie)
+    {
+        if ($categorie=="restaurant") {
+            $plats = DB::table('plats')->where('categorie', 'restaurant')->get();
+
+        return view('plats_user.index', ['plats' => $plats]);
+        } else if($categorie=="cafe"){
+            $plats = DB::table('plats')->where('categorie', 'cafe')->get();
+
+        return view('plats_user.index', ['plats' => $plats]);
+        }
+        
+    }
+
+    public function afficheCafePlat($id)
+    {
+        $plats = DB::table('plats')->where('cafe_restaurants_id', $id)->get();
+
+        return view('plats_user.index', ['plats' => $plats]);
+    }
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -70,7 +99,9 @@ class PlatController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('plats_user.show',[
+            'plat'=>Plat::find($id)
+        ]);
     }
 
     /**
@@ -93,10 +124,7 @@ class PlatController extends Controller
      */
     public function update(Request $request)
     {
-        // if ($request->hasFile('image')) {
-        //         dd($request->image);
-        //     }
-        // $path = null;
+        
         $mt = Plat::findOrFail($request->value);
         if ($request->hasFile('image')) {
             $mt->image = $request->image->store('image');

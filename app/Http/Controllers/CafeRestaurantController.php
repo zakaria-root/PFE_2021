@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\CafeRestaurant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class CafeRestaurantController extends Controller
 {
@@ -15,8 +17,23 @@ class CafeRestaurantController extends Controller
     public function index()
     {
         $crs = CafeRestaurant::all();
-        return view('cafeRestaurants.index',["crs" => $crs]);
+        $crs1 = DB::table('cafe_restaurants')->get();
+        if (Auth::user()->role === "admin") {
+            
+            return view('cafeRestaurants.index',["crs" => $crs]);
+        }else{
+            
+        }
+        return view('cafe_restaurants_user.index',["crs" => $crs1]);
     }
+
+    public function fitchVille(Request $request)
+    {
+        $ville=$request->input('ville');
+        $crs = DB::table('cafe_restaurants')->where('ville', $ville)->get();
+        return view('cafe_restaurants_user.index', ['crs' => $crs]);
+    }
+
 
     /**
      * Show the form for creating a new resource.

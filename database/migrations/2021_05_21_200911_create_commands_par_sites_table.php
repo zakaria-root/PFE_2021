@@ -16,14 +16,14 @@ class CreateCommandsParSitesTable extends Migration
         Schema::create('commands_par_sites', function (Blueprint $table) {
             $table->id();
             $table->boolean('etat');
-            $table->bigInteger('idUtilisateur')->unsigned();
-            $table->bigInteger('idServeur')->unsigned();
-            $table->bigInteger('idCafeRestaurant')->unsigned();
+            $table->bigInteger('users_id')->unsigned();
+            $table->bigInteger('serveurs_id')->unsigned();
+            $table->bigInteger('cafe_restaurants_id')->unsigned();
 
             
-            $table->foreign('idUtilisateur')->references('id')->on('utilisateurs');
-            $table->foreign('idServeur')->references('id')->on('serveurs');
-            $table->foreign('idCafeRestaurant')->references('id')->on('cafe_restaurants');
+            $table->foreign('users_id')->references('id')->on('users');
+            $table->foreign('serveurs_id')->references('id')->on('serveurs');
+            $table->foreign('cafe_restaurants_id')->references('id')->on('cafe_restaurants');
 
             $table->timestamps();
         });
