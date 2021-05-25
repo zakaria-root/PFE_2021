@@ -26,6 +26,7 @@ class utRequest extends FormRequest
         return [
             'nom' => ['required', 'string', 'max:255' ,'min:5'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'address' => ['required', 'string', 'min:4', ],
             'motDePass' => ['required', 'string', 'min:4', ],
             
         ];

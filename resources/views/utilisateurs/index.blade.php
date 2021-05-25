@@ -33,6 +33,7 @@
                   <th>Id</th>
                   <th>Nom</th>
                   <th>Email</th>
+                  <th>Address</th>
                   <th>Temp du creation</th>
                   <th>Action</th>
                 </tr>
@@ -40,17 +41,19 @@
               @foreach ($users as $user)
                 <tr>
                     <th scope="row">{{ $user->id }}</th>
-                    <td>{{ $user->login }}</td>
+                    <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
+                    <td >{{ $user->address }}</td>
                     <td>{{ $user->created_at }}</td>
                     <td>
                         
                             <a type="button" 
                             class="btn btn-primary px-3 py-1" style="color: white"
                             data-value_user="{{ $user->id }}" 
-                            data-value_nom="{{ $user->login }}" 
+                            data-value_nom="{{ $user->name }}" 
                             data-value_email="{{ $user->email }}" 
-                            data-value_pass="{{ $user->motDePass }}" 
+                            data-value_address="{{ $user->address }}" 
+                            data-value_pass="{{ $user->password }}" 
                             data-toggle="modal" 
                             data-target="#editutilisateur" >
                             <i class="fas fa-user-edit "></i>

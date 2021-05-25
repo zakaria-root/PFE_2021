@@ -513,7 +513,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         <div class="form-group ">
           <label for="nom">nom du CafeRestaurant</label>
-          <input type="text" class="form-control" name="nomCafeRestaurant"  id="CafeRestaurant"  placeholder="entrer le nom du CafeRestaurant" value=""> 
+          <input type="text" class="form-control" name="nomCafeRestaurant"  id="nom_cafe"  placeholder="entrer le nom du cafe restaurant" value=""> 
         </div>
           <div class="form-group ">
             <label for="exampleInputEmail1">la ville</label>
@@ -575,21 +575,34 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="{{ route('utilisateurs.index') }}" method="post">
+      <form action="{{ route('utilisateurs.store') }}" method="post">
         @csrf
       <div class="modal-body">        
         <div class="form-group ">
           <label for="nom">Nom</label>
-          <input type="text" class="form-control"name="nom"  id="nom" aria-describedby="emailHelp" placeholder="entrer le nom" value="{{ old('nom') }}"> 
+          <input type="text" class="form-control"name="nom"  id="nom" aria-describedby="emailHelp" placeholder="entrer le nom" value="{{ old('nom') }}" required> 
          
         </div>
           <div class="form-group ">
             <label for="exampleInputEmail1">Adress email</label>
-            <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="entrer le email" value="{{ old('email') }}"> 
+            <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="entrer le email" value="{{ old('email') }}" required> 
+            
           </div>
           <div class="form-group">
+            <label for="address">Address</label>
+            <div >
+                <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address"  placeholder="entrer votre address" value="{{ old('address') }}" required  >
+
+                @error('address')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+        </div>
+          <div class="form-group">
             <label for="exampleInputPassword1">Mot de passe</label>
-            <input type="password" class="form-control" name="motDePass" id="exampleInputPassword1" placeholder="mot de pass" value="">
+            <input type="password" class="form-control" name="motDePass" id="exampleInputPassword1" placeholder="mot de pass" value="" required>
           </div>
       </div>
       <div class="modal-footer  justify-content-between">
@@ -617,18 +630,29 @@ scratch. This page gets rid of all links and provides the needed markup only.
         @csrf
         @method('patch')
         
-        
         <div class="modal-body" >        
         <input id="prodId" class="prodId" name="value" type="hidden" value="" />
         <div class="form-group ">
           <label for="nom">Nom</label>
-          <input type="text" class="form-control"name="nom"  id="nom"  placeholder="entrer le nom" value=""> 
+          <input type="text" class="form-control" name="nom"  id="nom"  placeholder="entrer le nom" value=""> 
          
         </div>
           <div class="form-group ">
             <label for="exampleInputEmail1">Adress email</label>
             <input type="email" class="form-control" name="email" id="email"  placeholder="entrer le email" value=""> 
           </div>
+          <div class="form-group">
+            <label for="address">Address</label>
+            <div >
+                <input id="address" type="text" id ="address" class="form-control @error('address') is-invalid @enderror" name="address"  placeholder="entrer votre address" value="{{ old('address') }}" required  >
+
+                @error('address')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+        </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Mot de passe</label>
             <input type="password" class="form-control" name="motDePass" id="pass"  value="">
@@ -831,7 +855,9 @@ $(function () {
    // Button that triggered the modal
   var value = button.data('value_user') // Extract info from data-* attributes
   var value_nom = button.data('value_nom') // Extract info from data-* attributes
+  var value_pass = button.data('value_pass') // Extract info from data-* attributes
   var value_email = button.data('value_email') // Extract info from data-* attributes
+  var value_address = button.data('value_address') // Extract info from data-* attributes
   // var value_pass = button.data('value_pass') // Extract info from data-* attributes
   // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
   // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
@@ -840,8 +866,10 @@ $(function () {
   var modal = $(this)
   
   modal.find('.modal-body input#prodId ').val(value);
-  modal.find('.modal-body input#nom ').val(value_nom);
+  modal.find('.modal-body #nom ').val(value_nom);
   modal.find('.modal-body input#email ').val(value_email);
+  modal.find('.modal-body input#pass ').val(value_pass);
+  modal.find('.modal-body input#address ').val(value_address);
   
 
 })
@@ -919,7 +947,7 @@ $('#editCafeRestaut').on('show.bs.modal', function (event) {
   // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
 
   console.log(value);
-  console.log(value_nom_cafe);
+
   var modal = $(this)
   
   modal.find('.modal-body input#prodId ').val(value);
@@ -1024,6 +1052,7 @@ $('#editplat').on('show.bs.modal', function (event) {
   var value_nom_plat = button.data('value_nom_plat') // Extract info from data-* attributes
   var value_prix = button.data('value_prix') // Extract info from data-* attributes
   var value_description = button.data('value_description') // Extract info from data-* attributes
+  var value_image = button.data('value_image') // Extract info from data-* attributes
  // Extract info from data-* attributes
   // Extract info from data-* attributes
   // var value_pass = button.data('value_pass') // Extract info from data-* attributes
@@ -1038,6 +1067,7 @@ $('#editplat').on('show.bs.modal', function (event) {
   modal.find('.modal-body input#value_nom_plat ').val(value_nom_plat);
   modal.find('.modal-body input#value_prix ').val(value_prix);
   modal.find('.modal-body textarea ').text(value_description);
+  modal.find('.modal-body input#value_image ').text(value_image);
 
 })
 // modale plat pour delete

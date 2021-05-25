@@ -27,15 +27,17 @@
               <thead>
                 <tr>
                   <th>Id</th>
-                  <th>Nom </th>
-                  <th>prix </th>
-                  <th> Marque</th>
+                  <th>Image du plat</th>
+                  <th>Nom du plat</th>
+                  <th>prix du plat</th>
+                  <th> Description du plat</th>
                   <th>Action</th>
                 </tr>
               </thead>
               @foreach ($plats as $plat)
                 <tr>
                     <th scope="row">{{ $plat->id }}</th>
+                    <th ><img src="{{ asset('storage/'.$plat->image) }}" width="120px" alt="image du plat"> </th>
                     <td>{{ $plat->nomPlat }}</td>
                     <td>{{ $plat->prix }}</td>
                     <td>{{ $plat->description }}</td>
@@ -47,6 +49,7 @@
                             data-value_nom_plat="{{ $plat->nomPlat }}" 
                             data-value_prix="{{ $plat->prix }}"
                             data-value_description="{{ $plat->description }}"
+                            data-value_image="{{ $plat->image }}"
                             data-toggle="modal" 
                             data-target="#editplat" >
                             <i class="fas fa-edit "></i>
@@ -75,7 +78,7 @@
     
     <!-- Modal materiel materiel-->
 
-<div class="modal fade " id="ajouterPlat" tabindex="-1" role="dialog" aria-labelledby="ajouterLabel" aria-hidden="true">
+<div class="modal fade " id="ajouterPlat" tabindex="-1" role="dialog" aria-labelledby="ajouterLabel" aria-hidden="true"  >
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header bg-teal">
@@ -84,7 +87,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="{{ route('plats.store') }}" method="post">
+      <form action="{{ route('plats.store') }}" method="post" enctype="multipart/form-data">
         @csrf
       <div class="modal-body">        
         <div class="form-group ">
@@ -114,6 +117,10 @@
             @endforeach
           </select>
           </div>
+          <div class="form-group">
+            <label for="">Image</label>
+            <input class="form-control" type="file" name="image">
+          </div>
       </div>
       <div class="modal-footer  justify-content-between">
         <button type="button" class="btn btn-secondary swalDefaultSuccess px-4" data-dismiss="modal">fermer</button>
@@ -135,7 +142,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form action="{{ route('plats.update', 'test') }}" method="post">
+        <form action="{{ route('plats.update', 'test') }}" method="post" enctype="multipart/form-data">
           @csrf
           @method('patch')
           <div class="modal-body" >        
@@ -167,6 +174,10 @@
                 <option value="{{ $cafe->id }}">{{ $cafe->nomCafeRestaurant }}</option>
                 @endforeach
               </select>
+              </div>
+              <div class="form-group">
+                <label for="">Image</label>
+                <input class="form-control" type="file" id="value_image" name="image" value="">
               </div>
         </div>
         <div class="modal-footer  justify-content-between">

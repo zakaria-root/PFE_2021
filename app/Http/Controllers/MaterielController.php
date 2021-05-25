@@ -90,8 +90,8 @@ class MaterielController extends Controller
         $mt->nomProduit = $request->input('nomProduit');
         $mt->marque = $request->input('marque');
         $mt->prixProduit = $request->input('prixProduit');
-        $mt->cafe_restaurants_id = $request->select('cafe');
-        $mt->fourniseurs_id = $request->select('fourniseur');
+        $mt->cafe_restaurants_id = $request->input('cafe');
+        $mt->fourniseurs_id = $request->input('fourniseur');
         session()->flash('modifier',' le materiel a ete bien modifier !!');
         $mt->save();
         return back();

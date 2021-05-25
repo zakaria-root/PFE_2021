@@ -6,6 +6,7 @@ use Dotenv\Validator;
 use App\Models\Utilisateur;
 use Illuminate\Http\Request;
 use App\Http\Requests\utRequest;
+use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
 class utilisateurController extends Controller
@@ -17,7 +18,7 @@ class utilisateurController extends Controller
      */
     public function index()
     {
-        $utilisateurs = Utilisateur::all();
+        $utilisateurs = User::all();
         return view('utilisateurs.index' , ['users' => $utilisateurs ]);
 
     }
@@ -46,10 +47,11 @@ class utilisateurController extends Controller
     {
         
         
-         Utilisateur::create([
-            'login' => $request['nom'],
+         User::create([
+            'name' => $request['nom'],
             'email' => $request['email'],
-            'motDePass' => Hash::make($request['motDePass']),
+            'address' => $request['address'],
+            'password' => Hash::make($request['motDePass']),
         ]);
         session()->flash('ajouter',' l\'utilisateur a ete bien ajouter !!');
         return back();
@@ -87,10 +89,11 @@ class utilisateurController extends Controller
      */
     public function update(utRequest $request)
     {
-        $user = Utilisateur::findOrFail($request->value);
-        $user->login = $request->input('nom');
+        $user = User::findOrFail($request->value);
+        $user->name = $request->input('nom');
         $user->email = $request->input('email');
-        $user->motDePass = Hash::make($request['motDePass']);
+        $user->address = $request->input('address');
+        $user->password = Hash::make($request['motDePass']);
         session()->flash('modifier',' l\'utilisateur a ete bien modifier !!');
         $user->save();
         return back();
@@ -109,7 +112,7 @@ class utilisateurController extends Controller
      */
     public function destroy(Request $request)
     {
-        $user = Utilisateur::findOrFail($request->value);
+        $user = User::findOrFail($request->value);
         session()->flash('supprimer',' l\'utilisateur a ete bien supprimer !!');
         $user->delete();
         return back();
