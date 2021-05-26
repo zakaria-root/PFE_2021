@@ -31221,6 +31221,10 @@ a.text-muted:hover {
 }
 /*# sourceMappingURL=adminlte.css.map */
 @charset "UTF-8";
+.bg-mlight {
+  background-color: #dfcaff;
+}
+
 .bg-blue {
   background-color: blue;
 }
@@ -31261,6 +31265,10 @@ a.text-muted:hover {
   background-color: #17a2b8;
 }
 
+.white {
+  color: white;
+}
+
 .blue {
   color: blue;
 }
@@ -31270,7 +31278,7 @@ a.text-muted:hover {
 }
 
 .purple {
-  color: purple;
+  color: rgba(100, 52, 128, 0.555);
 }
 
 .pink {
@@ -31310,7 +31318,7 @@ a.text-muted:hover {
 :root {
   --blue: #3490dc;
   --indigo: #6574cd;
-  --purple: #9561e2;
+  --purple: #dfcaff;
   --pink: #f66d9b;
   --red: #e3342f;
   --orange: #f6993f;

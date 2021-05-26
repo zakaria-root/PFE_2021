@@ -11,22 +11,23 @@
             <i class="fas fa-dollar-sign p-1 pt-2 fa-lg"></i>
          
           
-          tableau des ventes
+            tableau des ventes
+            
         </h3>
         <div class="col-12 col-4">
-          <div class="col-4 offset-11 ">
-              <button type="button" style="margin-left:45px !important ; padding-top: 3px !important;padding-bottom: 3px !important;" class="btn btn-success px-3 mt-1" data-toggle="modal" data-target="#ajouterEmployee" >
+            
+            <div class="col-4 offset-9">
+            <a href="?categorie=cafe" class="btn btn-outline-primary px-5 ml-2" ">Cafe</a>
+            <a href="?categorie=restaurant" class="btn btn-outline-primary ml-1 px-4" >Restaurant </a>
+
+              {{-- <button type="button" style="" class="btn btn-success px-4 " data-toggle="modal" data-target="#ajouterEmployee" >
                 <i class="fas fa-cart-plus"></i>
                   
-              </button>
-                  
-              <a href="?categorie=cafe">cafe</a>
-              <a href="?categorie=restaurant">restaurant</a>
+              </button> --}}
         
           </div>
           
       </div>
-        
       </div>
       <!-- /.card-header -->
       <div class="card-body table-responsive p-0">
@@ -49,7 +50,7 @@
             $request = Request::all();
             @endphp
           @foreach ($winds as $wind)
-          @if ($wind->categorie === request()->get('categorie'))
+          @if ($wind->categorie === request()->get('categorie') or request()->get('categorie') == null)
                 
           <tr>
               <td scope="row"><img src="{{ asset('storage/'.$wind->image ) }}" width="80px" alt=""></td>
@@ -89,7 +90,6 @@
   </div>
 </div>
 </div>
-
 
 <!-- TODO: ajouter model employee  -->
 

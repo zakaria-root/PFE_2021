@@ -6,23 +6,41 @@
 <div class="row">
   <div class="col-12">
     <div class="card">
-      <div class="card-header py-2">
+      <div class="card-header py-1 ">
         <h3 class="card-title">
           <i class="fas fa-users p-1 pt-2 fa-lg"></i>
           tableau des employees
         </h3>
         <div class="col-12 col-4">
           <div class="col-4 offset-11 ">
-              <button type="button" style="margin-left:45px !important ; padding-top: 3px !important;padding-bottom: 3px !important;" class="btn btn-success px-3 mt-1" data-toggle="modal" data-target="#ajouterEmployee" >
+              <button type="button" style="margin-left:40px !important ; padding-top: 3px !important;padding-bottom: 3px !important;" class="btn btn-success px-3 mt-1" data-toggle="modal" data-target="#ajouterEmployee" >
                   <i class="fas fa-user-plus"></i>
                   
               </button>
                   
           </div>
-          
+         
       </div>
         
       </div>
+      <div class="card-header py-0 pt-2 ml-1">
+        <h3 class="card-title  float-right ">
+          <div class="card-tools ">
+            <form action="{{ url('/employees') }}">
+            <div class="input-group input-group-sm " style="width: 180px;">
+              <input type="text" name="fonction" class="form-control float-right" placeholder="Search">
+
+              <div class="input-group-append">
+                <button type="submit" class="btn btn-default">
+                  <i class="fas fa-search"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+          </div>
+        
+      </div>
+      
       <!-- /.card-header -->
       <div class="card-body table-responsive p-0">
         <table class="table table-hover">
@@ -41,6 +59,10 @@
           </thead>
           
           @foreach ($emps as $emp)
+
+          @if ($emp->fonction === request()->get('fonction') or request()->get('fonction') == null)
+              
+          
             <tr>
                 <th scope="row">{{ $emp->id }}</th>
                 <td>{{ $emp->nomEmploye }}</td>
@@ -76,8 +98,9 @@
                     
                 </td>
                     
-                </td>
+               
               </tr>
+              @endif
             @endforeach
 
           </tbody>
