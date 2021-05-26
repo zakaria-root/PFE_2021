@@ -13,8 +13,8 @@
                 tableau des plats</h3>
             <div class="col-12 col-4">
               <div class="col-4 offset-11 ">
-                  <button type="button" style="margin-left:45px !important ; padding-top: 3px !important;padding-bottom: 3px !important;" class="btn btn-success px-3 mt-1" data-toggle="modal" data-target="#ajouterPlat" >
-                      <i class="fas fa-user-plus"></i>
+                  <button type="button" style="margin-left:45px !important ; padding-top: 3px !important;padding-bottom: 2px !important;" class="btn btn-success px-3 mt-1" data-toggle="modal" data-target="#ajouterPlat" >
+                    <i class="fas fa-plus  pt-1"></i>
                       
                   </button>
                       
@@ -39,7 +39,7 @@
               @foreach ($plats as $plat)
                 <tr>
                     <th scope="row">{{ $plat->id }}</th>
-                    <th ><img src="{{ asset('storage/'.$plat->image) }}" width="120px" alt="image du plat"> </th>
+                    <th ><img src="{{ asset('storage/'.$plat->image) }}" width="80px" alt="image du plat"> </th>
                     <td>{{ $plat->nomPlat }}</td>
                     <td>{{ $plat->prix }}</td>
                     <td>{{ $plat->description }}</td>
@@ -105,25 +105,59 @@
             <label for="exampleInputPassword1">Description</label>
             <textarea type="text" class="form-control" name="description" id="Marque" placeholder="mot de description" value="{{ old('description') }}"></textarea>
           </div>
+         
           <div class="form-group">
             <label for="exampleInputPassword1">Endroit de travail</label>
-          <select 
-          class="form-select form-select-lg col-12 py-1 mt-2" 
+
+      <div class="input-group mb-3">
+        <select 
+        class="custom-select" 
           aria-label=".form-select-lg example"
           name="cafe" 
           id="cafe_id">
-            <option selected value="{{ $cafes->first()->id }}">{{$cafes->first()->nomCafeRestaurant }}</option>
-            @foreach ($cafes as $cafe)
-            @if ($loop->first) @continue @endif
-            <option value="{{ $cafe->id }}">{{ $cafe->nomCafeRestaurant }}</option>
-            @endforeach
-          </select>
+          <option selected value="{{ $cafes->first()->id }}">{{$cafes->first()->nomCafeRestaurant }}</option>
+          @foreach ($cafes as $cafe)
+          @if ($loop->first) @continue @endif
+          <option value="{{ $cafe->id }}">{{ $cafe->nomCafeRestaurant }}</option>
+          @endforeach
+        </select>
+  </select>
+  <div class="input-group-append">
+    <label class="input-group-text" for="inputGroupSelect02">Options</label>
+  </div>
+</div>
           </div>
+          <label for="image">Image</label>
+          
+          <div class="form-group input-group mb-3">
+            
+            <div class="input-group-prepend">
+            </div>
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" name="image" id="inputGroupFile01">
+              <label class="custom-file-label px-1" for="inputGroupFile01">Choose file</label>
+            </div>
+          </div>
+          
           <div class="form-group">
-            <label for="">Image</label>
-            <input class="form-control" type="file" name="image">
+            <label for="exampleInputPassword1">Categorie</label>
+
+      <div class="input-group mb-3">
+        <select class="custom-select" 
+        id="inputGroupSelect02"
+        aria-label=".form-select-lg example"
+        name="categorie" 
+        id="cafe_id">
+    <option selected value="cafe">Cafe</option>
+    <option value="Restaurant">Restaurant</option>
+  </select>
+  <div class="input-group-append">
+    <label class="input-group-text" for="inputGroupSelect02">Options</label>
+  </div>
+</div>
           </div>
       </div>
+     
       <div class="modal-footer  justify-content-between">
         <button type="button" class="btn btn-secondary swalDefaultSuccess px-4" data-dismiss="modal">fermer</button>
        
@@ -165,21 +199,52 @@
               </div>
               <div class="form-group">
                 <label for="exampleInputPassword1">Endroit de travail</label>
-              <select 
-              class="form-select form-select-lg col-12 py-1 mt-2" 
+    
+          <div class="input-group mb-3">
+            <select 
+            class="custom-select" 
               aria-label=".form-select-lg example"
               name="cafe" 
               id="cafe_id">
-                <option selected value="{{ $cafes->first()->id }}">{{$cafes->first()->nomCafeRestaurant }}</option>
-                @foreach ($cafes as $cafe)
-                @if ($loop->first) @continue @endif
-                <option value="{{ $cafe->id }}">{{ $cafe->nomCafeRestaurant }}</option>
-                @endforeach
-              </select>
+              <option selected value="{{ $cafes->first()->id }}">{{$cafes->first()->nomCafeRestaurant }}</option>
+              @foreach ($cafes as $cafe)
+              @if ($loop->first) @continue @endif
+              <option value="{{ $cafe->id }}">{{ $cafe->nomCafeRestaurant }}</option>
+              @endforeach
+            </select>
+      </select>
+      <div class="input-group-append">
+        <label class="input-group-text" for="inputGroupSelect02">Options</label>
+      </div>
+    </div>
               </div>
+              <label for="image">Image</label>
+          
+          <div class="form-group input-group mb-3">
+            
+            <div class="input-group-prepend">
+            </div>
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" name="image" id="inputGroupFile01">
+              <label class="custom-file-label px-1" for="inputGroupFile01">Choose file</label>
+            </div>
+          </div>
               <div class="form-group">
-                <label for="">Image</label>
-                <input class="form-control" type="file" id="value_image" name="image" value="">
+                <label for="exampleInputPassword1">Categorie</label>
+    
+          <div class="input-group mb-3">
+            <select class="custom-select" 
+            id="inputGroupSelect02"
+            aria-label=".form-select-lg example"
+            name="categorie" 
+            id="cafe_id">
+        <option selected value="cafe">Cafe</option>
+        <option value="Restaurant">Restaurant</option>
+      </select>
+      <div class="input-group-append">
+        <label class="input-group-text" for="inputGroupSelect02">Options</label>
+      </div>
+    </div>
               </div>
         </div>
         <div class="modal-footer  justify-content-between">

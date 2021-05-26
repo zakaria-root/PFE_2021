@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -24,8 +25,14 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $winds = DB::table('details_commands_par_site')
+        ->join('plats', 'details_commands_par_site.plats_id', '=', 'plats.id')
+        ->select('plats.id','image','plats.categorie', 'details_commands_par_site.created_at', 'plats.nomPlat','plats.prix', 'quantite')
+        ->get();
+    
+        // dd($uy);
         if (Auth::user()->role === "admin") {
-            return view('home');
+            return view('home', ['winds' => $winds]);
         }else
         {
             return redirect()->route('cafeRestaurants.index');

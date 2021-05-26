@@ -14,7 +14,7 @@
             <div class="col-12 col-4">
               <div class="col-4 offset-11 ">
                   <button type="button" style="margin-left:45px !important ; padding-top: 3px !important;padding-bottom: 3px !important;" class="btn btn-success px-3 mt-1" data-toggle="modal" data-target="#ajouterPAlimantaire" >
-                      <i class="fas fa-user-plus"></i>
+                    <i class="fas fa-plus fa-lg pt-1"></i>
                   </button>
                       
               </div>

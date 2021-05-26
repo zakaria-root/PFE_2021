@@ -24,6 +24,7 @@
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.15.3",
         "admin-lte": "^3.0.5",
-        "air-datepicker": "^2.2.3"
+        "air-datepicker": "^2.2.3",
+        "bootstrap-switch-button": "^1.1.0"
     }
 }

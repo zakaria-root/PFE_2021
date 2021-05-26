@@ -85,6 +85,7 @@ class PlatController extends Controller
             'prix' => $request['prix'],
             'description' => $request['description'],
             'cafe_restaurants_id' => $request['cafe'],
+            'categorie' => $request['categorie'],
             'image' => $path
         ]);
         session()->flash('ajouter',' le plat a ete bien ajouter !!');

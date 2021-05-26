@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 use App\Models\CommandsParSite;
 use App\Models\CreateDetailsCommandsParSiteTable;
-
+use Carbon\Carbon;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -50,14 +51,16 @@ class CommandsParSiteController extends Controller
         $command->serveurs_id=1;
         $command->users_id=1;
         $command-> save();
-
+        $carbon = Carbon::now();
         foreach ($oldCart->items as $i) {
             $details_command=DB::table('details_commands_par_site')->insert([
                 'commands_par_sites_id' => $command->id,
                 'plats_id' => $i['item']['id'],
                 'quantite' =>$i['qty'],
+                'created_at' => $carbon,
             ]);
         }
+
 
         $uy = DB::table('details_commands_par_site')
         ->join('plats', 'details_commands_par_site.plats_id', '=', 'plats.id')

@@ -9,7 +9,7 @@ $line-height-base: 1.6;
 // Colors
 $blue: #3490dc;
 $indigo: #6574cd;
-$purple: #9561e2;
+$purple: #dfcaff;
 $pink: #f66d9b;
 $red: #e3342f;
 $orange: #f6993f;
@@ -18,6 +18,9 @@ $green: #38c172;
 $teal: #4dc0b5;
 $cyan: #6cb2eb;
 
+.bg-mlight {
+    background-color: #dfcaff;
+}
 
 .bg-blue {
     background-color: blue;
@@ -60,7 +63,7 @@ $cyan: #6cb2eb;
     color : indigo;
 }
 .purple {
-    color : purple;
+    color : rgba(100, 52, 128, 0.555);
 }
 .pink {
     color : pink;
