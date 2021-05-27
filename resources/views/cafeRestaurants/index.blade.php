@@ -14,7 +14,7 @@
             <div class="col-12 col-4">
               <div class="col-4 offset-11 ">
                   <button type="button" style="margin-left:45px !important ; padding-top: 3px !important;padding-bottom: 3px !important;" class="btn btn-success px-3 mt-1" data-toggle="modal" data-target="#ajouterCafe" >
-                    <i class="fas fa-plus fa-lg pt-1"></i>
+                    <i class="fas fa-plus  pt-1"></i>
                       
                   </button>
                       
@@ -30,7 +30,7 @@
                 <tr>
                   <th>Id</th>
                   <th>Nom cafe_restaurant</th>
-                  <th>Ville</th>
+                  <th class="px-5">Ville</th>
                   <th >Action</th>
                 </tr>
               </thead>
@@ -38,8 +38,8 @@
                 <tr>
                     <th scope="row">{{ $cr->id }}</th>
                     <td>{{ $cr->nomCafeRestaurant }}</td>
-                    <td>{{ $cr->ville }}</td>
-                    <td>
+                    <td class="px-5">{{ $cr->ville }}</td>
+                    <td >
                         
                             <a type="button"
                             class="btn btn-primary px-3 py-1 " style="color: white "
