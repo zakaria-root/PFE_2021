@@ -8,6 +8,7 @@ use App\Http\Controllers\PAlimantaireController;
 use App\Http\Controllers\PanierController;
 use App\Http\Controllers\PlatController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ServeurController;
 use App\Http\Controllers\utilisateurController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -57,3 +58,5 @@ Route::get('/viderPanier',[PanierController::class,'viderPanier'])->name('panier
 Route::get('/supprimerItem/{item}',[PanierController::class,'supprimerItem'])->name('panier.supprimerItem');
 
 Route::get('/valider',[CommandsParSiteController::class,'store'])->name('store');
+
+Route::resource('/serveurs', ServeurController::class);

@@ -30,10 +30,14 @@ class HomeController extends Controller
         ->select('plats.id','image','plats.categorie', 'details_commands_par_site.created_at', 'plats.nomPlat','plats.prix', 'quantite')
         ->get();
     
-        // dd($uy);
-        if (Auth::user()->role === "admin") {
+        
+
+        // dd($uy);h
+        if (Auth::user()->role === "admin" ) {
             return view('home', ['winds' => $winds]);
-        }else
+        }elseif (Auth::user()->role === "serveur") {
+            return redirect()->route('serveurs.index');
+        }
         {
             return redirect()->route('cafeRestaurants.index');
         }
