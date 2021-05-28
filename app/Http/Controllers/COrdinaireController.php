@@ -1,17 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\CommandsParSite;
-use App\Models\CreateDetailsCommandsParSiteTable;
+
+use App\Models\CafeRestaurant;
+use App\Models\CommandsOrdinaire;
+use App\Models\CommmandLocale;
+use App\Models\Plat;
 use Carbon\Carbon;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
-class CommandsParSiteController extends Controller
+class COrdinaireController extends Controller
 {
-    
     /**
      * Display a listing of the resource.
      *
@@ -19,7 +20,41 @@ class CommandsParSiteController extends Controller
      */
     public function index()
     {
+        $cafes = CafeRestaurant::all();
         
+        
+        $listCommande=Session::get('Commande');
+        $Commande=new CommmandLocale($listCommande);
+        return view('serveurs.cordinaire.index',['plats'=>$Commande->items,'cafes' => $cafes]);
+        // return view('serveurs.cordinaire.index', ['cafes' => $cafes]);
+    }
+
+    public function addPlatToCommandOrdinaire(Request $request){
+
+        $nom = $request->nomPlat;
+        $quantite = $request->quantite;
+        $cafe = $request->cafe;
+        $id = DB::table('plats')
+        ->select('id')
+        ->where('nomPlat',$nom)
+        ->get();
+
+        
+        
+        $fuck = $id->toArray();
+        $fuckto = (string)$fuck[0]->id;
+        $plat = Plat::find($fuckto);
+        // dd($plat);
+        // dd($plat[0]->id);
+        
+        $listCommande =Session::has('Commande') ? Session::get('Commande'):null;
+        $Commande=new CommmandLocale($listCommande);
+        $Commande->add($plat,$plat->id,$cafe,$quantite);
+
+        $request->session()->put('Commande',$Commande);
+
+        // dd($Commande);
+        return redirect()->route('cordinaire.index');
     }
     /**
      * Show the form for creating a new resource.
@@ -31,49 +66,42 @@ class CommandsParSiteController extends Controller
         //
     }
 
+
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function storeDb(Request $request)
     {
-        $oldCart=Session::get('cart');
+        
+        $listCommande =Session::get('Commande');
 
-        foreach ($oldCart->items as $i) {
-            $a=$i['item']['cafe_restaurants_id'];
-        }
-
-        $command =new CommandsParSite();
-        $command->etat=0;
-        $command->cafe_restaurants_id=$a;
-        $command->serveurs_id=1;
-        $command->users_id=1;
+   
+        $command =new CommandsOrdinaire();
+        $command->cafe_restaurants_id=$listCommande->idCafe;
         $command-> save();
         $carbon = Carbon::now();
-        foreach ($oldCart->items as $i) {
-            $details_command=DB::table('details_commands_par_site')->insert([
-                'commands_par_sites_id' => $command->id,
+        foreach ($listCommande->items as $i) {
+            $details_command=DB::table('details_commands_ordinaires')->insert([
+                'commands_ordinaires_id' => $command->id,
                 'plats_id' => $i['item']['id'],
                 'quantite' =>$i['qty'],
                 'created_at' => $carbon,
+                
             ]);
         }
 
-
+            dd($details_command);
         $uy = DB::table('details_commands_par_site')
         ->join('plats', 'details_commands_par_site.plats_id', '=', 'plats.id')
         ->select('commands_par_sites_id', 'plats.nomPlat', 'quantite')
         ->get();
     
     
-    dd($uy);
-        
-
     }
 
-    
     /**
      * Display the specified resource.
      *

@@ -1,7 +1,11 @@
 @extends('layouts.master')
 
 @section('content')
-
+<script
+src="https://code.jquery.com/jquery-3.4.1.min.js"
+integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+crossorigin="anonymous"
+></script>
 <div class="container mt-5">
 <div class="row">
   <div class="col-12">
@@ -17,8 +21,8 @@
         <div class="col-12 col-4">
             
             <div class="col-4 offset-9">
-            <a href="?categorie=cafe" class="btn btn-outline-primary px-5 ml-2" ">Cafe</a>
-            <a href="?categorie=restaurant" class="btn btn-outline-primary ml-1 px-4" >Restaurant </a>
+            <a href=" {{ url('serveurs') }}" class="btn btn-outline-primary px-4 ml-5" >livraison</a>
+            <a href="{{ url('cordinaire',) }}" class="btn btn-outline-primary ml-1 px-4" >ordinaire </a>
 
               {{-- <button type="button" style="" class="btn btn-success px-4 " data-toggle="modal" data-target="#ajouterEmployee" >
                 <i class="fas fa-cart-plus"></i>
@@ -29,6 +33,13 @@
           
       </div>
       </div>
+      @php
+            use App\Models\CommandsParSite;
+            if (request()->get('id') != null) {
+              $id = request()->get('id');
+              CommandsParSite::addEtat($id);
+            }
+          @endphp
       <!-- /.card-header -->
       <div class="card-body table-responsive p-0">
         <table class="table table-hover">
@@ -49,12 +60,16 @@
             @php
             $request = Request::all();
             @endphp --}}
+            
             @for ($i = 0; $i < count($orders); $i++)
-                
+            
+          @if ($orders[$i]->etat == 0)
+              
+          
             {{-- @endfor --}}
           {{-- @foreach ($orders as $order, $totales as $totale) --}}
           {{-- @if ($wind->categorie === request()->get('categorie') or request()->get('categorie') == null) --}}
-                
+               
           <tr>
               {{-- <td scope="row"><img src="{{ asset('storage/'.$wind->image ) }}" width="80px" alt=""></td> --}}
               <td>{{ $orders[$i]->name }}</td>
@@ -62,15 +77,28 @@
               <td>{{ $orders[$i]->created_at }}</td>
               <td>{{ $orders[$i]->address }}</td>
               <th>{{ $totales[$i]->prix }} $</th>
-              <td></td>
+              <td class="etat">
+                <button id="btn_{{ $orders[$i]->id }}" href="" onclick="myFunction({{ $orders[$i]->id}} , {{ $i }})" class="btn btn-success " type="button" >
+                 
+                    <span id="spiner_{{ $orders[$i]->id }}" class="spinner-grow spinner-grow-sm d-none" role="status" aria-hidden="true"></span>
+                  
+                  
+                  <span class="text_{{ $orders[$i]->id }}">disponible</span> 
+                </button>
+                <span class="valider_{{ $orders[$i]->id }}"></span>
+              </td>
+              
+
               {{-- @php
                     
                     $tPrix = $tPrix + $wind->prix * $wind->quantite 
               @endphp --}}
               </tr>
               {{-- @endif --}}
+              @endif
               @endfor
              
+
           </tbody>
           <tfoot >
           <tr style="background-color: rgba(231, 227, 253, 0.89)">
@@ -79,12 +107,13 @@
             <td></td>
             <td></td>
             <td></td>
-            <td></td>
+            <td>
+                
+            </td>
             {{-- <th class="pl-4">{{ $tPrix }} $ --}}
                 {{-- <i class="fas fa-comment-dollar fa-lg ml-2"></i> --}}
             </th>
           </tr>
-            
           </tfoot>
         </table>
       </div>
@@ -237,4 +266,21 @@
     </div>
   </div>
 </div> --}}
+<script>
+  function myFunction(id, position) {
+    console.log(id);
+    var element = document.querySelector('#spiner_'+id);
+    document.querySelector('#btn_'+id).setAttribute("disabled", "");
+    document.querySelector('.text_'+id).innerHTML =" en cour";
+    element = element.classList.remove('d-none');
+    document.querySelector('#btn_'+id).classList.remove('btn-success');
+    document.querySelector('#btn_'+id).classList.add('btn-danger');
+    document.querySelector('.valider_'+id).innerHTML = "<a href=\"?id="+id+"\" class=\"btn btn-outline-success\">valider</a>";
+    
+
+     
+    
+    console.log(element);
+  }
+</script>
 @endsection

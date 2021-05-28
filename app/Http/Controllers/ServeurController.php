@@ -28,7 +28,7 @@ class ServeurController extends Controller
         $orders = DB::table('commands_par_sites')
         ->join('users', 'commands_par_sites.users_id', '=', 'users.id')
         ->join('cafe_restaurants', 'commands_par_sites.cafe_restaurants_id', '=', 'cafe_restaurants.id')
-        ->select('users.name','nomCafeRestaurant','commands_par_sites.created_at', 'users.address')
+        ->select('users.name','nomCafeRestaurant','commands_par_sites.created_at', 'commands_par_sites.id', 'users.address', 'etat')
         ->get();
         return view('serveurs.index', ['orders' => $orders, 'totales' => $totales] );
     }

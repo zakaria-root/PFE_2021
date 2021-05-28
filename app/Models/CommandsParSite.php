@@ -4,10 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class CommandsParSite extends Model
 {
     use HasFactory;
+
+
+    public static function addEtat($id){
+        DB::table('commands_par_sites')
+              ->where('id', $id)
+              ->update(['etat' => 1]);
+        
+    }
 
     public function comments()
     {

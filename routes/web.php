@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CafeRestaurantController;
 use App\Http\Controllers\CommandsParSiteController;
+use App\Http\Controllers\COrdinaireController;
 use App\Http\Controllers\employeeController;
 use App\Http\Controllers\MaterielController;
 use App\Http\Controllers\PAlimantaireController;
@@ -60,3 +61,8 @@ Route::get('/supprimerItem/{item}',[PanierController::class,'supprimerItem'])->n
 Route::get('/valider',[CommandsParSiteController::class,'store'])->name('store');
 
 Route::resource('/serveurs', ServeurController::class);
+
+Route::resource('/cordinaire', COrdinaireController::class);
+
+Route::post('/cordinaire/add',[COrdinaireController::class,'addPlatToCommandOrdinaire'])->name('cordinaire.addPlatToCommandOrdinaire');
+Route::post('/cordinaire/store',[COrdinaireController::class,'storeDb'])->name('cordinaire.storeDb');
