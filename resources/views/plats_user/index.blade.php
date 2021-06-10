@@ -1,6 +1,7 @@
 @extends('layouts.layout')
 @section('content')
 
+<link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <div class="d-grid gap-2 mt-2">
         <h1><span class="btn btn-dark btn-block">list des plats disponible</span> </h1>
     </div>
@@ -11,6 +12,7 @@
 
     <div class="row">
         @forelse ($plats as $i)
+        
             <div class="col-4">
                 <div class="card mt-2" style="width: 18rem;">
                     <img src="/img/gg.jpg" class="card-img-top">
@@ -25,8 +27,16 @@
                         <p> {{ $i->categorie }}</p>
                         <form method="get" action="{{ route('panier.add', ['plat' => $i->id]) }}">
                             <button type="submit" class="btn btn-dark">Ajouter au panier</button>
+                            
                         </form>
-
+                        {{-- les etoiles --}}
+                        <div class="rating mt-2 pb-0"><small><!--
+                        --><a href="#5" title="Donner 5 étoiles">☆</a><!--
+                        --><a href="#4" title="Donner 4 étoiles">☆</a><!--
+                        --><a href="#3" title="Donner 3 étoiles">☆</a><!--
+                        --><a href="#2" title="Donner 2 étoiles">☆</a><!--
+                        --><a href="#1" title="Donner 1 étoile">☆</a></small>
+                     </div>
                     </div>
                 </div>
             </div>
@@ -48,6 +58,6 @@
 
         @endforelse
     </div>
-
+   
 
 @endsection

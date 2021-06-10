@@ -25,7 +25,15 @@ class COrdinaireController extends Controller
         
         $listCommande=Session::get('Commande');
         $Commande=new CommmandLocale($listCommande);
-        return view('serveurs.cordinaire.index',['plats'=>$Commande->items,'cafes' => $cafes]);
+        
+        if ($Commande->items != null) {
+            $Commande = $Commande->items;
+        }elseif ( $Commande->items == null) {
+            $Commande = [];
+        }
+        
+        
+        return view('serveurs.cordinaire.index',['plats'=> $Commande,'cafes' => $cafes]);
         // return view('serveurs.cordinaire.index', ['cafes' => $cafes]);
     }
 

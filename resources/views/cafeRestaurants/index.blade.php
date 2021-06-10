@@ -23,6 +23,24 @@
           </div>
             
           </div>
+          {{-- search  --}}
+          <div class="card-header py-0 pt-2 ">
+            <h3 class="card-title  float-right ">
+              <div class="card-tools ">
+                <form action="{{ url('/cafeRestaurants') }}">
+                <div class="input-group input-group-sm " style="width: 180px;">
+                  <input type="text" name="nomCafeRestaurant" class="form-control float-right" placeholder="Search">
+    
+                  <div class="input-group-append">
+                    <button type="submit" class="btn btn-default">
+                      <i class="fas fa-search"></i>
+                    </button>
+                  </div>
+                </div>
+              </form>
+              </div>
+            
+          </div>
           <!-- /.card-header -->
           <div class="card-body table-responsive p-0 ">
             <table class="table table-hover ">
@@ -35,6 +53,8 @@
                 </tr>
               </thead>
               @foreach ($crs as $cr)
+              @if ($cr->nomCafeRestaurant === request()->get('nomCafeRestaurant') or request()->get('nomCafeRestaurant') == null)
+
                 <tr>
                     <th scope="row">{{ $cr->id }}</th>
                     <td>{{ $cr->nomCafeRestaurant }}</td>
@@ -61,6 +81,7 @@
                         
                     </td>
                   </tr>
+                  @endif
                 @endforeach
 
               </tbody>

@@ -23,7 +23,7 @@
       </div>
         
       </div>
-      <div class="card-header py-0 pt-2 ml-1">
+      <div class="card-header py-0 pt-2">
         <h3 class="card-title  float-right ">
           <div class="card-tools ">
             <form action="{{ url('/employees') }}">

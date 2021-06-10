@@ -52,6 +52,7 @@ class employeeController extends Controller
             'commission' => $request['commission'],
             'cafe_restaurants_id' => $request['cafe'],
             
+            
         ]);
         session()->flash('ajouter',' l\'employe a ete bien ajouter !!');
             $emp->save();

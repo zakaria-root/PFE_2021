@@ -14,12 +14,30 @@
             <div class="col-12 col-4">
               <div class="col-4 offset-11 ">
                   <button type="button" style="margin-left:45px !important ; padding-top: 3px !important;padding-bottom: 3px !important;" class="btn btn-success px-3 mt-1" data-toggle="modal" data-target="#ajouterPAlimantaire" >
-                    <i class="fas fa-plus fa-lg pt-1"></i>
+                    <i class="fas fa-plus  pt-1"></i>
                   </button>
                       
               </div>
               
           </div>
+            
+          </div>
+          {{-- searche --}}
+          <div class="card-header py-0 pt-2 ">
+            <h3 class="card-title  float-right ">
+              <div class="card-tools ">
+                <form action="{{ url('/PAlimantaires') }}">
+                <div class="input-group input-group-sm " style="width: 180px;">
+                  <input type="text" name="nomProduit" class="form-control float-right" placeholder="Search">
+    
+                  <div class="input-group-append">
+                    <button type="submit" class="btn btn-default">
+                      <i class="fas fa-search"></i>
+                    </button>
+                  </div>
+                </div>
+              </form>
+              </div>
             
           </div>
           <!-- /.card-header -->
@@ -35,6 +53,8 @@
                 </tr>
               </thead>
               @foreach ($pas as $pa)
+              @if ($pa->nomProduit === request()->get('nomProduit') or request()->get('nomProduit') == null)
+
                 <tr>
                     <th scope="row">{{ $pa->id }}</th>
                     <td>{{ $pa->nomProduit }}</td>
@@ -63,6 +83,7 @@
                         
                     </td>
                   </tr>
+                  @endif
                 @endforeach
 
               </tbody>

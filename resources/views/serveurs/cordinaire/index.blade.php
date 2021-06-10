@@ -35,16 +35,25 @@
                 <tr>
                   <th>Numero du plat</th>
                   <th>Nom du cafe</th>
-                  <th>Nom du plat</th>
+                  <th>la quantite</th>
                   <th>prix du plat</th>
+                  <th>Nom du plat</th>
                   <th>Action</th>
                 </tr>
               </thead>
+              @php
+                  $i=0;
+              @endphp
               @foreach ($plats as $plat)
-       
+             
+             
                 <tr>
                     <th scope="row">{{ $plat['item']['id'] }}</th>
+                    <th scope="row">{{ $cafes[0]->nomCafeRestaurant }}</th>
                     <th scope="row">{{ $plat['qty'] }}</th>
+                    <th scope="row"></th>
+                    <th scope="row"></th>
+
                     {{-- <th ><img src="{{ asset('storage/'.$plat->image) }}" width="80px" alt="image du plat"> </th>
                     <td>{{ $plat->nomPlat }}</td>
                     <td>{{ $plat->prix }}</td>
@@ -73,6 +82,10 @@
                         
                     </td>
                   </tr>
+                  @php
+                  $i++;
+              @endphp
+                 
                 @endforeach
 
               </tbody>
