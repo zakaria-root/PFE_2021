@@ -17,7 +17,8 @@ class Plat extends Model
         'description',
         'cafe_restaurants_id',
         'categorie',
-        'image'
+        'image',
+        'etoiles'
     ];
     protected $dates = ['deleted_at'];
 
