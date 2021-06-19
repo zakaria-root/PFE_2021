@@ -10,11 +10,20 @@ class etoileController extends Controller
     public function addEtoile(Request $request)
     {
         
-       
+        // dd($request->etoile);
         $pa = Plat::findOrFail($request->id);
-        $pa->etoiles = (integer)$pa->etoiles + (integer)$request->input('etoile');
+        if ($pa->etoiles == 0) {
+            $pa->etoiles = $request->input('etoile');
+        }else{
+            $pa->etoiles = $pa->etoiles + $request->input('etoile');
+            $pa->etoiles = $pa->etoiles/2;
+        }
+
+        // $pa->etoiles = 0;
         $pa->save();
-        return back();
+        
+        dd($pa->etoiles);
+        // return back();
     }
 
 }

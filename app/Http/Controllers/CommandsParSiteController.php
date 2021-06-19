@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\CommandsParSite;
 use App\Models\CreateDetailsCommandsParSiteTable;
+use App\Models\Plat;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
@@ -68,9 +69,13 @@ class CommandsParSiteController extends Controller
         ->get();
     
     
+    
+    DB::table('plats')
+    ->update(['per_etoiles' => 1]).
+    
     dd($uy);
         
-
+    
     }
 
     

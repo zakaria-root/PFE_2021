@@ -6,6 +6,7 @@ use Dotenv\Validator;
 use App\Models\Utilisateur;
 use Illuminate\Http\Request;
 use App\Http\Requests\utRequest;
+use App\Models\Employee;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
@@ -46,6 +47,12 @@ class utilisateurController extends Controller
     public function store(utRequest $request)
     {
         
+        // $emps = Employee::all();
+        // foreach ($emps as $emp) {
+        //     if ($emps->nomEmploye == $request->nom) {
+        //         $role = "serveur";
+        //     }
+        // }
         
          User::create([
             'name' => $request['nom'],

@@ -29,13 +29,16 @@
                             <button type="submit" class="btn btn-dark">Ajouter au panier</button>
                             
                         </form>
+                        
+                            {{ $i->per_etoiles }}
+                        
                         {{-- les etoiles --}}
-                        <div class="rating mt-2 pb-0" ><small><!--
-                        --><a href="{{ route('etoile.addEtoile', ['id'=>$i->id,'etoile' => 5 ]) }}"  >☆</a>
-                        <a href="{{ route('etoile.addEtoile', ['id'=>$i->id,'etoile' => 4 ])  }}" >☆</a><!--
-                        --><a href="{{ route('etoile.addEtoile', ['id'=>$i->id,'etoile' => 3 ])  }}" >☆</a><!--
-                        --><a href="{{ route('etoile.addEtoile', ['id'=>$i->id,'etoile' => 2 ])  }}" >☆</a><!--
-                        --><a href="{{ route('etoile.addEtoile', ['id'=>$i->id,'etoile' => 1 ])  }}" >☆</a></small>
+                        <div class="rating mt-2 pb-0" ><small>
+                        <a @if($i->per_etoiles === 1 ) href="{{ route('etoile.addEtoile', ['id'=>$i->id,'etoile' => 5 ])  }}" @endif class="active">☆</a>
+                        <a @if($i->per_etoiles === 1 ) href="{{ route('etoile.addEtoile', ['id'=>$i->id,'etoile' => 4 ])  }}" @endif class="active">☆</a>
+                        <a @if($i->per_etoiles === 1 ) href="{{ route('etoile.addEtoile', ['id'=>$i->id,'etoile' => 3 ])  }}" @endif class="active">☆</a>
+                        <a @if($i->per_etoiles === 1 ) href="{{ route('etoile.addEtoile', ['id'=>$i->id,'etoile' => 2 ])  }}" @endif class="active">☆</a>
+                        <a @if($i->per_etoiles === 1 ) href="{{ route('etoile.addEtoile', ['id'=>$i->id,'etoile' => 1 ])  }}" @endif class="active">☆</a></small>
 
                      </div>
                     </div>
