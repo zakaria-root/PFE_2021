@@ -19,16 +19,34 @@
             <div class="col-4 offset-9">
             <a href="?categorie=cafe" class="btn btn-outline-primary px-5 ml-2" ">Cafe</a>
             <a href="?categorie=restaurant" class="btn btn-outline-primary ml-1 px-4" >Restaurant </a>
-
+              
               {{-- <button type="button" style="" class="btn btn-success px-4 " data-toggle="modal" data-target="#ajouterEmployee" >
                 <i class="fas fa-cart-plus"></i>
                   
               </button> --}}
-        
           </div>
           
+          
       </div>
-      </div>
+    </div>
+    {{-- filtrage --}}
+      <div class="card-header py-0 pt-2 ">
+        <h3 class="card-title  float-right ">
+          <div class="card-tools ">
+            <form action="/home">
+            <div class="input-group input-group-sm " style="width: 180px;">
+              <input type="date" name="date" class="form-control float-right" placeholder="Search">
+
+              <div class="input-group-append">
+                <button type="submit" class="btn btn-default">
+                  <i class="fas fa-search"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+          </div>
+        
+      </h3></div>
       <!-- /.card-header -->
       <div class="card-body table-responsive p-0">
         <table class="table table-hover">
@@ -50,6 +68,9 @@
             $request = Request::all();
             @endphp
           @foreach ($winds as $wind)
+          @if ($wind->created_at >= request()->get('date') or request()->get('date') == null)
+            
+          
           @if ($wind->categorie === request()->get('categorie') or request()->get('categorie') == null)
                 
           <tr>
@@ -64,6 +85,7 @@
                     $tPrix = $tPrix + $wind->prix * $wind->quantite 
                     @endphp
               </tr>
+              @endif
               @endif
               @endforeach
              
