@@ -31,6 +31,13 @@ class PlatController extends Controller
         }
     }
 
+    public function plat_user(){
+        $plats = plat::all();
+        return view('plats_user.index_user',[
+            'plats'=> $plats
+        ]);
+    }
+
     public function fitchR($categorie)
     {
         if ($categorie=="restaurant") {
@@ -49,7 +56,7 @@ class PlatController extends Controller
     {
         $plats = DB::table('plats')->where('cafe_restaurants_id', $id)->get();
 
-        return view('plats_user.index', ['plats' => $plats]);
+        return view('plats_user.index_user', ['plats' => $plats]);
     }
     
     /**

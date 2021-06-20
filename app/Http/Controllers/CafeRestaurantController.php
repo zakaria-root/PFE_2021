@@ -27,6 +27,11 @@ class CafeRestaurantController extends Controller
         return view('cafe_restaurants_user.index',["crs" => $crs1]);
     }
 
+    public function cafe_index(){
+        $crs1 = DB::table('cafe_restaurants')->get();
+        return view('cafe_restaurants_user.index_user',["crs" => $crs1]);
+    }
+
     public function fitchVille(Request $request)
     {
         $ville=$request->input('ville');

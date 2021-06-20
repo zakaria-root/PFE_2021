@@ -73,7 +73,7 @@ rel="stylesheet"
                 </a>
               </li> 
               <li class="nav-item">
-                <a class="nav-link" href="products.html">Our Products</a>
+                <a class="nav-link" href="{{ url('/cafeRestauts') }}">Notre Cafes</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="about.html">About Us</a>

@@ -49,8 +49,11 @@ Route::resource('/PAlimantaires', PAlimantaireController::class);
 
 Route::resource('/plats', PlatController::class);
 
+Route::get('/h/cafeRestaut',[PlatController::class,'plat_user']);
 
 Route::get('/fitchVille',[CafeRestaurantController::class,'fitchVille'])->name('cafe_restaurants.fitchVille');
+
+Route::get('/cafeRestauts',[CafeRestaurantController::class,'cafe_index']);
 
 Route::get('/fitchR/{categorie}',[PlatController::class,'fitchR'])->name('plats.fitchR');
 
