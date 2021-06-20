@@ -35,7 +35,7 @@
           <div class="card-tools ">
             <form action="/home">
             <div class="input-group input-group-sm " style="width: 180px;">
-              <input type="date" name="date" class="form-control float-right" placeholder="Search">
+              <input type="date" name="date" class="form-control float-right" style="border-radius: 5px" placeholder="Search">
 
               <div class="input-group-append">
                 <button type="submit" class="btn btn-default">

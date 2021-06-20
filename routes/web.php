@@ -5,9 +5,11 @@ use App\Http\Controllers\CommandsParSiteController;
 use App\Http\Controllers\COrdinaireController;
 use App\Http\Controllers\employeeController;
 use App\Http\Controllers\etoileController;
+use App\Http\Controllers\FirstPageController;
 use App\Http\Controllers\MaterielController;
 use App\Http\Controllers\PAlimantaireController;
 use App\Http\Controllers\PanierController;
+use App\Http\Controllers\PlatChoisieController;
 use App\Http\Controllers\PlatController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServeurController;
@@ -25,9 +27,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function () {
-    return view('myWelcom');
-});
+// Route::get('/', function () {
+//     return view('myWelcom');
+// });
 
 Auth::routes();
 
@@ -68,3 +70,7 @@ Route::resource('/cordinaire', COrdinaireController::class);
 Route::post('/cordinaire/add',[COrdinaireController::class,'addPlatToCommandOrdinaire'])->name('cordinaire.addPlatToCommandOrdinaire');
 Route::post('/cordinaire/store',[COrdinaireController::class,'storeDb'])->name('cordinaire.storeDb');
 Route::get('etoile',[etoileController::class,'addEtoile'])->name('etoile.addEtoile');
+
+Route::get('/',[FirstPageController::class,'index']);
+
+Route::get('/plate/{id}',[PlatChoisieController::class,'show']);
