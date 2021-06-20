@@ -19,7 +19,7 @@ class PanierController extends Controller
         $cart->add($plat,$plat->id);
 
         $request->session()->put('cart',$cart);
-        return redirect()->route('plats.index');
+        return redirect()->route('plate.show',$id);
     }
 
     public function affichePanier()

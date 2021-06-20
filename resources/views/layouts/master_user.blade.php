@@ -111,13 +111,20 @@ https://templatemo.com/tm-546-sixteen-clothing
                
             @endif
               
-              
-
+            
+           
             </ul>
             
           </div>
-         
-          
+          <ul>
+              <li>
+                  <a class="text-reset " href="{{ route('panier.affichePanier') }}">
+            <i class="fas fa-shopping-cart" style="color: rgb(176, 174, 174)"></i>
+            <span class="badge bg-danger rounded-pill">{{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}</span>
+            </a>  
+              </li>
+          </ul>
+
         </div>
         
       </nav>

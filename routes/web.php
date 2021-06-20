@@ -76,4 +76,4 @@ Route::get('etoile',[etoileController::class,'addEtoile'])->name('etoile.addEtoi
 
 Route::get('/',[FirstPageController::class,'index']);
 
-Route::get('/plate/{id}',[PlatChoisieController::class,'show']);
+Route::get('/plate/{id}',[PlatChoisieController::class,'show'])->name('plate.show');

@@ -120,7 +120,15 @@ rel="stylesheet"
             </ul>
             
           </div>
-         
+          <ul>
+            <li>
+                <a class="text-reset " href="{{ route('panier.affichePanier') }}">
+          <i class="fas fa-shopping-cart" style="color: rgb(176, 174, 174)"></i>
+          <span class="badge bg-danger rounded-pill">{{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}</span>
+          </a>  
+            </li>
+        </ul>
+
           
         </div>
         
@@ -160,8 +168,8 @@ rel="stylesheet"
             <div class="left-content">
               <h4>toutes les informations concernant le plat {{ $plat->nomPlat }}</h4>
               <div class="nav nav-tabs" id="product-tab" role="tablist">
-                <a class="nav-item nav-link active" id="product-desc-tab" data-toggle="tab" href="#product-desc" role="tab" aria-controls="product-desc" aria-selected="true">Description</a>
-                <a class="nav-item nav-link" id="product-comments-tab" data-toggle="tab" href="#product-comments" role="tab" aria-controls="product-comments" aria-selected="false">Comments</a>
+                <a class="nav-item nav-link" id="product-desc-tab" data-toggle="tab" href="#product-desc" role="tab" aria-controls="product-desc" aria-selected="true">Description</a>
+                <a class="nav-item nav-link active" id="product-comments-tab" data-toggle="tab" href="#product-comments" role="tab" aria-controls="product-comments" aria-selected="false">Comments</a>
               </div>
               <div class="tab-content p-3" id="nav-tabContent">
                 <div class="tab-pane fade" id="product-desc" role="tabpanel" aria-labelledby="product-desc-tab"> 
@@ -177,10 +185,13 @@ rel="stylesheet"
                             </h4>
                           </div>
                           <div class="col-6 offset-2 mt-1">
-                            <div class="btn btn-outline-danger btn-lg btn-flat" style="">
+                            <form method="get" action="{{ route('panier.add', ['plat' => $plat->id]) }}">
+                              <button type="submit" class="btn btn-outline-danger btn-lg btn-flat" >
                               <i class="fa fa-cart-plus fa-lg" aria-hidden="true"></i>
                               Add to Cart
-                            </div>
+                              </button>
+                          </form>
+                            
                             
                           </div>
                         
