@@ -41,7 +41,7 @@ class CommandsParSiteController extends Controller
     public function store(Request $request)
     {
         $oldCart=Session::get('cart');
-
+        
         foreach ($oldCart->items as $i) {
             $a=$i['item']['cafe_restaurants_id'];
         }

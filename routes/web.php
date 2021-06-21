@@ -49,7 +49,7 @@ Route::resource('/PAlimantaires', PAlimantaireController::class);
 
 Route::resource('/plats', PlatController::class);
 
-Route::get('/h/cafeRestaut',[PlatController::class,'plat_user']);
+Route::get('/h/cafeRestaut',[PlatController::class,'plat_user'])->name('plat_user');
 
 Route::get('/fitchVille',[CafeRestaurantController::class,'fitchVille'])->name('cafe_restaurants.fitchVille');
 
@@ -74,6 +74,6 @@ Route::post('/cordinaire/add',[COrdinaireController::class,'addPlatToCommandOrdi
 Route::post('/cordinaire/store',[COrdinaireController::class,'storeDb'])->name('cordinaire.storeDb');
 Route::get('etoile',[etoileController::class,'addEtoile'])->name('etoile.addEtoile');
 
-Route::get('/',[FirstPageController::class,'index']);
+Route::get('/',[FirstPageController::class,'index'])->name('user_home');
 
 Route::get('/plate/{id}',[PlatChoisieController::class,'show'])->name('plate.show');

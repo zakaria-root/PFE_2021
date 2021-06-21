@@ -39,7 +39,7 @@ class HomeController extends Controller
             return redirect()->route('serveurs.index');
         }
         {
-            return redirect()->route('cafeRestaurants.index');
+            return redirect()->route('user_home');
         }
     }
 }

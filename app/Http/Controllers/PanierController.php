@@ -25,11 +25,11 @@ class PanierController extends Controller
     public function affichePanier()
     {
         if(!Session::has('cart')){
-            return view('panier.affichePanier');
+            return view('panier.affiche_panier_user');
         }
         $oldCart=Session::get('cart');
         $cart=new Cart($oldCart);
-        return view('panier.affichePanier',['plats'=>$cart->items,'totalPrix'=>$cart->totalPrice]);
+        return view('panier.affiche_panier_user',['plats'=>$cart->items,'totalPrix'=>$cart->totalPrice]);
     }
 
     public function supprimerItem(Request $request, $id)

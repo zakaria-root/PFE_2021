@@ -104,9 +104,10 @@ https://templatemo.com/tm-546-sixteen-clothing
                           </li>
                         @if (Route::has('register'))
                             <li class="nav-item" href="{{ route('register') }}">
-                                <a class="nav-link" href="contact.html">register</a>
-                              </li>
+                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            </li>
                         @endif
+                        
                     @endauth
                
             @endif
