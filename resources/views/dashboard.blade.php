@@ -22,7 +22,7 @@
     </div>
 </div>
 
-<div class="container ">
+<div class="container " >
     <div class="row clo-12">
 
         <div class="col-6 offset-2">

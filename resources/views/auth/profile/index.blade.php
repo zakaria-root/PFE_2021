@@ -26,7 +26,7 @@
           </li>
         </ul>
   
-        <button type="button" class="btn btn-primary btn-block"  data-toggle="modal" data-target="#editeProfile" ><b>edite prfile</b></button>
+        <button type="button" class="btn btn-danger btn-block"  data-toggle="modal" data-target="#editeProfile" ><b>edite prfile</b></button>
       </div>
       
       <!-- /.card-body -->

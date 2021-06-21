@@ -53,30 +53,123 @@ scratch. This page gets rid of all links and provides the needed markup only.
   background-color:#c74665ab;
 }
 [class*='sidebar-dark-'] {
-  /* background: #360033; 
-background: -webkit-linear-gradient(to top, #0b8793, #360033);  
-background: linear-gradient(to top, #0b8793, #360033);  */
+    /* background: #C04848;
+    background: -webkit-linear-gradient(to top, #480048, #C04848);
+    background: linear-gradient(to top, #480048, #333333); */
 
-background: #C04848;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to top, #480048, #C04848);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to top, #480048, #000000b8);
- /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+    
+    /* background: #C04848;
+    background: -webkit-linear-gradient(to top, #480048, #C04848);
+    background: linear-gradient(to top, #7d032ce6, #302048); */
+  
 
+}
+.card-header {
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 0;
+    background-color:rgb(203 196 251 / 35%);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+.btn-outline-primary {
+    color: #7b52c5;
+    border-color: #a254a5;
+}
+.btn-outline-primary:hover {
+    color: #fff;
+    background-color: #9241a4;
+    border-color: #9b56cd;
+}
+.btn-outline-primary:not(:disabled):not(.disabled):active, .btn-outline-primary:not(:disabled):not(.disabled).active, .show > .btn-outline-primary.dropdown-toggle {
+  color: #fff;
+    background-color: #a758aa;
+    border-color: #9b56cd;
+}
+.form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #784b79b8;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgb(144 86 202 / 22%);
+}
+.btn:focus, .btn.focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgb(133 91 200 / 31%);
+}
+.btn-danger {
+    color: #fff;
+    background-color: #9c3c5a;
+    border-color: #c34d71;
+}
+.btn-danger:hover {
+    color: #fff;
+    background-color: #da3569;
+    border-color: #b4315b;
+}
+.card-primary.card-outline {
+    border-top: 3px solid #c53e67;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #3b73a0;
+    border-color: #3884c2;
+}
+.btn-primary:hover {
+    color: #fff;
+    background-color: #3496ff;
+    border-color: #3496ff;
+}
+.btn-success {
+    color: #fff;
+    background-color: #3d9970;
+    border-color: #279c58;
+}
+.btn-success:hover {
+    color: #fff;
+    background-color: #33ce75;
+    border-color: #47b174;
+}
+.btn-success:hover {
+    color: #fff;
+    background-color: #33ce75;
+    border-color: #47b174;
+}
+.content-wrapper {
+
+
+  background: #cc2b5e;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to left, #6f3981, #c22d5c);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to left, #8f42a8, #c42e5d); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+.iconsidebare:hover{
+  color: white;
+}
+.mon-site:hover{
+  color: white;
 }
 </style>
 </head>
-<body class="hold-transition sidebar-mini">
-<div class="wrapper">
+<body class="hold-transition sidebar-mini content-wrapper" >
+<div class="wrapper" >
 
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light" 
+  style="border-width: 0px;
+  -webkit-box-shadow: 0px 0px;
+  box-shadow: 0px 0px;
+  background-color: rgba(0,0,0,0.0);
+  background-image: -webkit-gradient(linear, 50.00% 0.00%, 50.00% 100.00%, color-stop( 0% , rgba(0,0,0,0.00)),color-stop( 100% , rgba(0,0,0,0.00)));
+  background-image: -webkit-linear-gradient(270deg,rgba(0,0,0,0.00) 0%,rgba(0,0,0,0.00) 100%);
+  background-image: linear-gradient(180deg,rgba(0,0,0,0.00) 0%,rgba(0,0,0,0.00) 100%);">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars fa-lg iconsidebare" style="color: rgb(235, 235, 235)"></i></a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{ url('/') }}" class="nav-link ml-3"><b>MON SITE</b></a>
+      <li class="nav-item d-none d-sm-inline-block ">
+        <a href="{{ url('/') }}" class="nav-link ml-3 " style="color: rgb(235, 235, 235)"><b>MON SITE</b></a>
       </li>
       
     </ul>
@@ -161,16 +254,16 @@ background: linear-gradient(to top, #480048, #000000b8);
                 <a href="{{ url('/utilisateurs') }}" class="nav-link  @if ($etat === "utilisateurs")
                   active
                 @endif">
-                  <i class="fas fa-user-tag nav-icon pl-4"></i>
-                  <p class="pl-4">client</p>
+                  <i class="fas fa-user-tag nav-icon "></i>
+                  <p class="">client</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{ url('/employees') }}" class="nav-link @if ($etat === "employees")
                 active
               @endif">
-                    <i class="fas fa-user-cog nav-icon pl-4"></i>
-                  <p class="pl-4">employee</p>
+                    <i class="fas fa-user-cog nav-icon "></i>
+                  <p class="">employee</p>
                 </a>
               </li>
             </ul>
@@ -205,8 +298,8 @@ background: linear-gradient(to top, #480048, #000000b8);
                 <a href="{{ url('/materiels') }}" class="nav-link @if ($etat === "materiels" )
                 active
               @endif">
-                  <i class="fa fa-business-time nav-icon pl-4"></i>
-                  <p class="pl-4">materiel</p>
+                  <i class="fa fa-business-time nav-icon "></i>
+                  <p class="">materiel</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -214,8 +307,8 @@ background: linear-gradient(to top, #480048, #000000b8);
                 active
               @endif">
                   
-                  <i class="fas fa-layer-group nav-icon pl-4"></i>
-                  <p class="pl-4">matier premier</p>
+                  <i class="fas fa-layer-group nav-icon "></i>
+                  <p class="">matier premier</p>
                 </a>
               </li>
               
@@ -319,9 +412,9 @@ background: linear-gradient(to top, #480048, #000000b8);
           </div>
          
           
-
+          <div class="pt-1">
          @yield('content')
-       
+        </div>
       </div>
     </div>
 
