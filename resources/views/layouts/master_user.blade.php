@@ -39,6 +39,7 @@ https://templatemo.com/tm-546-sixteen-clothing
     href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css"
     rel="stylesheet"
     />
+    
   </head>
 
   <body>
@@ -135,7 +136,7 @@ https://templatemo.com/tm-546-sixteen-clothing
     @yield('content')
 
     
-    <footer>
+    <footer class="footer">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
