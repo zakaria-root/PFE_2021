@@ -19,7 +19,8 @@ class PAlimantaireController extends Controller
     {   $cafes = CafeRestaurant::all();
         $frs = Fourniseur::all();
         $pas = ProduitAlimantaire::all();
-        return view('PAlimantaires.index', ['pas' => $pas ,'cafes' => $cafes, 'frs' => $frs]);
+        $etat = "PAlimantaires";
+        return view('PAlimantaires.index', ['pas' => $pas ,'cafes' => $cafes, 'frs' => $frs , 'etat' => $etat]);
     }
 
     /**

@@ -151,7 +151,7 @@ https://templatemo.com/tm-546-sixteen-clothing
                   </div>
                   <div class="col-md-6 col-xl-4 text-center">
   
-                    <h2 class="fw-bold mb-4 pb-2">Member Login</h2>
+                    <h2 class="fw-bold mb-4 pb-2">Member Register</h2>
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 

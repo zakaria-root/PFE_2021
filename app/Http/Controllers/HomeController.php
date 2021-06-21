@@ -33,10 +33,11 @@ class HomeController extends Controller
         
 
         // dd($uy);h
+        $etat = "home";
         if (Auth::user()->role === "admin" ) {
-            return view('home', ['winds' => $winds]);
+            return view('home', ['winds' => $winds, 'etat' => $etat]);
         }elseif (Auth::user()->role === "serveur") {
-            return redirect()->route('serveurs.index');
+            return redirect()->route('serveurs.index', ['etat' => $etat]);
         }
         {
             return redirect()->route('user_home');

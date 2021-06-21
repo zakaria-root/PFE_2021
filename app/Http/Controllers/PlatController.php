@@ -21,9 +21,10 @@ class PlatController extends Controller
     {
         $cafes = CafeRestaurant::all();
         $plats = plat::all();
+        $etat = "plats";
         if (Auth::user()->role === "admin") {
             
-            return view('plats.index', ["cafes" => $cafes, "plats" => $plats ]);
+            return view('plats.index', ["cafes" => $cafes, "plats" => $plats , 'etat' => $etat]);
         }else{
             return view('plats_user.index',[
                 'plats'=>Plat::all()

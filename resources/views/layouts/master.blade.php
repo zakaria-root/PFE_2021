@@ -14,6 +14,56 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
   <link rel="stylesheet" href="{{ asset('css/app.css') }}">
   
+  <!-- Font Awesome -->
+<style>
+ [class*='sidebar-dark-'] .nav-sidebar > .nav-item.menu-open > .nav-link, [class*='sidebar-dark-'] .nav-sidebar > .nav-item:hover > .nav-link, [class*='sidebar-dark-'] .nav-sidebar > .nav-item > .nav-link:focus {
+    
+  position: relative;
+  animation-name: example;
+  animation-duration: 0.8s;
+  background-color:#c74665ab;
+
+}
+@keyframes example {
+  0%   {background-color:#c7466500;
+    
+    #ffffffcf }
+  
+  100% {background-color:#c74665ab;
+    color: #ffffff;}
+}
+
+[class*='sidebar-dark-'] .nav-treeview > .nav-item > .nav-link:hover, [class*='sidebar-dark-'] .nav-treeview > .nav-item > .nav-link:focus {
+  position: relative;
+  animation-name: example;
+  animation-duration: 0.8s;
+  background-color:#c74665ab;
+  
+}
+[class*='sidebar-dark-'] .nav-treeview > .nav-item > .nav-link.active, [class*='sidebar-dark-'] .nav-treeview > .nav-item > .nav-link.active:hover, [class*='sidebar-dark-'] .nav-treeview > .nav-item > .nav-link.active:focus {
+    
+    background-color: rgb(218 218 218 / 78%);
+  color: #202020e7;
+  
+}
+.sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link.active, .sidebar-light-primary .nav-sidebar > .nav-item > .nav-link.active {
+  position: relative;
+  animation-name: example;
+  animation-duration: 1s;
+  background-color:#c74665ab;
+}
+[class*='sidebar-dark-'] {
+  /* background: #360033; 
+background: -webkit-linear-gradient(to top, #0b8793, #360033);  
+background: linear-gradient(to top, #0b8793, #360033);  */
+
+background: #C04848;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to top, #480048, #C04848);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to top, #480048, #000000b8);
+ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+</style>
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -26,11 +76,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{ url('/') }}" class="nav-link ml-3">MON SITE</a>
+        <a href="{{ url('/') }}" class="nav-link ml-3"><b>MON SITE</b></a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
-      </li>
+      
     </ul>
 
     <!-- Right navbar links -->
@@ -43,21 +91,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="/home" class="brand-link">
+    <a href="/home" class="brand-link text-center">
         <i class="fas fa-coffee ml-3 "></i>
-      <span class="brand-text font-weight-light">CafeRestaut</span>
+      <span class="brand-text font-weight-light pr-4">CafeRestaut</span>
     </a>
 
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="default.jpg" style="width: 30px; height:30px" class="img-circle elevation-2" alt="User Image">
+      <div class="user-panel mt-3  mb-3 ">
+        <div class=" text-center">
+          <img src="default.jpg" style="width: 80%" class="img-circle elevation-2 " alt="User Image">
+          
         </div>
-        <div class="info">
-          <a href="{{ url('/profile') }}" class="d-block">{{ Auth::user()->name }}</a>
-        </div>
+        
+        <span class="brand-text font-weight-light  d-block text-center pt-3 pb-3 "><a href="{{ url('/profile') }}" class=" "><b>{{ Auth::user()->name }}</b></a></span>
+        
+        
+        
+        
         
       </div>
 
@@ -68,7 +120,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                with font-awesome or any other icon font library -->
                  
                <li class="nav-item">
-                <a href="{{ url('/home') }}" class="nav-link">
+                <a href="{{ url('/home') }}" class="nav-link @if ($etat === "home")
+                active
+              @endif ">
                   <i class=" nav-icon fas fa-tachometer-alt"></i>
                   <p>
                     Dashboard
@@ -77,7 +131,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ url('/profile') }}" class="nav-link">
+                <a href="{{ url('/profile') }}" class="nav-link @if ($etat === "profile")
+                active
+              @endif "">
                   <i class="nav-icon fas fa-user-tie"></i>
                   <p>
                     profile
@@ -88,9 +144,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
               @if (Auth::user()->role === "admin")
                 
               
-          <li class="nav-item has-treeview ">
-            <a href="#" class="nav-link ">
-              <i class="nav-icon fas fa-users"></i>
+          <li class="nav-item has-treeview @if ($etat === "utilisateurs" || $etat === "employees")
+          menu-open
+        @endif ">
+            <a href="#" class="nav-link @if ($etat === "utilisateurs" || $etat === "employees")
+            active
+          @endif ">
+              <i class="nav-icon fas fa-users "></i>
               <p>
                 utilisateurs
                 <i class="right fas fa-angle-left"></i>
@@ -98,22 +158,28 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ url('/utilisateurs') }}" class="nav-link ">
-                  <i class="fas fa-user-tag nav-icon"></i>
-                  <p>client</p>
+                <a href="{{ url('/utilisateurs') }}" class="nav-link  @if ($etat === "utilisateurs")
+                  active
+                @endif">
+                  <i class="fas fa-user-tag nav-icon pl-4"></i>
+                  <p class="pl-4">client</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ url('/employees') }}" class="nav-link">
-                    <i class="fas fa-user-cog nav-icon"></i>
-                  <p>employee</p>
+                <a href="{{ url('/employees') }}" class="nav-link @if ($etat === "employees")
+                active
+              @endif">
+                    <i class="fas fa-user-cog nav-icon pl-4"></i>
+                  <p class="pl-4">employee</p>
                 </a>
               </li>
             </ul>
           </li>
          
           <li class="nav-item">
-            <a  href="{{ url('/cafeRestaurants') }}"  class="nav-link">
+            <a  href="{{ url('/cafeRestaurants') }}"  class="nav-link @if ($etat === "cafeRestaurants")
+            active
+          @endif">
               <i class="fas fa-laptop-house nav-icon"></i>
               <p>
                 cafes
@@ -122,8 +188,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
           </li>
 
-           <li class="nav-item has-treeview ">
-            <a href="#" class="nav-link ">
+           <li class="nav-item has-treeview @if ($etat === "materiels" || $etat === "PAlimantaires")
+           menu-open
+         @endif ">
+            <a href="#" class="nav-link @if ($etat === "materiels" || $etat === "PAlimantaires")
+            active
+          @endif">
               <i class="nav-icon fas fa-archive"></i>
               <p>
                 produit
@@ -132,22 +202,28 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ url('/materiels') }}" class="nav-link ">
-                  <i class="fa fa-business-time nav-icon"></i>
-                  <p>materiel</p>
+                <a href="{{ url('/materiels') }}" class="nav-link @if ($etat === "materiels" )
+                active
+              @endif">
+                  <i class="fa fa-business-time nav-icon pl-4"></i>
+                  <p class="pl-4">materiel</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/PAlimantaires" class="nav-link">
+                <a href="/PAlimantaires" class="nav-link @if ( $etat === "PAlimantaires")
+                active
+              @endif">
                   
-                  <i class="fas fa-layer-group nav-icon"></i>
-                  <p>matier premier</p>
+                  <i class="fas fa-layer-group nav-icon pl-4"></i>
+                  <p class="pl-4">matier premier</p>
                 </a>
               </li>
               
             </ul>
             <li class="nav-item">
-              <a href="{{ url('/plats') }}" class="nav-link">
+              <a href="{{ url('/plats') }}" class="nav-link @if ( $etat === "plats")
+              active
+            @endif">
                 <i class="fas fa-concierge-bell nav-icon"></i>
                    <p>
                   Plats

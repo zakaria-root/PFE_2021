@@ -19,8 +19,9 @@ class utilisateurController extends Controller
      */
     public function index()
     {
+        $etat = "utilisateurs";
         $utilisateurs = User::all();
-        return view('utilisateurs.index' , ['users' => $utilisateurs ]);
+        return view('utilisateurs.index' , ['users' => $utilisateurs ,'etat' => $etat]);
 
     }
 

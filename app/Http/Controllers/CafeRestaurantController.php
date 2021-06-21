@@ -18,9 +18,10 @@ class CafeRestaurantController extends Controller
     {
         $crs = CafeRestaurant::all();
         $crs1 = DB::table('cafe_restaurants')->get();
+        $etat = "cafeRestaurants";
         if (Auth::user()->role === "admin") {
             
-            return view('cafeRestaurants.index',["crs" => $crs]);
+            return view('cafeRestaurants.index',["crs" => $crs, 'etat' => $etat]);
         }else{
             
         }

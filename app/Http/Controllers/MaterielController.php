@@ -22,7 +22,8 @@ class MaterielController extends Controller
         $mts = Materiel::all();
         $cafes = CafeRestaurant::all();
         $frs = Fourniseur::all();
-        return view('materiels.index' , ['mts' => $mts ,'cafes' => $cafes, 'frs' => $frs ]);
+        $etat = "materiels";
+        return view('materiels.index' , ['mts' => $mts ,'cafes' => $cafes, 'frs' => $frs,'etat' => $etat ]);
     }
 
     /**

@@ -21,7 +21,8 @@ class employeeController extends Controller
         
         $eplouyee = Employee::all();
         $cafes = CafeRestaurant::all();
-        return view('employees.index' , ['emps' => $eplouyee ,'cafes' => $cafes]);
+        $etat = "employees";
+        return view('employees.index' , ['emps' => $eplouyee ,'cafes' => $cafes, 'etat' => $etat]);
 
     }
 
