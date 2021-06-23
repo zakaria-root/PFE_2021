@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\CafeRestaurantController;
 use App\Http\Controllers\CommandsParSiteController;
 use App\Http\Controllers\COrdinaireController;
@@ -77,3 +78,5 @@ Route::get('etoile',[etoileController::class,'addEtoile'])->name('etoile.addEtoi
 Route::get('/',[FirstPageController::class,'index'])->name('user_home');
 
 Route::get('/plate/{id}',[PlatChoisieController::class,'show'])->name('plate.show');
+
+Route::get('/About',[AboutUsController::class,'index'])->name('about.index');
