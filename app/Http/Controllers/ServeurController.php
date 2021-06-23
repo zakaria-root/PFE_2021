@@ -12,12 +12,15 @@ class ServeurController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $etat)
     {
+        
         $totales = DB::table('details_commands_par_site')
         ->join('plats','details_commands_par_site.plats_id', '=', 'plats.id')
         ->select(DB::raw("SUM(plats.prix) as prix"))->groupBy('commands_par_sites_id')
         ->get();
+
+        $bt = "serveurs";
 
         
         // $totale = 0;
@@ -30,7 +33,7 @@ class ServeurController extends Controller
         ->join('cafe_restaurants', 'commands_par_sites.cafe_restaurants_id', '=', 'cafe_restaurants.id')
         ->select('users.name','nomCafeRestaurant','commands_par_sites.created_at', 'commands_par_sites.id', 'users.address', 'etat')
         ->get();
-        return view('serveurs.index', ['orders' => $orders, 'totales' => $totales] );
+        return view('serveurs.index', ['orders' => $orders, 'totales' => $totales,'etat' => $etat->etat,'bt'=>$bt] );
     }
 
     /**

@@ -21,8 +21,10 @@ crossorigin="anonymous"
         <div class="col-12 col-4">
             
             <div class="col-4 offset-9">
-            <a href=" {{ url('serveurs') }}" class="btn btn-outline-primary px-4 ml-5" >livraison</a>
-            <a href="{{ url('cordinaire',) }}" class="btn btn-outline-primary ml-1 px-4" >ordinaire </a>
+            <a href=" {{ url('serveurs?etat=home') }}" class="btn btn-outline-primary px-4 ml-5 @if ($bt === "serveurs")
+              active
+            @endif " >livraison</a>
+            <a href="{{ url('cordinaire?etat=home') }}" class="btn btn-outline-primary ml-1 px-4" >ordinaire </a>
 
               {{-- <button type="button" style="" class="btn btn-success px-4 " data-toggle="modal" data-target="#ajouterEmployee" >
                 <i class="fas fa-cart-plus"></i>
@@ -102,11 +104,13 @@ crossorigin="anonymous"
           </tbody>
           <tfoot >
           <tr style="background-color: rgba(231, 227, 253, 0.89)">
-            <td class="pl-4"><b>Prix Totale</b> </td>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
+            <td></td>
+            <td class="pl-4 float-right"><b><i class="fas fa-dolly-flatbed fa-lg"></i></b> </td>
+            
             <td>
                 
             </td>

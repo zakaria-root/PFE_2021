@@ -11,16 +11,21 @@
             <h3 class="card-title">
                 <i class="fas fa-concierge-bell fa-lg pr-1 pt-2"></i>
                 tableau des commandes ordinaire</h3>
-            <div class="col-12 col-4">
-              <div class="col-4 offset-11 ">
-                  <button type="button" style="margin-left:45px !important ; padding-top: 3px !important;padding-bottom: 2px !important;" class="btn btn-success px-3 mt-1" data-toggle="modal" data-target="#ajouterPlatOrdinaire" >
+                <div class="col-12 col-4">
+            
+                  <div class="col-4 offset-9">
+                  <a href=" {{ url('serveurs?etat=home') }}" class="btn btn-outline-primary px-4 ml-5" >Livraison</a>
+                  <a href="{{ url('cordinaire?etat=home') }}" class="btn btn-outline-primary ml-1 px-4 @if ($bt === "cordinaire")
+                    active
+                  @endif " >Ordinaire </a>
+                  {{-- <button type="button" style="margin-left:45px !important ; padding-top: 3px !important;padding-bottom: 2px !important;" class="btn btn-success px-3 mt-1" data-toggle="modal" data-target="#ajouterPlatOrdinaire" >
                     <i class="fas fa-plus  pt-1"></i>
                       
                   </button>
                   <form action="{{ route('cordinaire.storeDb') }}" method="POST">
                     @csrf
                     <button type="submit" value="valider" >
-                  </form>
+                  </form> --}}
                   
                    
               </div>
@@ -33,12 +38,12 @@
             <table class="table table-hover">
               <thead>
                 <tr>
-                  <th>Numero du plat</th>
-                  <th>Nom du cafe</th>
-                  <th>la quantite</th>
-                  <th>prix du plat</th>
-                  <th>Nom du plat</th>
-                  <th>Action</th>
+                  <th class="pr-5">Numero du plat</th>
+                  <th class="pr-5">Nom du cafe</th>
+                  <th class="pr-5">Nom du plat</th>
+                  <th class="pr-5">la quantite</th>
+                  <th class="pr-5">prix Totale du plat</th>
+                  <th class="ml-2">Action</th>
                 </tr>
               </thead>
               @php
@@ -50,10 +55,10 @@
                 <tr>
                     <th scope="row">{{ $plat['item']['id'] }}</th>
                     <th scope="row">{{ $cafes[0]->nomCafeRestaurant }}</th>
+                    <th scope="row">{{ $plat['item'] ['nomPlat']}}</th>
                     <th scope="row">{{ $plat['qty'] }}</th>
-                    <th scope="row"></th>
-                    <th scope="row"></th>
-
+                    <th scope="row">{{ $plat['price'] }}</th>
+                    
                     {{-- <th ><img src="{{ asset('storage/'.$plat->image) }}" width="80px" alt="image du plat"> </th>
                     <td>{{ $plat->nomPlat }}</td>
                     <td>{{ $plat->prix }}</td>
@@ -62,21 +67,21 @@
                         
                             <a type="button"
                             class="btn btn-primary px-3 py-1" style="color: white ;"
-                            {{-- data-value_plat="{{ $plat->id }}" 
-                            data-value_nom_plat="{{ $plat->nomPlat }}" 
-                            data-value_prix="{{ $plat->prix }}"
-                            data-value_description="{{ $plat->description }}"
-                            data-value_image="{{ $plat->image }}" --}}
+                            {{-- data-value_plat="{{ $plat->id }}"  --}}
+                            data-value_nom_plat="{{ $plat['item'] ['nomPlat'] }}" 
+                            data-value_quantite="{{ $plat['qty']}}"
+                            data-value_nom_cafe="{{ $cafes[0]->nomCafeRestaurant }}"
+                            {{-- data-value_image="{{ $plat->image }}" --}}
                             data-toggle="modal" 
-                            data-target="#editplat" >
+                            data-target="#modifierPlatOrdinaire" >
                             <i class="fas fa-edit "></i>
                             </a>
                             
                             <a type="button"
                             class="btn btn-danger px-3 py-1" style="color: white"
-                            {{-- data-value_plat="{{ $plat->id }}"   --}}
+                            data-value_plat="{{ $plat['item']['id']  }}"  
                             data-toggle="modal" 
-                            data-target="#deletplat" >
+                            data-target="#supprimerPlatOrdinaire" >
                             <i class="fas fa-trash"></i>
                             </a>
                         
@@ -89,6 +94,45 @@
                 @endforeach
 
               </tbody>
+              <tfoot >
+                <tr style="background-color: rgba(231, 227, 253, 0.89)">
+                  <td><i class="fas fa-shopping-cart fa-lg ml-2 mt-3"></i></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  
+                    <td>
+                      
+                  </td>
+                  
+                  <td>
+                   
+                    <div class="d-flex justify-content-end">
+                    <button type="button"  class="btn btn-outline-primary" style="padding-left: 45px ;padding-right: 45px;" data-toggle="modal" data-target="#ajouterPlatOrdinaire" >
+                      <i class="fas fa-plus  pt-1"></i>
+                        
+                    </button>
+                    
+                       <form action="{{ route('cordinaire.storeDb') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="btn btn-outline-primary ml-2 " @if ($enable == "true")
+                        @else
+                            disabled
+                        @endif
+                    style="padding-left: 45px ;padding-right: 45px;"><i class="fas fa-check "></i></button>
+                  </form>
+                </div>
+                   
+                   
+                   
+                  </td>
+                  
+            
+                  {{-- <th class="pl-4">{{ $tPrix }} $ --}}
+                      {{-- <i class="fas fa-comment-dollar fa-lg ml-2"></i> --}}
+                  </th>
+                </tr>
+                </tfoot>
             </table>
           </div>
           <!-- /.card-body -->
@@ -97,6 +141,61 @@
       </div>
     </div>
     
+
+{{-- model plat ordinaire modifier --}}
+<div class="modal fade " id="modifierPlatOrdinaire" tabindex="-1" role="dialog" aria-labelledby="ajouterLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-blue1">
+        <h5 class="modal-title" id="ajouterLabel">modifier plat ordinaire</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="{{ route('cordinaire.update', 'test') }}" method="post">
+        @csrf
+        @method('patch')
+        <div class="modal-body" >        
+        <input id="prodId" class="prodId" name="value" type="hidden" value="" />
+
+        <div class="form-group ">
+          <label for="nom">Nom du plat</label>
+          <input type="text" class="form-control" name="nomPlat"  id="value_nom_plat" placeholder="entrer le nom" value="{{ old('nomPlat') }}"> 
+            </div>
+            <div class="form-group">
+            <label for="exampleInputPassword1">Quantite</label>
+            <input type="text" class="form-control" name="quantite" id="value_quantite" placeholder="mot de description" value="{{ old('quantite') }}">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Nom du Cafe</label>
+
+      <div class="input-group mb-3">
+        <select 
+        class="custom-select" 
+          aria-label=".form-select-lg example"
+          name="cafe" 
+          id="value_nom_cafe">
+          <option selected value="{{ $cafes->first()->id }}">{{$cafes->first()->nomCafeRestaurant }}</option>
+          @foreach ($cafes as $cafe)
+          @if ($loop->first) @continue @endif
+          <option value="{{ $cafe->id }}">{{ $cafe->nomCafeRestaurant }}</option>
+          @endforeach
+        </select>
+  </select>
+  <div class="input-group-append">
+    <label class="input-group-text" for="inputGroupSelect02">Options</label>
+  </div>
+</div>
+          </div>
+      </div>
+      <div class="modal-footer  justify-content-between">
+        <button type="button"  class="btn btn-secondary px-4" data-dismiss="modal">fermer</button>
+        <button type="submit" class="btn btn-info px-4">sauvgarder</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
     <!-- Modal materiel materiel-->
 
 <div class="modal fade " id="ajouterPlatOrdinaire" tabindex="-1" role="dialog" aria-labelledby="ajouterLabel" aria-hidden="true"  >
@@ -154,13 +253,15 @@
     </div>
   </div>
 </div>
-<!-- Modal modifier-->
 
-<div class="modal fade " id="editplat" tabindex="-1" role="dialog" aria-labelledby="ajouterLabel" aria-hidden="true">
+
+<!-- Modal modifier-->
+{{-- 
+<div class="modal fade " id="edit_plat_ordinaire" tabindex="-1" role="dialog" aria-labelledby="ajouterLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header bg-blue1">
-          <h5 class="modal-title" id="ajouterLabel">modifier materiel</h5>
+          <h5 class="modal-title" id="ajouterLabel">modifier plat ordinaire</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -241,7 +342,7 @@
       </form>
       </div>
     </div>
-  </div>
+  </div> --}}
 
 
 @endsection

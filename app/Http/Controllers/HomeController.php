@@ -38,7 +38,7 @@ class HomeController extends Controller
             return view('home', ['winds' => $winds, 'etat' => $etat]);
         }elseif (Auth::user()->role === "serveur") {
             return redirect()->route('serveurs.index', ['etat' => $etat]);
-        }
+        }   
         {
             return redirect()->route('user_home');
         }

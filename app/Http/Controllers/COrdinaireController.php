@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CafeRestaurant;
-use App\Models\CommandsOrdinaire;
-use App\Models\CommmandLocale;
-use App\Models\Plat;
 use Carbon\Carbon;
+use App\Models\Plat;
 use Illuminate\Http\Request;
+use App\Models\CafeRestaurant;
+use App\Models\CommmandLocale;
+use App\Models\CommandsOrdinaire;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use PhpParser\Node\Stmt\Return_;
 
 class COrdinaireController extends Controller
 {
@@ -18,14 +19,15 @@ class COrdinaireController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $bt = "cordinaire";
         $cafes = CafeRestaurant::all();
         
+        $ourPlats = Plat::all();
         
         $listCommande=Session::get('Commande');
         $Commande=new CommmandLocale($listCommande);
-        
         if ($Commande->items != null) {
             $Commande = $Commande->items;
         }elseif ( $Commande->items == null) {
@@ -33,12 +35,13 @@ class COrdinaireController extends Controller
         }
         
         
-        return view('serveurs.cordinaire.index',['plats'=> $Commande,'cafes' => $cafes]);
+        return view('serveurs.cordinaire.index',['plats'=> $Commande,'cafes' => $cafes,'ourPlats' => $ourPlats, 'etat' => $request->etat, 'bt'=> $bt, 'enable'=> $request->enable]);
         // return view('serveurs.cordinaire.index', ['cafes' => $cafes]);
     }
 
     public function addPlatToCommandOrdinaire(Request $request){
 
+        $enable = "true";
         $nom = $request->nomPlat;
         $quantite = $request->quantite;
         $cafe = $request->cafe;
@@ -48,8 +51,8 @@ class COrdinaireController extends Controller
         ->get();
 
         
-        
         $fuck = $id->toArray();
+        
         $fuckto = (string)$fuck[0]->id;
         $plat = Plat::find($fuckto);
         // dd($plat);
@@ -62,7 +65,7 @@ class COrdinaireController extends Controller
         $request->session()->put('Commande',$Commande);
 
         // dd($Commande);
-        return redirect()->route('cordinaire.index');
+        return redirect()->route('cordinaire.index',['enable' => $enable] );
     }
     /**
      * Show the form for creating a new resource.
@@ -83,10 +86,10 @@ class COrdinaireController extends Controller
      */
     public function storeDb(Request $request)
     {
-        
+        $etat = "home";
         $listCommande =Session::get('Commande');
 
-   
+
         $command =new CommandsOrdinaire();
         $command->cafe_restaurants_id=$listCommande->idCafe;
         $command-> save();
@@ -101,12 +104,14 @@ class COrdinaireController extends Controller
             ]);
         }
 
-            dd($details_command);
+            // dd($details_command);
         $uy = DB::table('details_commands_par_site')
         ->join('plats', 'details_commands_par_site.plats_id', '=', 'plats.id')
         ->select('commands_par_sites_id', 'plats.nomPlat', 'quantite')
         ->get();
-    
+        Session::forget('Commande');
+        return redirect()->route('serveurs.index',['etat' => $etat]);
+        
     
     }
 
@@ -129,7 +134,7 @@ class COrdinaireController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
@@ -141,7 +146,30 @@ class COrdinaireController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $nom = $request->nomPlat;
+        $quantite = $request->quantite;
+        $cafe = $request->cafe;
+        $id = DB::table('plats')
+        ->select('id')
+        ->where('nomPlat',$nom)
+        ->get();
+
+        
+        $fuck = $id->toArray();
+        
+        $fuckto = (string)$fuck[0]->id;
+        $plat = Plat::find($fuckto);
+        // dd($plat);
+        // dd($plat[0]->id);
+        
+        $listCommande =Session::has('Commande') ? Session::get('Commande'):null;
+        $Commande=new CommmandLocale($listCommande);
+        $Commande->updatePlat($plat,$plat->id,$cafe,$quantite);
+
+        $request->session()->put('Commande',$Commande);
+
+        // dd($Commande);
+        return redirect()->route('cordinaire.index');
     }
 
     /**
@@ -150,8 +178,15 @@ class COrdinaireController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+
+        $listCommande=Session::get('Commande');
+        $Commande=new CommmandLocale($listCommande);
+        
+        $Commande->supprimer($request->value);
+
+        $request->session()->put('Commande',$Commande);
+        return redirect()->route('cordinaire.index');
     }
 }

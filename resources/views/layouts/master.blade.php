@@ -672,6 +672,38 @@ background: linear-gradient(to left, #8f42a8, #c42e5d); /* W3C, IE 10+/ Edge, Fi
   <!-- /.modal-dialog -->
 </div>
 
+<!-- Model plat ordinaire supprimer -->
+
+<div class="modal fade" id="supprimerPlatOrdinaire" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-danger">
+      <div class="modal-header">
+        <h4 class="modal-title text-center">Supprimer suprimer un plat ordinaire</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <form action="{{ route('cordinaire.destroy', 'test') }}" method="post">
+        @csrf
+        @method('delete')
+        
+        
+        <div class="modal-body text-center" >        
+        <input id="pl_id" class="prodId" name="value" type="hidden" value="" />
+        
+          <p>! êtes-vous sûr  que vous voulez supprimer ce plat...?</p>
+      </div>
+      <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-outline-light px-4" data-dismiss="modal">fermer</button>
+        <button type="submit" class="btn btn-outline-light px-4">valide</button>
+      </div>
+    </form>
+      <!-- /.modal-content -->
+    </div>
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+
 
 
 
@@ -1251,6 +1283,31 @@ $('#editplat').on('show.bs.modal', function (event) {
   modal.find('.modal-body input#value_image ').text(value_image);
 
 })
+$('#modifierPlatOrdinaire').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget)
+   // Button that triggered the modal
+  // var value_plat = button.data('value_plat') // Extract info from data-* attributes
+  var value_nom_plat = button.data('value_nom_plat') // Extract info from data-* attributes
+  var value_quantite = button.data('value_quantite') // Extract info from data-* attributes
+  var value_nom_cafe = button.data('value_nom_cafe') // Extract info from data-* attributes
+  // var value_image = button.data('value_image') // Extract info from data-* attributes
+ // Extract info from data-* attributes
+  // Extract info from data-* attributes
+  // var value_pass = button.data('value_pass') // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+
+  console.log(value_plat);
+  
+  var modal = $(this)
+  
+  // modal.find('.modal-body input#value_plat ').val(value_plat);
+  modal.find('.modal-body input#value_nom_plat ').val(value_nom_plat);
+  modal.find('.modal-body input#value_quantite ').val(value_quantite);
+  modal.find('.modal-body input#value_nom_cafe ').text(value_nom_cafe);
+  // modal.find('.modal-body input#value_image ').text(value_image);
+
+})
 // modale plat pour delete
 $('#deletplat').on('show.bs.modal', function (event) {
     console.log('test valide');
@@ -1263,6 +1320,19 @@ $('#deletplat').on('show.bs.modal', function (event) {
   var modal = $(this)
   
   modal.find('.modal-body input#value_plat').val(value_plat);
+})
+// modale plat ordinaire pour delete
+$('#supprimerPlatOrdinaire').on('show.bs.modal', function (event) {
+    console.log('test valide');
+  var button = $(event.relatedTarget)
+   // Button that triggered the modal
+  var value_plat = button.data('value_plat') // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  console.log(value_plat);
+  var modal = $(this)
+  
+  modal.find('.modal-body input#pl_id').val(value_plat);
 })
 });
 
