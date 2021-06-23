@@ -163,6 +163,9 @@ rel="stylesheet"
             <div class="right-image">
               <ul class="list-group ">
                 @if (Session::has('cart'))
+                
+                  
+              
                 @forelse ($plats as $i)
                   <li>
                     <div class="card border border-danger shadow-0 mb-3 "  >
@@ -187,22 +190,22 @@ rel="stylesheet"
                     </div>
                   </li>
                     
-
-                @empty
-                    
-                    <div class="card text-center mt-5" >
-                      <div class="card-header " style="color: red">ATTENTION</div>
-                      <div class="card-body">
-                        <h5 class="card-title">votre panier est vide</h5>
-                        <p class="card-text">
-                          désolé monsieur je pense que votre panier est vide vous pouver choiosire votre achat dans la list des magasin avant de les validé. <br><br>
-                        </p>
-                        <a href="{{ route('plat_user') }}" class="btn btn-danger">notre magasin</a>
-                      </div>
-                      
+                  
+                  @empty
+                  
+                  <div class="card text-center mt-5" >
+                    <div class="card-header " style="color: red">ATTENTION</div>
+                    <div class="card-body">
+                      <h5 class="card-title">votre panier est vide</h5>
+                      <p class="card-text">
+                        désolé monsieur je pense que votre panier est vide vous pouver choiosire votre achat dans la list des magasin avant de les validé. <br><br>
+                      </p>
+                      <a href="{{ route('plat_user') }}" class="btn btn-danger">notre magasin</a>
                     </div>
-                @endforelse
-                @endif
+                      
+                  </div>
+                  @endforelse
+                  
             </ul>
             </div>
           </div>
@@ -216,10 +219,10 @@ rel="stylesheet"
                       
                       <h3>
                         <i class="fas fa-dollar-sign"></i>
-                        {{ $totalPrix }}
+                        {{ $totalPrix ?? '0' }}
                       </h3>
                       <h4 class="mt-0">
-                        <small>Ex Tax: ${{ $totalPrix }} </small>
+                        <small>Ex Tax: ${{ $totalPrix ?? '0' }} </small>
                       </h4>
                       
                     </div>
@@ -249,6 +252,9 @@ rel="stylesheet"
                 <li><a href="#"><i class="fas fa-phone"></i></a></li>
               </ul>
             </div>
+            
+            @else
+            
           </div>
         </div>
       </div>
@@ -262,8 +268,24 @@ rel="stylesheet"
 
 
 
-    
-    
+    <div class="container">
+    <div class="row">
+      <div class="col-10 offset-1">
+        <div class="card text-center " >
+      <div class="card-header bold" style="color: red">ATTENTION</div>
+      <div class="card-body">
+        <h5 class="card-title pt-3">votre panier est vide</h5>
+        <p class="card-text py-3">
+          désolé monsieur je pense que votre panier est vide vous pouver choiosire votre achat dans la list des magasin avant de les validé. <br><br>
+        </p>
+        <a href="{{ route('plat_user') }}" class="btn btn-danger">notre magasin</a>
+      </div>
+    </div>
+  </div>
+      </div>
+    </div>
+  </div>
+        @endif
     <footer>
       <div class="container">
         <div class="row">

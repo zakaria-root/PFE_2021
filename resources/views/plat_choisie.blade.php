@@ -178,10 +178,10 @@ rel="stylesheet"
                         
                           <div class="col-4">
                             <h3>
-                              $80.00
+                              ${{ $plat->prix }}
                             </h3>
                             <h4 class="mt-0 mb-0">
-                              <small>Ex Tax: $80.00 </small>
+                              <small>Ex Tax: ${{ $plat->prix }} </small>
                             </h4>
                           </div>
                           <div class="col-6 offset-2 mt-1">

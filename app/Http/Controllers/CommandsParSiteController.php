@@ -12,16 +12,21 @@ use Illuminate\Support\Facades\Session;
 
 class CommandsParSiteController extends Controller
 {
-    
+    public function index()
+    {
+        
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function __construct()
     {
-        
+        return $this->middleware('auth');
     }
+
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -40,6 +45,7 @@ class CommandsParSiteController extends Controller
      */
     public function store(Request $request)
     {
+        
         $oldCart=Session::get('cart');
         
         foreach ($oldCart->items as $i) {
@@ -73,8 +79,11 @@ class CommandsParSiteController extends Controller
     DB::table('plats')
     ->update(['per_etoiles' => 1]).
     
-    dd($uy);
+    // dd($uy);
         
+    Session::forget('cart');
+    session()->flash('valide',' la commande a ete bien validé !!');
+    return redirect()->route('user_home');
     
     }
 
