@@ -84,7 +84,7 @@ class PlatController extends Controller
         // if ($request->hasFile('image')) {
         //         dd($request->image);
         //     }
-        // $path = null;
+        
         if ($request->hasFile('image')) {
             $path = $request->image->store('image');
         }
@@ -142,7 +142,7 @@ class PlatController extends Controller
         $mt->prix = $request->input('prix');
         $mt->description = $request->input('description');
         $mt->cafe_restaurants_id = $request->input('cafe');
-        
+        $mt->categorie = $request->categorie;
         session()->flash('modifier',' le plat a ete bien modifier !!');
         $mt->save();
         return back();

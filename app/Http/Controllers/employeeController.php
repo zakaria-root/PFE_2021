@@ -6,8 +6,10 @@ use App\Http\Requests\emRequest;
 use App\Http\Requests\utRequest;
 use App\Models\CafeRestaurant;
 use App\Models\Employee;
+use App\Models\User;
 use App\Models\Utilisateur;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class employeeController extends Controller
 {
@@ -56,9 +58,21 @@ class employeeController extends Controller
             
             
         ]);
-        session()->flash('ajouter',' l\'employe a ete bien ajouter !!');
+        if ($request->fonction == "serveur") {
+            $name = $request->nomEmploye . $request->prenomEmploye;
+            User::create([
+                'name' => $name,
+                'email' => $name . "@gmail.com",
+                'address' => $request->adressEmploye,
+                'password' => Hash::make("z1i2a3s4"),
+                'role' => "serveur",
+            ]);
+        
+        }
+            session()->flash('ajouter',' l\'employe a ete bien ajouter !!');
             $emp->save();
             return back();
+
     }
 
     /**

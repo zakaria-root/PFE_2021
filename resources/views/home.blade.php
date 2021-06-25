@@ -18,7 +18,7 @@
             
             <div class="col-4 offset-9">
             <a href="?categorie=cafe" class="btn btn-outline-primary px-5 ml-2" ">Cafe</a>
-            <a href="?categorie=restaurant" class="btn btn-outline-primary ml-1 px-4" >Restaurant </a>
+            <a href="?categorie=Restaurant" class="btn btn-outline-primary ml-1 px-4" >Restaurant </a>
               
               {{-- <button type="button" style="" class="btn btn-success px-4 " data-toggle="modal" data-target="#ajouterEmployee" >
                 <i class="fas fa-cart-plus"></i>

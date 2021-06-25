@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link href="{{ asset('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap') }}" rel="stylesheet">
 
-    <title>Sixteen Clothing - About Page</title>
+    <title>Cafe Restaurant</title>
     {{-- <link rel="stylesheet" href="{{ asset('css/style.css') }}"> --}}
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -43,6 +43,13 @@ href="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.
 rel="stylesheet"
 />
     {{-- <link rel="stylesheet" href="{{ asset('css/app.css') }}"> --}}
+    <style>
+      .about-heading {
+    
+    background-image: url(/assets/images/food.jpg);
+
+}
+    </style>
   </head>
 
   <body>
@@ -61,7 +68,7 @@ rel="stylesheet"
     <header class="">
       <nav class="navbar navbar-expand-lg">
         <div class="container p-0" >
-          <a class="navbar-brand" href="{{ url('/') }}"><h2>Sixteen <em>Clothing</em></h2></a>
+          <a class="navbar-brand" href="{{ url('/') }}"><h2>Cafe <em>Restaurant</em></h2></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -143,8 +150,8 @@ rel="stylesheet"
         <div class="row">
           <div class="col-md-12">
             <div class="text-content">
-              <h4>about us</h4>
-              <h2>our company</h2>
+              <h4>NOUVELLES ARRIVÉES</h4>
+              <h2>NOS PLATS</h2>
             </div>
           </div>
         </div>
