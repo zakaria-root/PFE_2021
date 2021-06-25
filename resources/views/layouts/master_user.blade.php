@@ -45,6 +45,27 @@ https://templatemo.com/tm-546-sixteen-clothing
     background-color: #538e6ad4;
     border-color: #b3e9c9;
 }
+.banner-item-01 {
+    padding: 300px 0px;
+    background-image: url(/assets/images/home.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.banner-item-02 {
+    padding: 300px 0px;
+    background-image: url(/assets/images/restaut.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.banner-item-03 {
+    padding: 300px 0px;
+    background-image: url(https://coolwallpapers.me/picsup/3052678-art_blur_cappuccino_close-up_coffee_coffee-drink_cream_cup_delicious_drink_foam_focus_hot_latte_latte-art_milk_mocha_mug.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
     </style>
   </head>
 

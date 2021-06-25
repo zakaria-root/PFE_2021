@@ -44,6 +44,7 @@ class employeeController extends Controller
      */
     public function store(emRequest $request)
     {
+        
         $emp = Employee::create([
             'nomEmploye' => $request['nomEmploye'],
             'prenomEmploye' => $request['prenomEmploye'],

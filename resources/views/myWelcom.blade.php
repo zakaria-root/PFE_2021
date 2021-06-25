@@ -8,20 +8,20 @@
       <div class="owl-banner owl-carousel">
         <div class="banner-item-01">
           <div class="text-content">
-            <h4>Best Offer</h4>
-            <h2>New Arrivals On Sale</h2>
+            <h4>MEILLEUR PLATS</h4>
+            <h2>BIENVENUE CHEZ NOUS</h2>
           </div>
         </div>
         <div class="banner-item-02">
           <div class="text-content">
-            <h4>Flash Deals</h4>
-            <h2>Get your best products</h2>
+            <h4>NOS CAFES</h4>
+            <h2>OBTENEZ VOTRE MEILLEUR CAFE</h2>
           </div>
         </div>
         <div class="banner-item-03">
           <div class="text-content">
-            <h4>Last Minute</h4>
-            <h2>Grab last minute deals</h2>
+            <h4>NOS RESTAURANTS</h4>
+            <h2>OBTENEZ VOTRE MEILLEUR PLAT</h2>
           </div>
         </div>
       </div>
@@ -181,7 +181,7 @@
           <div class="col-md-6">
             <div class="left-content">
               <h4>Looking for the best products?</h4>
-              <p><a rel="nofollow" href="https://templatemo.com/tm-546-sixteen-clothing" target="_parent">This template</a> is free to use for your business websites. However, you have no permission to redistribute the downloadable ZIP file on any template collection website. <a rel="nofollow" href="https://templatemo.com/contact">Contact us</a> for more info.</p>
+              <p>Tous les invités aiment bien la fabuleuse cuisine fusion à ce restaurant. Si vous avez faim, venez ici pour manger un saumon sockeye délicieux. La plupart des clients recommandent d'essayer un pain perdue délectable. A Organic Kitchen, les visiteurs peuvent boire un ale délicieux. On vous offrira un jus de fruits frais immense.</p>
               <ul class="featured-list">
                 <li><a href="#">Lorem ipsum dolor sit amet</a></li>
                 <li><a href="#">Consectetur an adipisicing elit</a></li>

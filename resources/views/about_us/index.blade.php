@@ -42,6 +42,13 @@ rel="stylesheet"
 href="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css') }}"
 rel="stylesheet"
 />
+<style>
+.about-heading {
+    
+    background-image: url(stek.jpg);
+
+}
+</style>
   </head>
 
   <body>
@@ -144,8 +151,9 @@ rel="stylesheet"
         <div class="row">
           <div class="col-md-12">
             <div class="text-content">
-              <h4>about us</h4>
-              <h2>our company</h2>
+              <h4>a propos de nous</h4>
+              <h2>notre compagnie
+              </h2>
             </div>
           </div>
         </div>
@@ -158,24 +166,36 @@ rel="stylesheet"
         <div class="row">
           <div class="col-md-12">
             <div class="section-heading">
-              <h2>Our Background</h2>
+              <h2>A Propos De Nous</h2>
             </div>
           </div>
-          <div class="col-md-6">
-            <div class="right-image">
-              <img src="assets/images/feature-image.jpg" alt="">
+          <div class="col-md-4 mt-5">
+            <div class="right-image ">
+              <img src="about_us_cofe.jpeg"  alt="">
             </div>
           </div>
-          <div class="col-md-6">
-            <div class="left-content">
-              <h4>Who we are &amp; What we do?</h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed voluptate nihil eum consectetur similique? Consectetur, quod, incidunt, harum nisi dolores delectus reprehenderit voluptatem perferendis dicta dolorem non blanditiis ex fugiat. Lorem ipsum dolor sit amet, consectetur adipisicing elit.<br><br>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et, consequuntur, modi mollitia corporis ipsa voluptate corrupti eum ratione ex ea praesentium quibusdam? Aut, in eum facere corrupti necessitatibus perspiciatis quis.</p>
-              <ul class="social-icons">
-                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                <li><a href="#"><i class="fa fa-behance"></i></a></li>
+          <div class="col-md-4 text-center">
+            <div class="left-content ">
+              <h4>Qui sommes-nous et que faisons-nous ??</h4>
+              <p>
+                Nous sommes une entreprise de personnes exceptionnelles qui a pour mission d’avoir les meilleures cafés restaurants du monde. Nous disposant de plusieurs cafés restaurants dans plusieurs villes afin d'offrir la haute disponibilité quoi que ce soit l’endroit de nos clients et la rapidité de service afin de les satisfaire de <b>100%</b>.
+                <br><br>
+                Nous défendons quelque chose de bon dans tout ce que nous faisons : Cela signifie des ingrédients haut de gamme soigneusement achetée auprès de fournisseurs partageant les mêmes idées que nous admirons et aimons
+                <br><br>
+                Notre objectif est de fournir un environnement amusant et sûr où nos clients peuvent profiter de bons aliments fabriqués avec des ingrédients de qualité préparé dans un environnement propre, pétillant et à des prix abordables.
+              </p>
+              <ul class="social-icons pr-4">
+                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fas fa-at"></i></a></li>
+                <li><a href="#"><i class="fas fa-phone"></i></a></li>
               </ul>
+            </div>
+          </div>
+
+          <div class="col-md-4 mt-5">
+            <div class="right-image ">
+              <img src="stek_restaurant.jpg" alt="">
             </div>
           </div>
         </div>
@@ -188,7 +208,8 @@ rel="stylesheet"
         <div class="row">
           <div class="col-md-12">
             <div class="section-heading">
-              <h2>Our Team Members</h2>
+              <h2>
+                Les membres de notre équipe</h2>
             </div>
           </div>
           <div class="col-md-4">
@@ -198,18 +219,18 @@ rel="stylesheet"
                 <div class="hover-effect">
                   <div class="hover-content">
                     <ul class="social-icons">
-                      <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                      <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                      <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                      <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                      <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                      <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                      <li><a href="#"><i class="fas fa-at"></i></a></li>
+                      <li><a href="#"><i class="fab fa-github-alt fa-lg"></i></a></li>
                     </ul>
                   </div>
                 </div>
               </div>
               <div class="down-content">
-                <h4>Johnny William</h4>
-                <span>CO-Founder</span>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing itaque corporis nulla.</p>
+                <h4>Anass Irizi</h4>
+                <span>Casablanca</span>
+                <p>e suis un etudiant de faculté ben m'sik bac+2 option base de donne .</p>
               </div>
             </div>
           </div>
@@ -220,18 +241,18 @@ rel="stylesheet"
                 <div class="hover-effect">
                   <div class="hover-content">
                     <ul class="social-icons">
-                      <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                      <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                      <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                      <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                      <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                      <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                      <li><a href="#"><i class="fas fa-at"></i></a></li>
+                      <li><a href="#"><i class="fab fa-github-alt fa-lg"></i></a></li>
                     </ul>
                   </div>
                 </div>
               </div>
               <div class="down-content">
-                <h4>Karry Pitcher</h4>
-                <span>Product Expert</span>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing itaque corporis nulla.</p>
+                <h4>Elmourtazak Zakaria</h4>
+                <span>Casablanca</span>
+                <p>je suis un etudiant de faculté ben m'sik bac+2 option base de donne .</p>
               </div>
             </div>
           </div>
@@ -242,174 +263,27 @@ rel="stylesheet"
                 <div class="hover-effect">
                   <div class="hover-content">
                     <ul class="social-icons">
-                      <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                      <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                      <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                      <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                      <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fas fa-at"></i></a></li>
+                <li><a href="#"><i class="fab fa-github-alt fa-lg"></i></a></li>
                     </ul>
                   </div>
                 </div>
               </div>
               <div class="down-content">
-                <h4>Michael Soft</h4>
-                <span>Chief Marketing</span>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing itaque corporis nulla.</p>
+                <h4>Elmourtazak Kawtar</h4>
+                <span>Casablanca</span>
+                <p>je suis une etudiante de faculté ben m'sik bac+2 option base de donne .</p>
               </div>
             </div>
           </div>
-          <div class="col-md-4">
-            <div class="team-member">
-              <div class="thumb-container">
-                <img src="assets/images/team_04.jpg" alt="">
-                <div class="hover-effect">
-                  <div class="hover-content">
-                    <ul class="social-icons">
-                      <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                      <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                      <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                      <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="down-content">
-                <h4>Mary Cool</h4>
-                <span>Product Specialist</span>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing itaque corporis nulla.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="team-member">
-              <div class="thumb-container">
-                <img src="assets/images/team_05.jpg" alt="">
-                <div class="hover-effect">
-                  <div class="hover-content">
-                    <ul class="social-icons">
-                      <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                      <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                      <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                      <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="down-content">
-                <h4>George Walker</h4>
-                <span>Product Photographer</span>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing itaque corporis nulla.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="team-member">
-              <div class="thumb-container">
-                <img src="assets/images/team_06.jpg" alt="">
-                <div class="hover-effect">
-                  <div class="hover-content">
-                    <ul class="social-icons">
-                      <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                      <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                      <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                      <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="down-content">
-                <h4>Kate Town</h4>
-                <span>General Manager</span>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing itaque corporis nulla.</p>
-              </div>
-            </div>
-          </div>
+          
         </div>
       </div>
     </div>
 
 
-    <div class="services">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-4">
-            <div class="service-item">
-              <div class="icon">
-                <i class="fa fa-gear"></i>
-              </div>
-              <div class="down-content">
-                <h4>Product Management</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur an adipisicing elit. Itaque, corporis nulla at quia quaerat.</p>
-                <a href="#" class="filled-button">Read More</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="service-item">
-              <div class="icon">
-                <i class="fa fa-gear"></i>
-              </div>
-              <div class="down-content">
-                <h4>Customer Relations</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur an adipisicing elit. Itaque, corporis nulla at quia quaerat.</p>
-                <a href="#" class="filled-button">Details</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="service-item">
-              <div class="icon">
-                <i class="fa fa-gear"></i>
-              </div>
-              <div class="down-content">
-                <h4>Global Collection</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur an adipisicing elit. Itaque, corporis nulla at quia quaerat.</p>
-                <a href="#" class="filled-button">Read More</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="happy-clients">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="section-heading">
-              <h2>Happy Partners</h2>
-            </div>
-          </div>
-          <div class="col-md-12">
-            <div class="owl-clients owl-carousel">
-              <div class="client-item">
-                <img src="assets/images/client-01.png" alt="1">
-              </div>
-              
-              <div class="client-item">
-                <img src="assets/images/client-01.png" alt="2">
-              </div>
-              
-              <div class="client-item">
-                <img src="assets/images/client-01.png" alt="3">
-              </div>
-              
-              <div class="client-item">
-                <img src="assets/images/client-01.png" alt="4">
-              </div>
-              
-              <div class="client-item">
-                <img src="assets/images/client-01.png" alt="5">
-              </div>
-              
-              <div class="client-item">
-                <img src="assets/images/client-01.png" alt="6">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
     
     <footer>
