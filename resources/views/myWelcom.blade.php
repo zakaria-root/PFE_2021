@@ -1,7 +1,15 @@
 @extends('layouts.master_user')
 
 @section('content')
-
+<style>
+  .ml-5, .mx-5 {
+    margin-left: 12rem!important;
+}
+.best-features .container .row {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 168px;
+}
+</style>
     <!-- Page Content -->
     <!-- Banner Starts Here -->
     <div class="banner header-text">
@@ -66,53 +74,48 @@
 
     <div class="best-features">
       <div class="container">
-        <div class="row">
+        <div class="row mb-5">
           <div class="col-md-12">
             <div class="section-heading">
-              <h2>About Sixteen Clothing</h2>
+              <h2>Concernant Nos Cafe Restaurant</h2>
             </div>
           </div>
-          <div class="col-md-6">
-            <div class="left-content">
-              <h4>Looking for the best products?</h4>
-              <p>Tous les invités aiment bien la fabuleuse cuisine fusion à ce restaurant. Si vous avez faim, venez ici pour manger un saumon sockeye délicieux. La plupart des clients recommandent d'essayer un pain perdue délectable. A Organic Kitchen, les visiteurs peuvent boire un ale délicieux. On vous offrira un jus de fruits frais immense.</p>
-              <ul class="featured-list">
-                <li><a href="#">Lorem ipsum dolor sit amet</a></li>
-                <li><a href="#">Consectetur an adipisicing elit</a></li>
-                <li><a href="#">It aquecorporis nulla aspernatur</a></li>
-                <li><a href="#">Corporis, omnis doloremque</a></li>
-                <li><a href="#">Non cum id reprehenderit</a></li>
-              </ul>
-              <a href="about.html" class="filled-button">Read More</a>
+          <div class="col-md-5">
+            <div class="left-content text-center mt-5">
+              <h4>Poisson Sole?</h4>
+              <p>Vous n'avez pas besoin de préparations sophistiquées pour obtenir un résultat impressionnant, surtout lorsqu'il s'agit de poisson. La sole meunière est donc une recette très simple et facile à préparer. Le plat final est à la fois savoureux, croustillant, beurré et citronné..</p>
+              
+              <a href="about.html" class="filled-button px-5 ml+5">Voire Plus</a>
             </div>
           </div>
-          <div class="col-md-6">
-            <div class="right-image">
-              <img src="assets/images/feature-image.jpg" alt="">
+          <div class="col-md-7">
+            <div class="right-image ">
+              <img src="https://i.pinimg.com/originals/1d/22/b8/1d22b85173e191be095bd397a837e844.jpg" style="max-height: 300px ;max-width: 80%" class="ml-5" alt="">
             </div>
           </div>
         </div>
-      </div>
-    </div>
-
-
-    <div class="call-to-action">
-      <div class="container">
-        <div class="row">
+        <div class="row mt-5">
           <div class="col-md-12">
-            <div class="inner-content">
-              <div class="row">
-                <div class="col-md-8">
-                  <h4>Creative &amp; Unique <em>Sixteen</em> Products</h4>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque corporis amet elite author nulla.</p>
-                </div>
-                <div class="col-md-4">
-                  <a href="#" class="filled-button">Purchase Now</a>
-                </div>
-              </div>
+          </div>
+          <div class="col-md-7">
+            <div class="right-image">
+              <img src="https://c4.wallpaperflare.com/wallpaper/763/540/956/steak-meat-roasting-roast-beef-wallpaper-preview.jpg" style="max-height: 300px;max-width: 80%" alt="">
             </div>
           </div>
+          <div class="col-md-5">
+            <div class="left-content text-center mt-2">
+              <h4>Morceaux De Bœuf</h4>
+              <p>
+                Lorsque vous commencez avec des morceaux de bœuf comme celui-ci, il n'en faut pas beaucoup ! Je ne les ai assaisonnés qu'avec du sel de mer et bien sûr du poivre noir moulu, et ils n'ont besoin que d'un peu de sauce. Alors, tout va bien. Je les ai servis avec des pommes de terre rouges rôties (voir recette) et des asperges rôties et nous avons mangé dans la terrasse maintenant que le temps s'est réchauffé - parfait !
+                .</p>
+              
+              <a href="about.html" class="filled-button px-5 ml+5">Voire Plus</a>
+            </div>
+          </div>
+          
         </div>
       </div>
     </div>
+
+  
 @endsection
