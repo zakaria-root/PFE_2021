@@ -54,14 +54,14 @@ https://templatemo.com/tm-546-sixteen-clothing
 }
 .banner-item-02 {
     padding: 300px 0px;
-    background-image: url(/assets/images/restaut.jpg);
+    background-image: url(/assets/images/cafecafe.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
 }
 .banner-item-03 {
     padding: 300px 0px;
-    background-image: url(https://coolwallpapers.me/picsup/3052678-art_blur_cappuccino_close-up_coffee_coffee-drink_cream_cup_delicious_drink_foam_focus_hot_latte_latte-art_milk_mocha_mug.jpg);
+    background-image: url(/assets/images/restaut.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -85,7 +85,7 @@ https://templatemo.com/tm-546-sixteen-clothing
     <header class="">
       <nav class="navbar navbar-expand-lg">
         <div class="container p-0" >
-          <a class="navbar-brand" href="{{ url('/') }}"><h2>Sixteen <em>Clothing</em></h2></a>
+          <a class="navbar-brand" href="{{ url('/') }}"><h2>Cfe <em>Restaurant</em></h2></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
