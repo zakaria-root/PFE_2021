@@ -237,7 +237,8 @@ rel="stylesheet"
           <div class="col-md-4">
             <div class="team-member">
               <div class="thumb-container">
-                <img src="assets/images/team_02.jpg" alt="">
+                <img src="assets/images/team_03.jpg" alt="">
+                
                 <div class="hover-effect">
                   <div class="hover-content">
                     <ul class="social-icons">
@@ -259,7 +260,7 @@ rel="stylesheet"
           <div class="col-md-4">
             <div class="team-member">
               <div class="thumb-container">
-                <img src="assets/images/team_03.jpg" alt="">
+                <img src="assets/images/team_02.jpg" alt="">
                 <div class="hover-effect">
                   <div class="hover-content">
                     <ul class="social-icons">

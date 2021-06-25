@@ -167,7 +167,7 @@ rel="stylesheet"
               <ul>
                   <li class="active" data-filter="*">tout produit</li>
                   <li data-filter=".cafe">produit cafe</li>
-                  <li data-filter=".restaurant">produit restaurant</li>
+                  <li data-filter=".Restaurant">produit restaurant</li>
                   
               </ul>
             </div>
