@@ -19,6 +19,7 @@ class Materiel extends Model
         'prixProduit',
         'cafe_restaurants_id',
         'fourniseurs_id',
+        'etat'
 
     ];
     protected $dates = ['deleted_at'];

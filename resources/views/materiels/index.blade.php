@@ -1,7 +1,14 @@
 @extends('layouts.master')
 
 @section('content')
+<style>
+.table th, .table td {
+    padding-right: 6.60rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}
 
+</style>
 <div class="container mt-5">
     
     <div class="row">
@@ -45,13 +52,14 @@
           <div class="card-body table-responsive p-0">
             <table class="table table-hover">
               <thead>
-                <tr>
-                  <th>Id</th>
-                  <th>Nom </th>
-                  <th>prix </th>
-                  <th> Marque</th>
-                  <th>Action</th>
-                </tr>
+               <tr>
+                <th>Id</th>
+                <th>Nom </th>
+                <th>prix </th>
+                <th> Marque</th>
+                <th >Action</th>
+                  <th>Etat</th>
+               </tr>
               </thead>
               @foreach ($mts as $mt)
               @if ($mt->nomProduit === request()->get('nomProduit') or request()->get('nomProduit') == null)
@@ -61,7 +69,7 @@
                     <td>{{ $mt->nomProduit }}</td>
                     <td>{{ $mt->prixProduit }}</td>
                     <td>{{ $mt->marque }}</td>
-                    <td>
+                    <td >
                         
                             <a type="button"
                             class="btn btn-primary px-3 py-1" style="color: white ;"
@@ -82,6 +90,22 @@
                             <i class="fas fa-trash"></i>
                             </a>
                         
+                    </td>
+                    <td >
+                      @if ($mt->etat == 1)
+                      <form action="{{ route('materiels.etat', ['id' => $mt->id]) }}" method="post">
+                        @csrf
+                        
+                        <button type="submit" class="btn btn-success ">Fonction </button>
+                      </form>
+                        @else
+                        <form action="{{ route('materiels.etat', ['id' =>$mt->id]) }}" method="post">
+                          @csrf
+                          
+                          <button type="submit" class="btn btn-danger ">Fonction Pas</button>
+                        </form>
+                        @endif
+                      
                     </td>
                   </tr>
                   @endif

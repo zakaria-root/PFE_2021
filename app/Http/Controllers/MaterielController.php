@@ -26,6 +26,18 @@ class MaterielController extends Controller
         return view('materiels.index' , ['mts' => $mts ,'cafes' => $cafes, 'frs' => $frs,'etat' => $etat ]);
     }
 
+    public function changeEtat($id)
+    {
+        $materiel = Materiel::findOrFail($id);
+        
+        if ($materiel->etat == 1) {
+            $materiel->etat = 0;
+        }else {
+            $materiel->etat = 1;
+        }
+        $materiel->save();
+        return back();
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -93,6 +105,7 @@ class MaterielController extends Controller
         $mt->prixProduit = $request->input('prixProduit');
         $mt->cafe_restaurants_id = $request->input('cafe');
         $mt->fourniseurs_id = $request->input('fourniseur');
+        
         session()->flash('modifier',' le materiel a ete bien modifier !!');
         $mt->save();
         return back();

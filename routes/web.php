@@ -80,3 +80,5 @@ Route::get('/',[FirstPageController::class,'index'])->name('user_home');
 Route::get('/plate/{id}',[PlatChoisieController::class,'show'])->name('plate.show');
 
 Route::get('/About',[AboutUsController::class,'index'])->name('about.index');
+
+Route::post('/materiels/{id}',[MaterielController::class,'changeEtat'])->name('materiels.etat');
