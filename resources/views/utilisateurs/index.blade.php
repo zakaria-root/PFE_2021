@@ -48,7 +48,7 @@
             <table class="table table-hover">
               <thead>
                 <tr>
-                  <th>Id</th>
+                  <th>Image</th>
                   <th>Nom</th>
                   <th>Email</th>
                   <th>Address</th>
@@ -59,7 +59,7 @@
               @foreach ($users as $user)
               @if ($user->name === request()->get('name') or request()->get('name') == null)
                 <tr>
-                    <th scope="row">{{ $user->id }}</th>
+                    <th scope="row"><img src="{{ asset('storage/'.$user->image) }}" width="75px" style="max-height: 60px ; border-radius: 90%" alt="image du plat"></th>
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
                     <td >{{ $user->address }}</td>
@@ -73,6 +73,7 @@
                             data-value_email="{{ $user->email }}" 
                             data-value_address="{{ $user->address }}" 
                             data-value_pass="{{ $user->password }}" 
+                            data-value_image="{{ $user->image }}"
                             data-toggle="modal" 
                             data-target="#editutilisateur" >
                             <i class="fas fa-user-edit "></i>

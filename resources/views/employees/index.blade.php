@@ -46,7 +46,7 @@
         <table class="table table-hover">
           <thead>
             <tr>
-              <th>Id</th>
+              <th>Image</th>
               <th>Nom</th>
               <th>Prenom</th>
               <th>Adress</th>
@@ -64,7 +64,7 @@
               
           
             <tr>
-                <th scope="row">{{ $emp->id }}</th>
+                <th scope="row"><img src="{{ asset('storage/'.$emp->image) }}" width="75px" style="max-height: 60px ; border-radius: 90%" alt="image du plat"></th>
                 <td>{{ $emp->nomEmploye }}</td>
                 <td>{{ $emp->prenomEmploye }}</td>
                 <td>{{ $emp->adressEmploye }}</td>
@@ -83,6 +83,7 @@
                         data-value_salaire="{{ $emp->salaire }}" 
                         data-value_commission="{{ $emp->commission }}" 
                         data-value_cafe="{{ $emp->cafe_restaurants->nomCafeRestaurant }}" 
+                        data-value_image="{{ $emp->image }}"
                         data-toggle="modal" 
                         data-target="#editEmployee" >
                         <i class="fas fa-user-edit "></i>
@@ -126,7 +127,7 @@
         </button>
       </div>
 
-      <form action="{{ route('employees.store') }}" method="post">
+      <form action="{{ route('employees.store') }}" method="post" enctype="multipart/form-data">
         @csrf
       <div class="modal-body">        
         <div class="form-group ">
@@ -175,6 +176,19 @@
               @endforeach
             </select>
           </div>
+          <div class="form-group">
+            <label for="image">Image</label>
+            <div class="form-group input-group mb-3">
+            
+              <div class="input-group-prepend">
+              </div>
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" name="image" id="inputGroupFile01">
+                <label class="custom-file-label px-1" for="inputGroupFile01">Choose file</label>
+              </div>
+            </div>
+            
+          </div>
           
       </div>
       <div class="modal-footer  justify-content-between">
@@ -195,7 +209,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="{{ route('employees.update', 'test') }}" method="post">
+      <form action="{{ route('employees.update', 'test') }}" method="post" enctype="multipart/form-data">
         @csrf
         @method('patch')
         <div class="modal-body" >        
@@ -246,6 +260,17 @@
             @endforeach
           </select>
         </div>
+        <label for="image">Image</label>
+          
+          <div class="form-group input-group mb-3">
+            
+            <div class="input-group-prepend">
+            </div>
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" name="image" id="image">
+              <label class="custom-file-label px-1" for="inputGroupFile01">Choose file</label>
+            </div>
+          </div>
       </div>
       <div class="modal-footer  justify-content-between">
         <button type="button"  class="btn btn-secondary px-4" data-dismiss="modal">fermer</button>

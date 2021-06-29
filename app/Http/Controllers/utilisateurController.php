@@ -54,12 +54,15 @@ class utilisateurController extends Controller
         //         $role = "serveur";
         //     }
         // }
-        
+        if ($request->hasFile('image')) {
+            $path = $request->image->store('image');
+        }
          User::create([
             'name' => $request['nom'],
             'email' => $request['email'],
             'address' => $request['address'],
             'password' => Hash::make($request['motDePass']),
+            'image' => $path,
         ]);
         session()->flash('ajouter',' l\'utilisateur a ete bien ajouter !!');
         return back();
@@ -98,6 +101,9 @@ class utilisateurController extends Controller
     public function update(utRequest $request)
     {
         $user = User::findOrFail($request->value);
+        if ($request->hasFile('image')) {
+            $user->image = $request->image->store('image');
+        }
         $user->name = $request->input('nom');
         $user->email = $request->input('email');
         $user->address = $request->input('address');

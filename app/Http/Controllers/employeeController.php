@@ -46,7 +46,9 @@ class employeeController extends Controller
      */
     public function store(emRequest $request)
     {
-        
+        if ($request->hasFile('image')) {
+            $path = $request->image->store('image');
+        }
         $emp = Employee::create([
             'nomEmploye' => $request['nomEmploye'],
             'prenomEmploye' => $request['prenomEmploye'],
@@ -55,7 +57,7 @@ class employeeController extends Controller
             'salaire' => $request['salaire'],
             'commission' => $request['commission'],
             'cafe_restaurants_id' => $request['cafe'],
-            
+            'image' => $path
             
         ]);
         if ($request->fonction == "serveur") {
@@ -66,6 +68,7 @@ class employeeController extends Controller
                 'address' => $request->adressEmploye,
                 'password' => Hash::make("z1i2a3s4"),
                 'role' => "serveur",
+                'image' => $path,
             ]);
         
         }
@@ -108,14 +111,20 @@ class employeeController extends Controller
     {
 
         
-
+        
         $emp = Employee::findOrFail($request->value);
+        if ($request->hasFile('image')) {
+            $path = $request->image->store('image');
+        }
+
         $emp->nomEmploye = $request->input('nomEmploye');
         $emp->prenomEmploye = $request->input('prenomEmploye');
         $emp->adressEmploye = $request->input('adressEmploye');
         $emp->fonction = $request->input('fonction');
         $emp->salaire = $request->input('salaire');
         $emp->commission = $request->input('commission');
+        $emp->image = $path;
+        
         
         session()->flash('modifier',' l\'employe a ete bien modifier !!');
         $emp->save();

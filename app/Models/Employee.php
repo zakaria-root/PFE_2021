@@ -19,7 +19,9 @@ class Employee extends Model
         'fonction',
         'salaire',
         'commission',
-        'cafe_restaurants_id'
+        'cafe_restaurants_id',
+        'image'
+        
     ];
 
     protected $dates = ['deleted_at'];

@@ -194,7 +194,7 @@ background: linear-gradient(to left, #8f42a8, #c42e5d); /* W3C, IE 10+/ Edge, Fi
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3  mb-3 ">
         <div class=" text-center">
-          <img src="default.jpg" style="width: 80%" class="img-circle elevation-2 " alt="User Image">
+          <img src="{{ asset('storage/' . Auth::user()->image) }}" style="width: 80%; max-height: 190px" class="img-circle elevation-2 " alt="User Image">
           
         </div>
         
@@ -788,7 +788,7 @@ background: linear-gradient(to left, #8f42a8, #c42e5d); /* W3C, IE 10+/ Edge, Fi
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="{{ route('utilisateurs.store') }}" method="post">
+      <form action="{{ route('utilisateurs.store') }}" method="post" enctype="multipart/form-data">
         @csrf
       <div class="modal-body">        
         <div class="form-group ">
@@ -817,6 +817,17 @@ background: linear-gradient(to left, #8f42a8, #c42e5d); /* W3C, IE 10+/ Edge, Fi
             <label for="exampleInputPassword1">Mot de passe</label>
             <input type="password" class="form-control" name="motDePass" id="exampleInputPassword1" placeholder="mot de pass" value="" required>
           </div>
+          <label for="image">Image</label>
+            <div class="form-group input-group mb-3">
+            
+              <div class="input-group-prepend">
+              </div>
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" name="image" id="inputGroupFile01">
+                <label class="custom-file-label px-1" for="inputGroupFile01">Choose file</label>
+              </div>
+            </div>
+            
       </div>
       <div class="modal-footer  justify-content-between">
         <button type="button" class="btn btn-secondary swalDefaultSuccess px-4" data-dismiss="modal">fermer</button>
@@ -839,7 +850,7 @@ background: linear-gradient(to left, #8f42a8, #c42e5d); /* W3C, IE 10+/ Edge, Fi
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="{{ route('utilisateurs.update', 'test') }}" method="post">
+      <form action="{{ route('utilisateurs.update', 'test') }}" method="post" enctype="multipart/form-data">
         @csrf
         @method('patch')
         
@@ -869,6 +880,17 @@ background: linear-gradient(to left, #8f42a8, #c42e5d); /* W3C, IE 10+/ Edge, Fi
           <div class="form-group">
             <label for="exampleInputPassword1">Mot de passe</label>
             <input type="password" class="form-control" name="motDePass" id="pass"  value="">
+          </div>
+          <label for="image">Image</label>
+          
+          <div class="form-group input-group mb-3">
+            
+            <div class="input-group-prepend">
+            </div>
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" name="image" id="image">
+              <label class="custom-file-label px-1" for="inputGroupFile01">Choose file</label>
+            </div>
           </div>
       </div>
       <div class="modal-footer  justify-content-between">
@@ -1113,6 +1135,7 @@ $('#editEmployee').on('show.bs.modal', function (event) {
   var value_salaire = button.data('value_salaire') // Extract info from data-* attributes
   var value_commission = button.data('value_commission') // Extract info from data-* attributes
   var value_cafe = button.data('value_cafe') // Extract info from data-* attributes
+   // Extract info from data-* attributes
   // Extract info from data-* attributes
   // var value_pass = button.data('value_pass') // Extract info from data-* attributes
   // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
@@ -1128,6 +1151,7 @@ $('#editEmployee').on('show.bs.modal', function (event) {
   modal.find('.modal-body #fonction ').val(value_fonction);
   modal.find('.modal-body input#salaire ').val(value_salaire);
   modal.find('.modal-body input#commission ').val(value_commission);
+  
  
   
 
