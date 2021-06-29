@@ -78,9 +78,13 @@ class ProfileController extends Controller
     {
 
          $user = Auth::user();
+         if ($request->hasFile('image')) {
+            $user->image = $request->image->store('image');
+        }
          $user->name = $request->input('nom');
         $user->email = $request->input('email');
         $user->password = Hash::make($request['motDePass']);
+        
         session()->flash('modifier',' le profile a ete bien modifier !!');
         $user->save();
         return back();

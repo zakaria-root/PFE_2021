@@ -495,7 +495,17 @@ background: linear-gradient(to left, #8f42a8, #c42e5d); /* W3C, IE 10+/ Edge, Fi
             <label for="exampleInputPassword1">Mot de passe</label>
             <input type="password" class="form-control" name="motDePass" id="pass"  value="">
           </div>
+          <label for="image">Image</label>
           
+          <div class="form-group input-group mb-3">
+            
+            <div class="input-group-prepend">
+            </div>
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" name="image" id="image">
+              <label class="custom-file-label px-1" for="inputGroupFile01">Choose file</label>
+            </div>
+          </div>
       </div>
       <div class="modal-footer  justify-content-between">
         <button type="button"  class="btn btn-secondary px-4" data-dismiss="modal">fermer</button>
