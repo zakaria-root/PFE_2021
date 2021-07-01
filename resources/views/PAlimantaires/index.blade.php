@@ -10,7 +10,7 @@
           <div class="card-header">
             <h3 class="card-title">
               <i class=" fas fa-archive fa-lg pt-2 pr-1"></i>
-              tableau des matieres premier</h3>
+              tableau des Matières première</h3>
             <div class="col-12 col-4">
               <div class="col-4 offset-11 ">
                   <button type="button" style="margin-left:45px !important ; padding-top: 3px !important;padding-bottom: 3px !important;" class="btn btn-success px-3 mt-1" data-toggle="modal" data-target="#ajouterPAlimantaire" >

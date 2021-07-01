@@ -11,7 +11,7 @@
             
             <h3 class="card-title" >
               <i class="fas fa-users p-1 pt-2 fa-lg"></i>
-              tableau des utilisateurs
+              tableau des Comptes
             </h3>
             <div class="col-12 col-4">
               <div class="col-4 offset-11">

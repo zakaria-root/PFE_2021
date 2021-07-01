@@ -2,7 +2,7 @@
 @section('content')
 
     <div class="d-grid gap-2 mt-2">
-        <h1><span class="btn btn-dark btn-block">list des cafe_restaurant disponible</span> </h1>
+        <h1><span class="btn btn-dark btn-block">list des Cafes-Restaurants </span> </h1>
     </div>
 
     {{-- <form action="{{ route('cafe_restaurants.fitchVille') }}">

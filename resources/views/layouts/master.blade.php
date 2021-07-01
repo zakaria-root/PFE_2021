@@ -230,7 +230,7 @@ background: linear-gradient(to left, #8f42a8, #c42e5d); /* W3C, IE 10+/ Edge, Fi
               @endif "">
                   <i class="nav-icon fas fa-user-tie"></i>
                   <p>
-                    profile
+                    Profile
                     
                   </p>
                 </a>
@@ -246,7 +246,7 @@ background: linear-gradient(to left, #8f42a8, #c42e5d); /* W3C, IE 10+/ Edge, Fi
           @endif ">
               <i class="nav-icon fas fa-users "></i>
               <p>
-                utilisateurs
+                Utilisateurs
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -256,7 +256,7 @@ background: linear-gradient(to left, #8f42a8, #c42e5d); /* W3C, IE 10+/ Edge, Fi
                   active
                 @endif">
                   <i class="fas fa-user-tag nav-icon "></i>
-                  <p class="">client</p>
+                  <p class="">Comptes</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -264,7 +264,7 @@ background: linear-gradient(to left, #8f42a8, #c42e5d); /* W3C, IE 10+/ Edge, Fi
                 active
               @endif">
                     <i class="fas fa-user-cog nav-icon "></i>
-                  <p class="">employee</p>
+                  <p class="">Employés</p>
                 </a>
               </li>
             </ul>
@@ -276,7 +276,7 @@ background: linear-gradient(to left, #8f42a8, #c42e5d); /* W3C, IE 10+/ Edge, Fi
           @endif">
               <i class="fas fa-laptop-house nav-icon"></i>
               <p>
-                cafes
+                Cafes-Restaurants
                 
               </p>
             </a>
@@ -290,7 +290,7 @@ background: linear-gradient(to left, #8f42a8, #c42e5d); /* W3C, IE 10+/ Edge, Fi
           @endif">
               <i class="nav-icon fas fa-archive"></i>
               <p>
-                produit
+                Stock
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -300,7 +300,8 @@ background: linear-gradient(to left, #8f42a8, #c42e5d); /* W3C, IE 10+/ Edge, Fi
                 active
               @endif">
                   <i class="fa fa-business-time nav-icon "></i>
-                  <p class="">materiel</p>
+                  <p class="">Matériels
+                  </p>
                 </a>
               </li>
               <li class="nav-item">
@@ -309,7 +310,7 @@ background: linear-gradient(to left, #8f42a8, #c42e5d); /* W3C, IE 10+/ Edge, Fi
               @endif">
                   
                   <i class="fas fa-layer-group nav-icon "></i>
-                  <p class="">matier premier</p>
+                  <p class="">Matières première</p>
                 </a>
               </li>
               
@@ -320,7 +321,7 @@ background: linear-gradient(to left, #8f42a8, #c42e5d); /* W3C, IE 10+/ Edge, Fi
             @endif">
                 <i class="fas fa-concierge-bell nav-icon"></i>
                    <p>
-                  Plats
+                  Produits
                   
                 </p>
               </a>

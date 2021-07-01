@@ -10,7 +10,7 @@
           <div class="card-header">
             <h3 class="card-title">
                 <i class="fas fa-concierge-bell fa-lg pr-1 pt-2"></i>
-                tableau des plats</h3>
+                tableau des produits</h3>
             <div class="col-12 col-4">
               <div class="col-4 offset-11 ">
                   <button type="button" style="margin-left:45px !important ; padding-top: 3px !important;padding-bottom: 2px !important;" class="btn btn-success px-3 mt-1" data-toggle="modal" data-target="#ajouterPlat" >
