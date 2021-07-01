@@ -10,7 +10,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <title>CaffeRestaut</title>
+  <title>C / RESTAUT</title>
 
   <link rel="stylesheet" href="{{ asset('css/app.css') }}">
   
@@ -186,7 +186,7 @@ background: linear-gradient(to left, #8f42a8, #c42e5d); /* W3C, IE 10+/ Edge, Fi
     <!-- Brand Logo -->
     <a href="/home" class="brand-link text-center">
         <i class="fas fa-coffee ml-3 "></i>
-      <span class="brand-text font-weight-light pr-4">CafeRestaut</span>
+      <span class="brand-text font-weight-light pr-4">C-RESTAU</span>
     </a>
 
     <!-- Sidebar -->
