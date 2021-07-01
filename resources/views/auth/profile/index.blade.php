@@ -7,7 +7,7 @@
     <div class="card card-primary card-outline">
       <div class="card-body box-profile">
         <div class="text-center">
-          <img class="  py-3" style="height:200px; width: 200px;border-radius: 50%;" src="{{ asset('storage/'.$user->image) }}" alt="User profile picture">
+          <img class="  py-3" style="height:230px; width: 200px;border-radius: 50%;" src="{{ asset('storage/'.$user->image) }}" alt="User profile picture">
         </div>
   
         <h3 class="profile-username text-center">{{ Auth::user()->name }}</h3>

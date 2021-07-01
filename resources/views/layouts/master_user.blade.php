@@ -110,11 +110,14 @@ https://templatemo.com/tm-546-sixteen-clothing
                     @auth
                         <li class="nav-item pl-5">
                           @if (Auth::user()->role == "admin" or Auth::user()->role == "serveur")
-                            
-                          
+
                             <a class="nav-link" href="{{ url('/home') }}">
+                              @else
+                              
+                              <a class="nav-link" href="{{ url('/profile') }}">
+                              
+                              @endif
                                 Your Acount</a>
-                                @endif
                           </li>
                           <li class="nav-item">
                             <a class="nav-link" href="{{ route('logout') }}"

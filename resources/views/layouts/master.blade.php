@@ -211,7 +211,7 @@ background: linear-gradient(to left, #8f42a8, #c42e5d); /* W3C, IE 10+/ Edge, Fi
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-                 
+                 @if (Auth::user()->role == "admin" or Auth::user()->role == "serveur")
                <li class="nav-item">
                 <a href="{{ url('/home') }}" class="nav-link @if ($etat === "home")
                 active
@@ -223,6 +223,7 @@ background: linear-gradient(to left, #8f42a8, #c42e5d); /* W3C, IE 10+/ Edge, Fi
                   </p>
                 </a>
               </li>
+              @endif
               <li class="nav-item">
                 <a href="{{ url('/profile') }}" class="nav-link @if ($etat === "profile")
                 active
