@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link href="{{ asset('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap') }}" rel="stylesheet">
 
-    <title>C / RESTAUT</title>
+    <title>C / RESTAU</title>
     {{-- <link rel="stylesheet" href="{{ asset('css/style.css') }}"> --}}
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
