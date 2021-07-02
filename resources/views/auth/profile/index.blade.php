@@ -15,8 +15,10 @@
         <p class="text-muted text-center">
           @if ($user->role == "admin")
           Administrateur du site
-          @else
+          @elseif ($user->role == "serveur")
           Serveur
+          @else
+          Simple Utilisateur
           @endif
           
         </p>

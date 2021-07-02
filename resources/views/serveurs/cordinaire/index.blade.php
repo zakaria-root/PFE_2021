@@ -115,7 +115,7 @@
                     
                        <form action="{{ route('cordinaire.storeDb') }}" method="POST">
                     @csrf
-                    <button type="submit" class="btn btn-outline-primary ml-2 " @if ($enable == "true")
+                    <button type="submit" class="btn btn-outline-primary ml-2 " @if ($plats != null)
                         @else
                             disabled
                         @endif
