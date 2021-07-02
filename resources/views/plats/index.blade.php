@@ -29,7 +29,7 @@
             <table class="table table-hover">
               <thead>
                 <tr>
-                  <th>Id</th>
+                  
                   <th>Image du plat</th>
                   <th>Nom du plat</th>
                   <th>prix du plat</th>
@@ -39,7 +39,7 @@
               </thead>
               @foreach ($plats as $plat)
                 <tr>
-                    <th scope="row">{{ $plat->id }}</th>
+                    
                     <th ><img src="{{ asset('storage/'.$plat->image) }}" width="80px" alt="image du plat"> </th>
                     <td>{{ $plat->nomPlat }}</td>
                     <td>{{ $plat->prix }}</td>

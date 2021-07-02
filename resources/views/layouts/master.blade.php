@@ -290,7 +290,7 @@ background: linear-gradient(to left, #8f42a8, #c42e5d); /* W3C, IE 10+/ Edge, Fi
           @endif">
               <i class="nav-icon fas fa-archive"></i>
               <p>
-                Stock
+                Article
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>

@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class CommandsParSiteController extends Controller
@@ -66,18 +67,20 @@ class CommandsParSiteController extends Controller
                 'quantite' =>$i['qty'],
                 'created_at' => $carbon,
             ]);
+            DB::table('plats')
+            ->where('id', $i['item']['id'])
+            ->update(['per_etoiles' => Auth::user()->id]);
         }
 
-
+        
         $uy = DB::table('details_commands_par_site')
         ->join('plats', 'details_commands_par_site.plats_id', '=', 'plats.id')
         ->select('commands_par_sites_id', 'plats.nomPlat', 'quantite')
         ->get();
     
     
+        
     
-    DB::table('plats')
-    ->update(['per_etoiles' => 1]).
     
     // dd($uy);
         

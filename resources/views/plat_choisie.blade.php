@@ -93,9 +93,15 @@ rel="stylesheet"
                     @auth
                         <li class="nav-item pl-5">
                           @if (Auth::user()->role == "admin" or Auth::user()->role == "serveur")
-                          <a class="nav-link" href="{{ url('/home') }}">
-                              Your Acount</a>
+
+                            <a class="nav-link" href="{{ url('/home') }}">
+                              @else
+                              
+                              <a class="nav-link" href="{{ url('/profile') }}">
+                              
                               @endif
+                              Your Acount</a>
+                              
                           </li>
                           <li class="nav-item">
                             <a class="nav-link" href="{{ route('logout') }}"
@@ -222,11 +228,11 @@ rel="stylesheet"
                       Si vous aimez notre plat, n'hésite pas de nous donner votre avies sur le plat <br>
                       <b style="padding-right: 5px">choisi votre votre avie : </b>
                     <br>
-                      <a @if($plat->per_etoiles === 1 ) href="{{ route('etoile.addEtoile', ['id'=>$plat->id,'etoile' => 1 ])  }}" @endif class="active "><i class="fa fa-star"></i></a>
-                      <a @if($plat->per_etoiles === 1 ) href="{{ route('etoile.addEtoile', ['id'=>$plat->id,'etoile' => 2 ])  }}" @endif class="active"><i class="fa fa-star"></i></a>
-                      <a @if($plat->per_etoiles === 1 ) href="{{ route('etoile.addEtoile', ['id'=>$plat->id,'etoile' => 3 ])  }}" @endif class="active"><i class="fa fa-star"></i></a>
-                      <a @if($plat->per_etoiles === 1 ) href="{{ route('etoile.addEtoile', ['id'=>$plat->id,'etoile' => 4 ])  }}" @endif class="active"><i class="fa fa-star"></i></a>
-                      <a @if($plat->per_etoiles === 1 ) href="{{ route('etoile.addEtoile', ['id'=>$plat->id,'etoile' => 5 ])  }}" @endif class="active"><i class="fa fa-star"></i></a>
+                      <a  href="{{ route('etoile.addEtoile', ['id'=>$plat->id,'etoile' => 1 ])  }}"  class="active"><i class="fa fa-star"></i></a>
+                      <a  href="{{ route('etoile.addEtoile', ['id'=>$plat->id,'etoile' => 2 ])  }}"  class="active"><i class="fa fa-star"></i></a>
+                      <a  href="{{ route('etoile.addEtoile', ['id'=>$plat->id,'etoile' => 3 ])  }}"  class="active"><i class="fa fa-star"></i></a>
+                      <a  href="{{ route('etoile.addEtoile', ['id'=>$plat->id,'etoile' => 4 ])  }}"  class="active"><i class="fa fa-star"></i></a>
+                      <a  href="{{ route('etoile.addEtoile', ['id'=>$plat->id,'etoile' => 5 ])  }}"  class="active"><i class="fa fa-star"></i></a>
                     </p>
                   </div>
                 <div class="tab-pane fade" id="product-rating" role="tabpanel" aria-labelledby="product-rating-tab"> Cras ut ipsum ornare, aliquam ipsum non, posuere elit. In hac habitasse platea dictumst. Aenean elementum leo augue, id fermentum risus efficitur vel. Nulla iaculis malesuada scelerisque. Praesent vel ipsum felis. Ut molestie, purus aliquam placerat sollicitudin, mi ligula euismod neque, non bibendum nibh neque et erat. Etiam dignissim aliquam ligula, aliquet feugiat nibh rhoncus ut. Aliquam efficitur lacinia lacinia. Morbi ac molestie lectus, vitae hendrerit nisl. Nullam metus odio, malesuada in vehicula at, consectetur nec justo. Quisque suscipit odio velit, at accumsan urna vestibulum a. Proin dictum, urna ut varius consectetur, sapien justo porta lectus, at mollis nisi orci et nulla. Donec pellentesque tortor vel nisl commodo ullamcorper. Donec varius massa at semper posuere. Integer finibus orci vitae vehicula placerat. </div>
@@ -259,10 +265,8 @@ rel="stylesheet"
         <div class="row">
           <div class="col-md-12">
             <div class="inner-content">
-              <p>Copyright &copy; 2020 Sixteen Clothing Co., Ltd.
-            
-            - Design: <a rel="nofollow noopener" href="https://templatemo.com" target="_blank">TemplateMo</a></p>
-            </div>
+              <p>Copyright &copy; 2021 C / RESTAU.
+              </p></div>
           </div>
         </div>
       </div>

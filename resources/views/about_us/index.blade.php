@@ -83,7 +83,7 @@ rel="stylesheet"
                   <a class="nav-link" href="{{ url('/cafeRestauts') }}">Notre Cafes</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{{ url('/h/cafeRestaut') }}">Nore Plats</a>
+                  <a class="nav-link" href="{{ url('/h/cafeRestaut') }}">Notre Plats</a>
                 </li>
                 <li class="nav-item active">
                   <a class="nav-link" href="{{ url('/About') }}">propos de nous</a>
@@ -230,7 +230,7 @@ rel="stylesheet"
               <div class="down-content">
                 <h4>Anass Irizi</h4>
                 <span>Casablanca</span>
-                <p>e suis un etudiant de faculté ben m'sik bac+2 option base de donne .</p>
+                <p>je suis un etudiant de faculté ben m'sik bac+2 option base de donne .</p>
               </div>
             </div>
           </div>
@@ -292,9 +292,8 @@ rel="stylesheet"
           <div class="row">
             <div class="col-md-12">
               <div class="inner-content">
-                <p>Copyright &copy; 2020 Sixteen Clothing Co., Ltd.
-              
-              - Design: <a rel="nofollow noopener" href="https://templatemo.com" target="_blank">TemplateMo</a></p>
+                <p>Copyright &copy; 2021 C / RESTAU.
+              </p>
               </div>
             </div>
           </div>
