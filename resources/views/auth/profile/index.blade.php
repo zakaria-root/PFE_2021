@@ -33,7 +33,14 @@
           
         </ul>
   
-        <button type="button" class="btn btn-danger btn-block"  data-toggle="modal" data-target="#editeProfile" ><b>edite prfile</b></button>
+        <button type="button" class="btn btn-info btn-block"  style="color: white" data-toggle="modal" data-target="#editeProfile" ><b>Modifier profile</b></button>
+        <a 
+                            class="btn btn-danger btn-block" style="color: white"
+                            data-value_user="{{ $user->id }}"  
+                            data-toggle="modal" 
+                            data-target="#deleteUtidiant" >
+                            <b>Supprimer profile</b> 
+                            </a>
       </div>
       
       <!-- /.card-body -->

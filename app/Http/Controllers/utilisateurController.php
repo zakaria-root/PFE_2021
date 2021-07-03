@@ -7,6 +7,7 @@ use App\Models\Utilisateur;
 use Illuminate\Http\Request;
 use App\Http\Requests\utRequest;
 use App\Models\Employee;
+use App\Models\Plat;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
@@ -128,7 +129,16 @@ class utilisateurController extends Controller
     {
         $user = User::findOrFail($request->value);
         session()->flash('supprimer',' l\'utilisateur a ete bien supprimer !!');
+        $plats = Plat::all();
+        foreach ($plats as $plat ) {
+            if ($plat->per_etoiles == $user->id) {
+                $plat->per_etoiles = null;
+            }
+        }
         $user->delete();
+        if ($user->role == "user") {
+            return redirect()->route('home');
+        }
         return back();
     }
 }
